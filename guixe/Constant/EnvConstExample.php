@@ -1,16 +1,16 @@
 <?php
 
-namespace Const;
+namespace Constant;
 
 class EnvConstExample
 {
-    public static $DB_CONNECTION = 'mysql';
-    public static $DB_HOST = 'localhost';
-    public static $DB_PORT = '3306';
-    public static $DB_DATABASE = 'guixe';
-    public static $DB_USERNAME = 'root';
-    public static $DB_PASSWORD = 'dainguyen12';
-    public static $SQL_LOG_PATH = '/mnt/s/DATN/guixe';
+    public const DB_CONNECTION = 'mysql';
+    public const DB_HOST = 'localhost';
+    public const DB_PORT = '3306';
+    public const DB_DATABASE = 'guixe';
+    public const DB_USERNAME = 'root';
+    public const DB_PASSWORD = 'dainguyen12';
+    public const SQL_LOG_PATH = '/mnt/s/DATN/guixe';
     public const USE_SQL_LOG = true;
 
 }
