@@ -10,7 +10,7 @@ CREATE TABLE chu_ho
 CREATE TABLE ve
 (
     ma_ve      INT PRIMARY KEY AUTO_INCREMENT,
-    loai_the   VARCHAR(50),
+    loai_ve   VARCHAR(50),
     loai_xe    VARCHAR(255),
     trang_thai BIT DEFAULT true
 );
@@ -19,7 +19,7 @@ CREATE TABLE thong_tin_ve
 (
     ma_ve      INT PRIMARY KEY,
     ma_can_ho  INT,
-    bien_so_xe VARCHAR(10),
+    bien_so_xe VARCHAR(10) UNIQUE,
     FOREIGN KEY (ma_ve) REFERENCES ve (ma_ve) ON DELETE CASCADE  ,
     FOREIGN KEY (ma_can_ho) REFERENCES chu_ho (ma_can_ho) ON DELETE CASCADE
 );
