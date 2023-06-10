@@ -1,42 +1,49 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
---
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 10, 2023 lúc 11:03 AM
--- Phiên bản máy phục vụ: 10.4.25-MariaDB
--- Phiên bản PHP: 8.1.10
+use guixe;
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+CREATE TABLE chu_ho
+(
+    ma_can_ho  INT PRIMARY KEY,
+    ten_chu_ho VARCHAR(255),
+    cmnd       VARCHAR(12)
+);
 
+CREATE TABLE ve
+(
+    ma_ve      INT PRIMARY KEY AUTO_INCREMENT,
+    loai_the   VARCHAR(50),
+    loai_xe    VARCHAR(255),
+    trang_thai BIT DEFAULT true
+);
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+CREATE TABLE thong_tin_ve
+(
+    ma_ve      INT PRIMARY KEY,
+    ma_can_ho  INT,
+    bien_so_xe VARCHAR(10),
+    FOREIGN KEY (ma_ve) REFERENCES ve (ma_ve),
+    FOREIGN KEY (ma_can_ho) REFERENCES chu_ho (ma_can_ho)
+);
 
---
--- Cơ sở dữ liệu: `guixe_datn`
---
+CREATE TABLE luot_gui
+(
+    ma_luot_gui  INT PRIMARY KEY AUTO_INCREMENT,
+    ma_ve        INT,
+    bien_so_xe   VARCHAR(10),
+    hinh_anh_vao VARCHAR(255),
+    hinh_anh_ra  VARCHAR(255),
+    gio_vao      DATETIME,
+    gio_ra       DATETIME,
+    FOREIGN KEY (ma_ve) REFERENCES ve (ma_ve)
+);
 
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `chu_ho`
---
-
-CREATE TABLE `chu_ho` (
-  `ma_can_ho` int(11) NOT NULL,
-  `ten_chu_ho` varchar(255) DEFAULT NULL,
-  `cmnd` varchar(12) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `chu_ho`
---
-
+CREATE TABLE tai_khoan
+(
+    ma_tai_khoan  INT PRIMARY KEY,
+    ten_tai_khoan VARCHAR(255),
+    mat_khau      VARCHAR(255)
+);
+ 
+-- insert data into `chu_ho`
 INSERT INTO `chu_ho` (`ma_can_ho`, `ten_chu_ho`, `cmnd`) VALUES
 (1, 'Trần Tiến Tùng', '658975666632'),
 (2, 'Nguyễn Văn Cao', '732538023803'),
@@ -114,205 +121,3 @@ INSERT INTO `chu_ho` (`ma_can_ho`, `ten_chu_ho`, `cmnd`) VALUES
 (74, 'Trần Yến Linh', '251209948266'),
 (75, 'Hoàng Ngọc Hiển', '835462346024'),
 (76, 'Đặng Ngọc Huệ', '639857077910');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `luot_gui`
---
-
-CREATE TABLE `luot_gui` (
-  `ma_luot_gui` int(11) NOT NULL,
-  `ma_the` int(11) DEFAULT NULL,
-  `bien_so_xe` varchar(10) DEFAULT NULL,
-  `hinh_anh_vao` varchar(255) DEFAULT NULL,
-  `hinh_anh_ra` varchar(255) DEFAULT NULL,
-  `gio_vao` datetime DEFAULT NULL,
-  `gio_ra` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `tai_khoan`
---
-
-CREATE TABLE `tai_khoan` (
-  `ma_tai_khoan` int(11) NOT NULL,
-  `ten_tai_khoan` varchar(255) DEFAULT NULL,
-  `mat_khau` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `thong_tin_the`
---
-
-CREATE TABLE `thong_tin_the` (
-  `ma_the` int(11) NOT NULL,
-  `ma_can_ho` int(11) DEFAULT NULL,
-  `bien_so_xe` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `thong_tin_the`
---
-
-INSERT INTO `thong_tin_the` (`ma_the`, `ma_can_ho`, `bien_so_xe`) VALUES
-(2, 1, '20C - 4412');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `ve`
---
-
-CREATE TABLE `ve` (
-  `ma_the` int(11) NOT NULL,
-  `loai_the` varchar(50) DEFAULT NULL,
-  `loai_xe` varchar(255) DEFAULT NULL,
-  `trang_thai` bit(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `ve`
---
-
-INSERT INTO `ve` (`ma_the`, `loai_the`, `loai_xe`, `trang_thai`) VALUES
-(1, 'thẻ ngày', 'ô tô', b'1'),
-(2, 'thẻ tháng', 'ô tô', b'1');
-
---
--- Chỉ mục cho các bảng đã đổ
---
-
---
--- Chỉ mục cho bảng `chu_ho`
---
-ALTER TABLE `chu_ho`
-  ADD PRIMARY KEY (`ma_can_ho`);
-
---
--- Chỉ mục cho bảng `luot_gui`
---
-ALTER TABLE `luot_gui`
-  ADD PRIMARY KEY (`ma_luot_gui`),
-  ADD KEY `ma_the` (`ma_the`);
-
---
--- Chỉ mục cho bảng `tai_khoan`
---
-ALTER TABLE `tai_khoan`
-  ADD PRIMARY KEY (`ma_tai_khoan`);
-
---
--- Chỉ mục cho bảng `thong_tin_the`
---
-ALTER TABLE `thong_tin_the`
-  ADD PRIMARY KEY (`ma_the`),
-  ADD KEY `ma_can_ho` (`ma_can_ho`);
-
---
--- Chỉ mục cho bảng `ve`
---
-ALTER TABLE `ve`
-  ADD PRIMARY KEY (`ma_the`);
-
---
--- AUTO_INCREMENT cho các bảng đã đổ
---
-
---
--- AUTO_INCREMENT cho bảng `chu_ho`
---
-ALTER TABLE `chu_ho`
-  MODIFY `ma_can_ho` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
-
---
--- AUTO_INCREMENT cho bảng `luot_gui`
---
-ALTER TABLE `luot_gui`
-  MODIFY `ma_luot_gui` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `tai_khoan`
---
-ALTER TABLE `tai_khoan`
-  MODIFY `ma_tai_khoan` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `ve`
---
-ALTER TABLE `ve`
-  MODIFY `ma_the` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- Các ràng buộc cho các bảng đã đổ
---
-
---
--- Các ràng buộc cho bảng `luot_gui`
---
-ALTER TABLE `luot_gui`
-  ADD CONSTRAINT `luot_gui_ibfk_1` FOREIGN KEY (`ma_the`) REFERENCES `ve` (`ma_the`);
-
---
--- Các ràng buộc cho bảng `thong_tin_the`
---
-ALTER TABLE `thong_tin_the`
-  ADD CONSTRAINT `thong_tin_the_ibfk_1` FOREIGN KEY (`ma_the`) REFERENCES `ve` (`ma_the`),
-  ADD CONSTRAINT `thong_tin_the_ibfk_2` FOREIGN KEY (`ma_can_ho`) REFERENCES `chu_ho` (`ma_can_ho`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-=======
-use
-guixe;
-
-CREATE TABLE chu_ho
-(
-    ma_can_ho  INT PRIMARY KEY,
-    ten_chu_ho VARCHAR(255),
-    cmnd       VARCHAR(12)
-);
-
-CREATE TABLE ve
-(
-    ma_ve      INT PRIMARY KEY AUTO_INCREMENT,
-    loai_the   VARCHAR(50),
-    loai_xe    VARCHAR(255),
-    trang_thai BIT DEFAULT true
-);
-
-CREATE TABLE thong_tin_ve
-(
-    ma_ve      INT PRIMARY KEY,
-    ma_can_ho  INT,
-    bien_so_xe VARCHAR(10),
-    FOREIGN KEY (ma_ve) REFERENCES ve (ma_ve),
-    FOREIGN KEY (ma_can_ho) REFERENCES chu_ho (ma_can_ho)
-);
-
-CREATE TABLE luot_gui
-(
-    ma_luot_gui  INT PRIMARY KEY AUTO_INCREMENT,
-    ma_ve        INT,
-    bien_so_xe   VARCHAR(10),
-    hinh_anh_vao VARCHAR(255),
-    hinh_anh_ra  VARCHAR(255),
-    gio_vao      DATETIME,
-    gio_ra       DATETIME,
-    FOREIGN KEY (ma_ve) REFERENCES ve (ma_ve)
-);
-
-CREATE TABLE tai_khoan
-(
-    ma_tai_khoan  INT PRIMARY KEY,
-    ten_tai_khoan VARCHAR(255),
-    mat_khau      VARCHAR(255)
-);
- 
->>>>>>> f2e59679a8a463c2fd933f7f14d5786628325df5
