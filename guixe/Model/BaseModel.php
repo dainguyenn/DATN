@@ -2,8 +2,7 @@
 
 namespace Model;
 
-use Const\EnvConst;
-use Const\LocalEnv;
+use Constant\EnvConst;
 use core\CustomPDO;
 
 class BaseModel
@@ -53,26 +52,30 @@ class BaseModel
         $values = substr($values, 0, -1) . ')';
         $sql .= $values . $condition;
         $this->SQL_LOG($sql);
-        return $this->pdo->query($sql);
+        return $this->pdo->queryAndReturnId($sql);
     }
 
     public function findById($id,array $columns = ['*'])
     {
         $columns = $this->implodeColumns($columns);
-        $sql = "SELECT $columns FROM $this->table WHERE $this->primaryKey = $id";
+        $sql = "SELECT $columns FROM $this->table WHERE $this->primaryKey = '$id'";
         $this->SQL_LOG($sql);
 
-        return $this->pdo->query($sql)[0];
+        return $this->pdo->query($sql);
     }
 
-    public function deleteById($id)
+    public function deleteById($id): bool|array|null
     {
         $sql = "DELETE FROM $this->table WHERE $this->primaryKey = $id";
         $this->SQL_LOG($sql);
 
-        return $this->pdo->query($sql)[0];
+        return $this->pdo->query($sql);
     }
 
+    public function exists($id){
+        $result = $this->findById($id);
+        return count($result);
+    }
     protected function implodeColumns(array $columns = [])
     {
         return implode(',',$columns);
@@ -83,7 +86,7 @@ class BaseModel
         if (EnvConst::USE_SQL_LOG) {
             $date = date_create('now', timezone_open('Asia/Saigon'))->format('Y-m-d H:i:s');
             $file = 'log.' . date_create('now', timezone_open('Asia/Saigon'))->format('Y-m-d') . '.log';
-            $filePath = EnvConst::$SQL_LOG_PATH . '/log/sql/' . $file;
+            $filePath = EnvConst::SQL_LOG_PATH . '/log/sql/' . $file;
             if (!file_exists($filePath)) {
                 file_put_contents($filePath, '');
             }

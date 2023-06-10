@@ -3,7 +3,7 @@
 namespace core;
 
 use Model\Ve;
-
+session_start();
 require_once 'Model/Ve.php';
 require_once 'core/CustomPDO.php';
 class App
