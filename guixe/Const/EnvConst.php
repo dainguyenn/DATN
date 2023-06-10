@@ -7,5 +7,5 @@ class EnvConst
     public static $DB_PORT = '3306';
     public static $DB_DATABASE = 'guixe';
     public static $DB_USERNAME = 'root';
-    public static $DB_PASSWORD = 'dainguyen12';
+    public static $DB_PASSWORD = '';
 }
