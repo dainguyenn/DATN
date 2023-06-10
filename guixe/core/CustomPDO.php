@@ -2,7 +2,7 @@
 
 namespace core;
 
-use Const\EnvConst;
+use Constant\EnvConst;
 use PDOException;
 use PDO;
 
@@ -14,10 +14,10 @@ class CustomPDO{
     private PDO $pdo;
 
     public function __construct() {
-        $this->host = EnvConst::$DB_HOST.':'.EnvConst::$DB_PORT;
-        $this->dbname = EnvConst::$DB_DATABASE;
-        $this->username = EnvConst::$DB_USERNAME;
-        $this->password = EnvConst::$DB_PASSWORD;
+        $this->host = EnvConst::DB_HOST.':'.EnvConst::DB_PORT;
+        $this->dbname = EnvConst::DB_DATABASE;
+        $this->username = EnvConst::DB_USERNAME;
+        $this->password = EnvConst::DB_PASSWORD;
     }
 
     private function connect() {
