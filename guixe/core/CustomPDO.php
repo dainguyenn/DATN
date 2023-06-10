@@ -1,0 +1,44 @@
+<?php
+
+namespace core;
+
+use EnvConst;
+use http\Env;
+use PDOException;
+use PDO;
+
+require_once 'Const/EnvConst.php';
+class CustomPDO{
+    private $host;
+    private $dbname;
+    private $username;
+    private $password;
+    private $pdo;
+
+    public function __construct() {
+        $this->host = EnvConst::$DB_HOST.':'.EnvConst::$DB_PORT;
+        $this->dbname = EnvConst::$DB_DATABASE;
+        $this->username = EnvConst::$DB_USERNAME;
+        $this->password = EnvConst::$DB_PASSWORD;
+    }
+
+    private function connect() {
+        try {
+            $this->pdo =new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->username, $this->password);
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            die("Kết nối đến cơ sở dữ liệu thất bại: " . $e->getMessage());
+        }
+    }
+
+    public function query($sql) {
+        $this->connect();
+        try {
+            $stmt = $this->pdo->query($sql);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die("Truy vấn thất bại: " . $e->getMessage());
+        }
+    }
+}
+
