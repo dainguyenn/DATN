@@ -77,4 +77,16 @@ class Ve extends BaseModel
         $this->SQL_LOG($sql);
         return $this->pdo->query($sql)[0]['SL'];
     }
+
+    public function check($maCanHo, $loaiXe)
+    {
+        $tbJoin = ThongTinVe::TB_NAME;
+
+        $sql = "SELECT COUNT(loai_xe) AS SL FROM $this->table INNER JOIN "
+            . $tbJoin
+            . " ON $this->table.$this->primaryKey = $tbJoin.$this->primaryKey
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = $tbJoin.ma_can_ho WHERE $this->table.loai_xe= '$loaiXe' AND chu_ho.ma_can_ho = '$maCanHo'";
+        $this->SQL_LOG($sql);
+        return $this->pdo->query($sql)[0]['SL'];
+    }
 }
