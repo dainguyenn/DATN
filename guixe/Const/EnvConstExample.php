@@ -2,7 +2,7 @@
 
 namespace Const;
 
-class EnvConst
+class EnvConstExample
 {
     public static $DB_CONNECTION = 'mysql';
     public static $DB_HOST = 'localhost';

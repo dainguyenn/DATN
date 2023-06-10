@@ -11,4 +11,3 @@ class WelcomeController
 
 }
 
-new WelcomeController();

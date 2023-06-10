@@ -1,4 +1,10 @@
-**1) View**
-    Chứa các khung nhìn để hiển thị dữ liệu
-**2) Controller**
-    Khi muốn chuyển trang thì 
+**ENV**
+Coppy file EnvConstExample thành EnvConst -> sửa các cấu hình cần thết <br>
+***Lưu ý***: Nếu không dùng SQL log thì đặt thành false nếu dùng cấu hình lại path cho đúng
+<br>
+
+**Nếu dùng theo base**
+<br>
+**-** Từ view khi muốn gọi model phải required_one file autoload trước
+
+- Chú ý file sql 

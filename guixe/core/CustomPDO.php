@@ -2,12 +2,10 @@
 
 namespace core;
 
-use EnvConst;
-use http\Env;
+use Const\EnvConst;
 use PDOException;
 use PDO;
 
-require_once 'Const/EnvConst.php';
 class CustomPDO{
     private $host;
     private $dbname;
