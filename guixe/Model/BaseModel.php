@@ -72,6 +72,7 @@ class BaseModel
 
         return $this->pdo->query($sql)[0];
     }
+
     protected function implodeColumns(array $columns = [])
     {
         return implode(',',$columns);
