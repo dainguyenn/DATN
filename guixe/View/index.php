@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Alo</h1>
-    <a href="../Controller/WelcomeController.php">a</a>
+    <a href="/View/card/index.php">Quản lý thẻ</a>
 </body>
 </html>
+
