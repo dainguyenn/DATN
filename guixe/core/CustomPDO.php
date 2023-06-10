@@ -11,7 +11,7 @@ class CustomPDO{
     private $dbname;
     private $username;
     private $password;
-    private $pdo;
+    private PDO $pdo;
 
     public function __construct() {
         $this->host = EnvConst::$DB_HOST.':'.EnvConst::$DB_PORT;
@@ -34,6 +34,15 @@ class CustomPDO{
         try {
             $stmt = $this->pdo->query($sql);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die("Truy vấn thất bại: " . $e->getMessage());
+        }
+    }
+    public function queryAndReturnId($sql) {
+        $this->connect();
+        try {
+            $this->pdo->prepare($sql)->execute();
+            return $this->pdo->lastInsertId();
         } catch (PDOException $e) {
             die("Truy vấn thất bại: " . $e->getMessage());
         }

@@ -39,7 +39,7 @@ class BaseModel
         $values = substr($values, 0, -1) . ')';
         $sql .= $keys . $values;
         $this->SQL_LOG($sql);
-        return $this->pdo->query($sql);
+        return $this->pdo->queryAndReturnId($sql);
     }
 
     public function update($id, array $attributes = [])
@@ -72,6 +72,7 @@ class BaseModel
 
         return $this->pdo->query($sql)[0];
     }
+
     protected function implodeColumns(array $columns = [])
     {
         return implode(',',$columns);

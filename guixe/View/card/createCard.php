@@ -41,12 +41,12 @@ use Model\Ve;
 $ve = new Ve();
 $thongTinVeModel = new ThongTinVe();
     if(isset($_POST['create'])) {
-        $newVe = $ve->create([
+        $newVeId = $ve->create([
             'loai_the' => $_POST['loai_the'],
             'loai_xe' => $_POST['loai_xe'],
-        ])[0];
+        ]);
         $thongTinVeModel->create([
-            'ma_ve' => $newVe['ma_ve'],
+            'ma_ve' => $newVeId,
             'ma_can_ho' => $_POST['ma_can_ho'],
             'bien_so_xe' => $_POST['bien_so_xe'],
         ]);
