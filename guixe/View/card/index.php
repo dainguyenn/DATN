@@ -13,7 +13,6 @@ require_once '../../autoload.php';
 $veModel = new \Model\Ve();
 
 $allVe = $veModel->getInfo();
-print_r($allVe);
 ?>
 <body>
 <h1>Quản lý thẻ</h1>

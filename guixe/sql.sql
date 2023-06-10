@@ -20,8 +20,8 @@ CREATE TABLE thong_tin_ve
     ma_ve      INT PRIMARY KEY,
     ma_can_ho  INT,
     bien_so_xe VARCHAR(10),
-    FOREIGN KEY (ma_ve) REFERENCES ve (ma_ve),
-    FOREIGN KEY (ma_can_ho) REFERENCES chu_ho (ma_can_ho)
+    FOREIGN KEY (ma_ve) REFERENCES ve (ma_ve) ON DELETE CASCADE  ,
+    FOREIGN KEY (ma_can_ho) REFERENCES chu_ho (ma_can_ho) ON DELETE CASCADE
 );
 
 CREATE TABLE luot_gui
