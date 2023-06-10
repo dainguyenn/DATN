@@ -8,3 +8,12 @@ Coppy file EnvConstExample thành EnvConst -> sửa các cấu hình cần thế
 **-** Từ view khi muốn gọi model phải required_one file autoload trước
 
 - Chú ý file sql 
+
+**Model**
+
+***Insert***: attributes = [
+    'a' => 1,
+    'b' => 2
+]
+
+-Câu query tương ứng: INSERT INTO table(a,b) VALUES(1,2) 
