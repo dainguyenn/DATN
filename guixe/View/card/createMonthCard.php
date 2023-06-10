@@ -10,6 +10,7 @@
 <?php
 require_once '../../autoload.php';
 
+use Constant\CardConst;
 use Model\ChuHo;
 use Model\ThongTinVe;
 use Model\Ve;
@@ -49,7 +50,7 @@ if (isset($_POST['create'])) {
     }
     if(!isset($message)){
         $newVeId = $ve->create([
-            'loai_the' => $_POST['loai_the'],
+            'loai_ve' => CardConst::TYPE_MONTH,
             'loai_xe' => $_POST['loai_xe'],
         ]);
         $thongTinVeModel->create([
@@ -75,7 +76,7 @@ if (isset($_POST['create'])) {
 
         <div>
             <label>Mã căn hộ</label>
-            <input name="ma_can_ho" value="<?php echo $_SESSION['ma_can_ho'] ?? '' ?>">
+            <input  name="ma_can_ho" <?php echo $coChuHo ? 'readonly' : '' ?> value="<?php echo $_SESSION['ma_can_ho'] ?? '' ?>">
         </div>
 
         <?php
@@ -87,10 +88,7 @@ if (isset($_POST['create'])) {
                     <label>Biển số xe</label>
                     <input name="bien_so_xe">
                 </div>
-                <div>
-                    <label>Loại thẻ</label>
-                    <input name="loai_the">
-                </div>
+
                 <div>
                     <label>Loại xe</label>
                     <select name="loai_xe">
