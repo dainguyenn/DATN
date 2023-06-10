@@ -21,7 +21,7 @@ print_r($allVe);
 <table>
     <thead>
     <tr>
-        <th>Mã thẻ</th>
+        <th>Mã vé</th>
         <th>Mã căn hộ</th>
         <th>Tên chủ hộ</th>
         <th>Biển số xe</th>
@@ -34,7 +34,10 @@ print_r($allVe);
 
         ?>
         <tr>
-            <td><?php echo $item['ma_the']?></td>
+            <td><?php echo $item['ma_ve']?></td>
+            <td><?php echo $item['ma_can_ho']?></td>
+            <td><?php echo $item['ten_chu_ho']?></td>
+            <td><?php echo $item['bien_so_xe']?></td>
             <td><?php echo $item['loai_the']?></td>
             <td><?php echo $item['loai_xe']?></td>
         </tr>
