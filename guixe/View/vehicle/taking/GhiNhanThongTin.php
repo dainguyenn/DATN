@@ -25,18 +25,15 @@
     $luotGuiModel = new \Model\LuotGui();
     $ve = $_SESSION["ve"];
     $thongTinVe = $_SESSION["thong_tin_ve"];
-    $bienSoXe = $_SESSION["bien_so_xe"];
     $luotGui = $_SESSION["luot_gui"];
-    if (!isset($ve) || !(isset($thongTinVe) || isset($bienSoXe)))
+    if (!isset($ve) || !isset($thongTinVe))
         header("location:index.php");
-    print_r($_SESSION);
 
     if (isset($_POST["sub"])) {
 
         if (isset($_FILES["hinh_anh"]) && $_FILES["hinh_anh"]["size"] > 0) {
             $now = date("Y-m-d H:i:s");
             $pathImage = UploadFileHelper::SaveFile($_FILES["hinh_anh"]);
-            print_r($pathImage . "  log thông tin");
             $result = null;
             try {
                 if ($ve["loai_ve"] == "Tháng") {
@@ -47,6 +44,8 @@
                             "gio_ra" => $now
                         ]
                     );
+                    echo "<br/>";
+                    print_r($result);
                 } else {
                     $result = $luotGuiModel->update(
                         $luotGui["ma_luot_gui"],

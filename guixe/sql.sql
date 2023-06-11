@@ -10,7 +10,7 @@ CREATE TABLE chu_ho
 CREATE TABLE ve
 (
     ma_ve      INT PRIMARY KEY AUTO_INCREMENT,
-    loai_the   VARCHAR(50),
+    loai_ve   VARCHAR(50),
     loai_xe    VARCHAR(255),
     trang_thai BIT DEFAULT true
 );

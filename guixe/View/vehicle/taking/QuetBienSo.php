@@ -42,9 +42,12 @@
                 echo "<br />" . $_POST["bien_so_xe"] . "---" . $result["bien_so_xe"];
             }
         } else {
-            $_SESSION["bien_so_xe"] = $_POST["bien_so_xe"];
-            echo "<h1>Là thẻ ngày</h1> <h2>Đang ghi nhận thông tin gửi</h2>";
-            echo "<script>window.location.href = 'GhiNhanThongTin.php'</script>";
+            if ($luotGui["bien_so_xe"] == $_POST["bien_so_xe"]) {
+                echo "<h1>Là thẻ ngày</h1> <h2>Đang ghi nhận thông tin lấy</h2>";
+                echo "<script>window.location.href = 'GhiNhanThongTin.php'</script>";
+            } else {
+                echo "<h1>Biển số xe không trùng khớp</h1>";
+            }
         }
     }
     ?>

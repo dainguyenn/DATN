@@ -13,20 +13,18 @@ require_once '../../autoload.php';
 $veModel = new \Model\Ve();
 $page = $_GET['page'] ?? 1;
 $limit = $_GET['limit'] ?? 25;
-$allVe = $veModel->getInfo(null,['*'],$limit,$page);
+$allVe = $veModel->getCardDay(null,['*'],$limit,$page);
 ?>
 <body>
 <h1>Quản lý thẻ</h1>
 <a href="createMonthCard.php">Tạo thẻ tháng mới</a>
 <a href="createDayCard.php">Tạo thẻ ngày mới</a>
+<a href="index.php">Danh sách vé tháng</a>
 <a href="listCardDay.php">Danh sách vé ngày</a>
 <table>
     <thead>
     <tr>
         <th>Mã vé</th>
-        <th>Mã căn hộ</th>
-        <th>Tên chủ hộ</th>
-        <th>Biển số xe</th>
         <th>Loại thẻ</th>
         <th>Loại xe</th>
     </tr>
@@ -37,9 +35,6 @@ $allVe = $veModel->getInfo(null,['*'],$limit,$page);
         ?>
         <tr>
             <td><?php echo $item['ma_ve']?></td>
-            <td><?php echo $item['ma_can_ho']?></td>
-            <td><?php echo $item['ten_chu_ho']?></td>
-            <td><?php echo $item['bien_so_xe']?></td>
             <td><?php echo $item['loai_ve']?></td>
             <td><?php echo $item['loai_xe']?></td>
         </tr>

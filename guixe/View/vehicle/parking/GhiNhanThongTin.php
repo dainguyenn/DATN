@@ -23,9 +23,9 @@
 
     $veModel = new \Model\Ve();
     $luotGuiModel = new \Model\LuotGui();
-    $ve = $_SESSION["ve"];
-    $thongTinVe = $_SESSION["thong_tin_ve"];
-    $bienSoXe = $_SESSION["bien_so_xe"];
+    $ve = $_SESSION["ve_gui"];
+    $thongTinVe = $_SESSION["thong_tin_ve_gui"];
+    $bienSoXe = $_SESSION["bien_so_xe_gui"];
 
     if (!isset($ve) && !(isset($thongTinVe) || isset($bienSoXe)))
         header("location:index.php");
@@ -40,14 +40,14 @@
             $result = null;
             if ($ve["loai_ve"] == "Tháng") {
                 $result = $luotGuiMoi = $luotGuiModel->create([
-                    "ma_ve" => $_SESSION["ve"]["ma_ve"],
-                    "bien_so_xe" => $_SESSION["thong_tin_ve"]["bien_so_xe"],
+                    "ma_ve" => $ve["ma_ve"],
+                    "bien_so_xe" => $thongTinVe["bien_so_xe"],
                     "hinh_anh_vao" => $pathImage,
                     "gio_vao" => $now
                 ]);
             } else {
                 $result = $luotGuiMoi = $luotGuiModel->create([
-                    "ma_ve" => $_SESSION["ve"]["ma_ve"],
+                    "ma_ve" => $ve["ma_ve"],
                     "bien_so_xe" => $bienSoXe,
                     "hinh_anh_vao" => $pathImage,
                     "gio_vao" => $now
@@ -60,9 +60,9 @@
                 exit;
             } else {
                 echo "Xe đã được ghi nhận thành công";
-                unset($_SESSION["ve"]);
-                unset($_SESSION["thong_tin_ve"]);
-                unset($_SESSION["bien_so_xe"]);
+                unset($_SESSION["ve_gui"]);
+                unset($_SESSION["thong_tin_ve_gui"]);
+                unset($_SESSION["bien_so_xe_gui"]);
             }
         } else {
             echo "<h1>Bạn chưa nhập hình ảnh</h2>";

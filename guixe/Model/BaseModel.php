@@ -52,7 +52,7 @@ class BaseModel
         $values = substr($values, 0, -1);
         $sql .= $values . $condition;
         $this->SQL_LOG($sql);
-        return $this->pdo->queryAndReturnId($sql);
+        return $this->pdo->query($sql);
     }
 
     public function findById($id, array $columns = ['*'])
@@ -75,6 +75,30 @@ class BaseModel
     {
         $result = $this->findById($id);
         return count($result);
+    }
+
+    public function paginate($limit = 25, $page = 1)
+    {
+        $start = $page * $limit;
+        $sql = "SELECT * FROM $this->table LIMIT $start, $limit";
+        $total = "SELECT COUNT(*) AS total FROM $this->table LIMIT $start, $limit";
+        $result = $this->pdo->query($sql);
+        $data = [
+            'data' => $result,
+            'total' => $total,
+            'current_page' => $page
+        ];
+        $this->SQL_LOG($sql);
+        return $data;
+    }
+
+    public function findByCondition($condition, array $columns = ['*'])
+    {
+        $columns = $this->implodeColumns($columns);
+        $sql = "SELECT $columns FROM $this->table WHERE $condition[0] $condition[1] $condition[2]";
+        $this->SQL_LOG($sql);
+
+        return $this->pdo->query($sql);
     }
     protected function implodeColumns(array $columns = [])
     {

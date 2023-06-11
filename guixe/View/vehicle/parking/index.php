@@ -30,7 +30,7 @@
             echo "Thẻ không tồn tại";
             exit;
         }
-        $_SESSION["ve"] = $allVe;
+        $_SESSION["ve_gui"] = $allVe;
         echo "<script>window.location.href = 'QuetBienSo.php'</script>";
 
     }
