@@ -30,8 +30,6 @@ if (isset($_POST['create'])) {
 
 
     echo "<script>window.location.href = 'index.php'</script>";
-
-
 }
 ?>
 <body>
@@ -44,20 +42,20 @@ if (isset($message)) {
 <div>
     <form method="POST">
 
+        <div>
+
             <div>
-
-                <div>
-                    <label>Loại xe</label>
-                    <select name="loai_xe">
-                        <option value="Xe máy">Xe máy</option>
-                        <option value="Ô tô">Ô tô</option>
-                    </select>
-                </div>
-
-
+                <label>Loại xe</label>
+                <select name="loai_xe">
+                    <option value="Xe máy">Xe máy</option>
+                    <option value="Ô tô">Ô tô</option>
+                </select>
             </div>
 
-           <button name='create'>Tạo</button>
+
+        </div>
+
+        <button name='create'>Tạo</button>
 
     </form>
 </div>
