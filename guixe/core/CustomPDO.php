@@ -6,30 +6,34 @@ use Constant\EnvConst;
 use PDOException;
 use PDO;
 
-class CustomPDO{
+class CustomPDO
+{
     private $host;
     private $dbname;
     private $username;
     private $password;
     private PDO $pdo;
 
-    public function __construct() {
-        $this->host = EnvConst::DB_HOST.':'.EnvConst::DB_PORT;
+    public function __construct()
+    {
+        $this->host = EnvConst::DB_HOST . ':' . EnvConst::DB_PORT;
         $this->dbname = EnvConst::DB_DATABASE;
         $this->username = EnvConst::DB_USERNAME;
         $this->password = EnvConst::DB_PASSWORD;
     }
 
-    private function connect() {
+    private function connect()
+    {
         try {
-            $this->pdo =new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->username, $this->password);
+            $this->pdo = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->username, $this->password);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             die("Kết nối đến cơ sở dữ liệu thất bại: " . $e->getMessage());
         }
     }
 
-    public function query($sql) {
+    public function query($sql)
+    {
         $this->connect();
         try {
             $stmt = $this->pdo->query($sql);
@@ -38,7 +42,8 @@ class CustomPDO{
             die("Truy vấn thất bại: " . $e->getMessage());
         }
     }
-    public function queryAndReturnId($sql) {
+    public function queryAndReturnId($sql)
+    {
         $this->connect();
         try {
             $this->pdo->prepare($sql)->execute();
@@ -48,4 +53,3 @@ class CustomPDO{
         }
     }
 }
-

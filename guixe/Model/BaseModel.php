@@ -43,24 +43,23 @@ class BaseModel
 
     public function update($id, array $attributes = [])
     {
-        $sql = "UPDATE $this->table SET";
+        $sql = "UPDATE $this->table SET ";
         $values = "";
-        $condition = " WHERE id = $id";
+        $condition = " WHERE $this->primaryKey = '$id'";
         foreach ($attributes as $key => $value) {
             $values = $values . $key . "=" . "'$value',";
         }
-        $values = substr($values, 0, -1) . ')';
+        $values = substr($values, 0, -1);
         $sql .= $values . $condition;
         $this->SQL_LOG($sql);
         return $this->pdo->queryAndReturnId($sql);
     }
 
-    public function findById($id,array $columns = ['*'])
+    public function findById($id, array $columns = ['*'])
     {
         $columns = $this->implodeColumns($columns);
         $sql = "SELECT $columns FROM $this->table WHERE $this->primaryKey = '$id'";
         $this->SQL_LOG($sql);
-
         return $this->pdo->query($sql);
     }
 
@@ -72,13 +71,14 @@ class BaseModel
         return $this->pdo->query($sql);
     }
 
-    public function exists($id){
+    public function exists($id)
+    {
         $result = $this->findById($id);
         return count($result);
     }
     protected function implodeColumns(array $columns = [])
     {
-        return implode(',',$columns);
+        return implode(',', $columns);
     }
 
     protected function SQL_LOG($sql)
