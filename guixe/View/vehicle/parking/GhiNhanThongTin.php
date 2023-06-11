@@ -38,7 +38,10 @@
             $pathImage = UploadFileHelper::SaveFile($_FILES["hinh_anh"]);
             print_r($pathImage . "  log thông tin");
             $result = null;
-            if ($ve["loai_ve"] == "Tháng") {
+            if (str_contains($ve["loai_the"], "Tháng")) {
+                // echo "<hr>";
+                // print_r($thongTinVe);
+                // echo "<hr>";
                 $result = $luotGuiMoi = $luotGuiModel->create([
                     "ma_ve" => $ve["ma_ve"],
                     "bien_so_xe" => $thongTinVe["bien_so_xe"],
@@ -46,6 +49,9 @@
                     "gio_vao" => $now
                 ]);
             } else {
+                // echo "<hr>";
+                // print_r($ve["loai_the"]);
+                // echo "<hr>";
                 $result = $luotGuiMoi = $luotGuiModel->create([
                     "ma_ve" => $ve["ma_ve"],
                     "bien_so_xe" => $bienSoXe,
@@ -63,6 +69,7 @@
                 unset($_SESSION["ve_gui"]);
                 unset($_SESSION["thong_tin_ve_gui"]);
                 unset($_SESSION["bien_so_xe_gui"]);
+                session_destroy();
             }
         } else {
             echo "<h1>Bạn chưa nhập hình ảnh</h2>";
