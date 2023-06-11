@@ -46,7 +46,7 @@ class BaseModel
     {
         $sql = "UPDATE $this->table SET ";
         $values = "";
-        $condition = " WHERE $this->primaryKey = $id";
+        $condition = " WHERE $this->primaryKey = '$id'";
         foreach ($attributes as $key => $value) {
             $values = $values . $key . "=" . "'$value',";
         }
@@ -62,7 +62,6 @@ class BaseModel
         $columns = $this->implodeColumns($columns);
         $sql = "SELECT $columns FROM $this->table WHERE $this->primaryKey = '$id'";
         $this->SQL_LOG($sql);
-
         return $this->pdo->query($sql);
     }
 
@@ -82,7 +81,7 @@ class BaseModel
 
     public function paginate($limit = 25, $page = 1)
     {
-        $start =$page*$limit;
+        $start = $page * $limit;
         $sql = "SELECT * FROM $this->table LIMIT $start, $limit";
         $total = "SELECT COUNT(*) AS total FROM $this->table LIMIT $start, $limit";
         $sqlCountRecord = "SELECT COUNT(*) AS total_record FROM $this->table";
@@ -99,7 +98,7 @@ class BaseModel
         return $data;
     }
 
-    public function findByCondition($condition,array $columns = ['*'])
+    public function findByCondition($condition, array $columns = ['*'])
     {
         $columns = $this->implodeColumns($columns);
         $sql = "SELECT $columns FROM $this->table WHERE $condition[0] $condition[1] $condition[2]";
