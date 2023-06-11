@@ -42,24 +42,25 @@ if (isset($_POST['create'])) {
             break;
         }
         case 'Xe máy': {
-            if($soluong >= 2 ) {
+            if($soluong >= 3 ) {
                 $message = "Vượt quá số lượng xe máy cho phép đăng ký.";
             }
                 break;
         }
     }
     if(!isset($message)){
-        $newVeId = $ve->create([
+        $newVeId = $ve->update(1,[
             'loai_ve' => CardConst::TYPE_MONTH,
             'loai_xe' => $_POST['loai_xe'],
         ]);
-        $thongTinVeModel->create([
-            'ma_ve' => $newVeId,
-            'ma_can_ho' => $_POST['ma_can_ho'],
-            'bien_so_xe' => $_POST['bien_so_xe'],
-        ]);
+        print_r($newVeId);
+//        $thongTinVeModel->create([
+//            'ma_ve' => $newVeId,
+//            'ma_can_ho' => $_POST['ma_can_ho'],
+//            'bien_so_xe' => $_POST['bien_so_xe'],
+//        ]);
 
-        echo "<script>window.location.href = 'index.php'</script>";
+//        echo "<script>window.location.href = 'index.php'</script>";
     }
 
 }
