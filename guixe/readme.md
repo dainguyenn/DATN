@@ -37,4 +37,5 @@ $VE =
 ]
 ```
 
+Sử dụng session bằng Helper có sẵn
 

@@ -46,11 +46,9 @@ class Ve extends BaseModel
         return [
             'data' => $result,
             'total' => $total,
- 
             'current_page' => $page,
             'last_page' => $lastPage
         ];
- 
     }
 
     public function getCardDay($id = null, array $columns = ['*'], $limit = 25, $page = 1)
