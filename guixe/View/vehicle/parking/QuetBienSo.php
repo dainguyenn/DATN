@@ -27,17 +27,17 @@
     if (isset($_POST["sub"])) {
         if ($ve["loai_the"] == "Tháng") {
             $result = $thongTinVeModel->findById($ve["ma_ve"])[0];
-            print_r($result);
+            //print_r($result);
             if (!$result) {
                 echo "lỗi trong quá trình kiểm tra";
                 exit;
             }
             if ($_POST["bien_so_xe"] == $result["bien_so_xe"]) {
                 echo "xác nhận biển số thành công";
-                $_SESSION["thong_tin_ve_gui"] = $result;
+                $_SESSION["bien_so_xe_gui"] = $result["bien_so_xe"];
                 echo "<script>window.location.href = 'GhiNhanThongTin.php'</script>";
             } else {
-                echo "xác nhận biến số không hợp lệ";
+                echo "<br>xác nhận biến số không hợp lệ <br/>";
                 echo $_POST["bien_so_xe"] . "---" . $result["bien_so_xe"];
             }
         } else {

@@ -16,6 +16,9 @@ Nếu không dùng SQL log thì đặt thành false nếu dùng cấu hình lạ
     'b' => 2
 ]
 
+Insert bản ghi xong -> trả về bản ghi vừa tạo;
+Update -> tườn tự trả về bản ghi vừa update
+
 -Câu query tương ứng: INSERT INTO table(a,b) VALUES(1,2) 
 
 Model ->
