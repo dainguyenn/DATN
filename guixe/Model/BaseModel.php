@@ -38,7 +38,8 @@ class BaseModel
         $values = substr($values, 0, -1) . ')';
         $sql .= $keys . $values;
         $this->SQL_LOG($sql);
-        return $this->pdo->queryAndReturnId($sql);
+        $id = $this->pdo->queryAndReturnId($sql);
+        return $this->findById($id);
     }
 
     public function update($id, array $attributes = [])
@@ -52,7 +53,8 @@ class BaseModel
         $values = substr($values, 0, -1);
         $sql .= $values . $condition;
         $this->SQL_LOG($sql);
-        return $this->pdo->query($sql);
+        $this->pdo->query($sql);
+        return $this->findById($id);
     }
 
     public function findById($id, array $columns = ['*'])
@@ -82,11 +84,15 @@ class BaseModel
         $start = $page * $limit;
         $sql = "SELECT * FROM $this->table LIMIT $start, $limit";
         $total = "SELECT COUNT(*) AS total FROM $this->table LIMIT $start, $limit";
+        $sqlCountRecord = "SELECT COUNT(*) AS total_record FROM $this->table";
+        $totalRecord = $this->pdo->query($sqlCountRecord);
+        $lastPage = ceil($totalRecord/$limit);
         $result = $this->pdo->query($sql);
         $data = [
             'data' => $result,
             'total' => $total,
-            'current_page' => $page
+            'current_page' => $page,
+            'last_page' => $lastPage
         ];
         $this->SQL_LOG($sql);
         return $data;
