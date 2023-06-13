@@ -26,6 +26,8 @@
     }
     $luotGui = $luotGuiModel->GetThongTinTheDangGui($ve["ma_ve"]);
     if ($ve["loai_xe"] == "Ô tô") {
+        echo "<h1>Thanh toán cho xe máy </h1>";
+
         $startTime = new DateTime($luotGui["gio_vao"]);
         $endTimeStr = date("Y-m-d H:i:s");
         $endTime = new DateTime($endTimeStr);
@@ -68,7 +70,7 @@
         //print_r($startTime->format("d"));
         //print_r($priceLevel);
     } else {
-        echo "<h1>Loại xe là xe máy à </h1>";
+        echo "<h1>Thanh toán cho xe máy </h1>";
         $startTime = new DateTime($luotGui["gio_vao"]);
         $endTimeStr = date("Y-m-d H:i:s");
         $endTime = new DateTime($endTimeStr);
@@ -100,13 +102,14 @@
             }
 
             //tiền gửi ngày giữa
-            $totalDays = $endTime->format("d") - $startTime->format("d");
+            $totalDays = $endTime->format("d") - $startTime->format("d") - 1;
+            echo ($totalDays);
             //$totalPrice += ($totalDays - 1) * ($dayPrice);
             if ($totalDays >= 2) {
-                $dayTotal += ($totalDays - 1);
-                $nightToTal += ($totalDays - 1) * 2 - 1;
+                $dayTotal += $totalDays * 2;
+                $nightToTal += $totalDays * 2 - 1;
+                echo "<h1>B1 ${dayTotal} - ${nightToTal}</h1>";
             }
-            echo "<h1>B1</h1>";
             //tiền gửi ngày cuối
             if ($endTime->format("H") < 6) { //
                 $nightToTal = $nightToTal + 1; //1 ca đêm
@@ -124,14 +127,32 @@
             }
         } else {
             if ($startTime->format("H") < 6) {
-                $dayTotal += 1; //1 ca ngày
-                $nightToTal += 2; //2 ca đêm
-                echo "<h1>A1</h1>";
+                if ($endTime->format("H") < 6) {
+                    $dayTotal += 0; //0 ca ngày
+                    $nightToTal += 1; //1 ca đêm
+                    echo "<h1>A1</h1>";
+                }
+                if ($endTime->format("H") >= 6 && $endTime->format("H") < 18) {
+                    $dayTotal += 1; //1 ca ngày
+                    $nightToTal += 1; // 1 ca đêm
+                    echo "<h1>A2</h1>";
+                }
+                if ($startTime->format("H") >= 18) {
+                    $nightToTal = $nightToTal + 2; // 1 ca đêm
+                    $dayTotal += 1; //1 ca ngày
+                    echo "<h1>A3 ${nightToTal}</h1>";
+                }
             }
             if ($startTime->format("H") >= 6 && $startTime->format("H") < 18) {
-                $dayTotal += 1; //1 ca ngày
-                $nightToTal += 1; // 1 ca đêm
-                echo "<h1>A2</h1>";
+                if ($endTime->format("H") >= 6 && $endTime->format("H") < 18) {
+                    $dayTotal += 1; //1 ca ngày
+                    echo "<h1>A2</h1>";
+                }
+                if ($startTime->format("H") >= 18) {
+                    $nightToTal = $nightToTal + 1; // 1 ca đêm
+                    $dayTotal += 1; //1 ca ngày
+                    echo "<h1>A3 ${nightToTal}</h1>";
+                }
             }
             if ($startTime->format("H") >= 18) {
                 $nightToTal = $nightToTal + 1; // 1 ca đêm
@@ -164,7 +185,7 @@
         </tr>
         <tr>
             <td>Số lần gửi xe ban ngày </td>
-            <td>${$dayTotal}</td>
+            <td>${dayTotal}</td>
         </tr>
         <tr>
             <td>Số lần gửi xe ban đêm </td>

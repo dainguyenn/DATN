@@ -32,12 +32,9 @@
             $_SESSION["la_dang_gui"] = true;
             echo "<script>window.location.href = 'QuetBienSo.php'</script>";
         } else {
-            echo "Thẻ chưa được ghi đang nhận gửi xe";
+            echo "Thẻ chưa được ghi nhận gửi";
             exit;
         }
-
-
-
     }
     ?>
 </body>
