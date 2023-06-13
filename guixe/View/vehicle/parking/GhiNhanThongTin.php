@@ -24,10 +24,9 @@
     $veModel = new \Model\Ve();
     $luotGuiModel = new \Model\LuotGui();
     $ve = $_SESSION["ve_gui"];
-    $thongTinVe = $_SESSION["thong_tin_ve_gui"];
     $bienSoXe = $_SESSION["bien_so_xe_gui"];
 
-    if (!isset($ve) && !(isset($thongTinVe) || isset($bienSoXe)))
+    if (!isset($ve) && !isset($bienSoXe))
         header("location:index.php");
     print_r($_SESSION);
 
@@ -36,7 +35,7 @@
         if (isset($_FILES["hinh_anh"])) {
             $now = date("Y-m-d H:i:s");
             $pathImage = UploadFileHelper::SaveFile($_FILES["hinh_anh"]);
-            print_r($pathImage . "  log thông tin");
+            //print_r($pathImage . "  log thông tin");
             $result = null;
             if (str_contains($ve["loai_the"], "Tháng")) {
                 // echo "<hr>";
@@ -44,7 +43,7 @@
                 // echo "<hr>";
                 $result = $luotGuiMoi = $luotGuiModel->create([
                     "ma_ve" => $ve["ma_ve"],
-                    "bien_so_xe" => $thongTinVe["bien_so_xe"],
+                    "bien_so_xe" => $bienSoXe,
                     "hinh_anh_vao" => $pathImage,
                     "gio_vao" => $now
                 ]);
@@ -60,16 +59,16 @@
                 ]);
             }
             print_r($result);
-
-            if (!$result) {
-                echo "lỗi trong quá trình thêm";
-                exit;
-            } else {
-                echo "Xe đã được ghi nhận thành công";
+ 
+            if ($result) {
+                echo "<h2>Xe đã được ghi nhận gửi thành công <h2><br> <a href='index.php> Quay lai</a>";
                 unset($_SESSION["ve_gui"]);
                 unset($_SESSION["thong_tin_ve_gui"]);
                 unset($_SESSION["bien_so_xe_gui"]);
-                session_destroy();
+            } else {
+                echo "lỗi trong quá trình thêm";
+                exit;
+ 
             }
         } else {
             echo "<h1>Bạn chưa nhập hình ảnh</h2>";

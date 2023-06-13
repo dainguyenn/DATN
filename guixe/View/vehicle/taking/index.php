@@ -22,22 +22,19 @@
     $luotGuiModel = new \Model\LuotGui();
     if (isset($_POST["sub"])) {
 
-        $allVe = $veModel->findById($_POST["ma_the"])[0];
-        if (!$allVe) {
+        $ve = $veModel->findById($_POST["ma_the"])[0];
+        if (!$ve) {
             echo "Thẻ không tồn tại";
             exit;
         }
         if ($luotGuiModel->CheckMaTheDangGui($_POST["ma_the"])) {
-            $_SESSION["ve"] = $allVe;
-            $_SESSION["luot_gui"] = $luotGuiModel->GetThongTinTheDangGui($_POST["ma_the"]);
+            $_SESSION["ve_lay"] = $ve;
+            $_SESSION["la_dang_gui"] = true;
             echo "<script>window.location.href = 'QuetBienSo.php'</script>";
         } else {
-            echo "Thẻ chưa được ghi đang nhận gửi xe";
+            echo "Thẻ chưa được ghi nhận gửi";
             exit;
         }
-
-
-
     }
     ?>
 </body>

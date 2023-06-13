@@ -11,7 +11,8 @@
 
 <body>
     <a href="/View/card/index.php">Quản lý thẻ</a> <br />
-    <a href="/View/vehicle/parking/index.php">Gửi xe</a>
+    <a href="/View/vehicle/parking/index.php">Gửi xe</a> <br />
+    <a href="/View/vehicle/taking/index.php">Lấy xe</a>
 </body>
 
 </html>

@@ -16,7 +16,7 @@ class UploadFileHelper
                 ? "thành công"
                 : "không thành công")
             . "</h1>";
-        print_r($files);
+        //print_r($files);
         return $pathSrc;
     }
 }
