@@ -142,14 +142,14 @@
     border: 1px solid #e4e9f0;
     border-radius: 3px;
   }
-  .drop-menu-item{
-    font-size: 14px;
-    padding: 10px;
-    margin: 5px 0px;
-    &:first-child{
-      border-bottom: 1px solid #e4e9f0;
-    }
-  }
+  /*.drop-menu-item{*/
+  /*  font-size: 14px;*/
+  /*  padding: 10px;*/
+  /*  margin: 5px 0px;*/
+  /*  &:first-child{*/
+  /*    border-bottom: 1px solid #e4e9f0;*/
+  /*  }*/
+  /*}*/
   .drop-menu-item i{
     margin-right: 5px;
   }
