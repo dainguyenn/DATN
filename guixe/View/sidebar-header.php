@@ -100,4 +100,9 @@
             </nav>
         </div>
     </div>
+    <div class="main-panel">
+        <div class="content-wrapper">
+            
+        </div>
+    </div>
 </body>
