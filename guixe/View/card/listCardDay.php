@@ -1,12 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Quản lý thẻ</title>
-</head>
+
 <?php
 require_once '../../autoload.php';
 
@@ -15,12 +7,10 @@ $page = $_GET['page'] ?? 1;
 $limit = $_GET['limit'] ?? 25;
 $allVe = $veModel->getCardDay(null,['*'],$limit,$page);
 ?>
-<body>
-<h1>Quản lý thẻ</h1>
-<a href="createMonthCard.php">Tạo thẻ tháng mới</a>
-<a href="createDayCard.php">Tạo thẻ ngày mới</a>
-<a href="index.php">Danh sách vé tháng</a>
-<a href="listCardDay.php">Danh sách vé ngày</a>
+<!--Luôn import-->
+<?php ob_start(); ?>
+<!---->
+<a href="createDayCard.php">Thêm</a>
 <table>
     <thead>
     <tr>
@@ -40,5 +30,8 @@ $allVe = $veModel->getCardDay(null,['*'],$limit,$page);
         </tr>
     <?php } ?>
 </table>
-</body>
-</html>
+
+<!--Luôn import (coppy vào file của mình)-->
+<?php $content = ob_get_clean(); ?>
+<?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
+<!---->
