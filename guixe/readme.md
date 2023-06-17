@@ -38,4 +38,49 @@ $VE =
 ```
 
 Sử dụng session bằng Helper có sẵn
+# biểu đồ cơ sở dữ liệu
+
+```mermaid
+erDiagram
+    tai_khoan{
+        int ma_tai_khoan PK "A_I"
+        varchar ten_tai_khoan
+        varchar mat_khau
+    }
+    ve{
+        int ma_ve PK "A_I"
+        varchar loai_ve
+        varchar loai_xe
+        bit trang_thai
+    }
+    thong_tin_ve{
+        int ma_ve PK,FK
+        int ma_can_ho FK
+        varchar bien_so_xe
+
+    }
+    luot_gui{
+        int ma_luot_gui PK
+        int ma_ve FK 
+        varchar bien_so_xe "not null"
+        varchar hinh_anh_vao "not null"
+        varchar hinh_anh_ra 
+        datetime gio_vao "not null"
+        datetime gio_ra
+    }
+    chu_ho{
+        int ma_can_ho PK "A_I"
+        varchar ten_chu_ho
+        varchar cmnd
+    }
+    bang_gia{
+        int ma_gia PK "A_I"
+        varchar loai_xe
+        varchar loai_ve
+        varchar gia_tien
+    }
+    chu_ho ||--o{ thong_tin_ve : have 
+    ve ||--o| thong_tin_ve: have
+    ve ||--o{ luot_gui: have
+```
 
