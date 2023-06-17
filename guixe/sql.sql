@@ -42,6 +42,13 @@ CREATE TABLE tai_khoan
     ten_tai_khoan VARCHAR(255),
     mat_khau      VARCHAR(255)
 );
+
+CREATE TABLE bang_gia
+(
+    ma_gia  INT PRIMARY KEY AUTO_INCREMENT,
+    loai_xe VARCHAR(255),
+    loai_ve VARCHAR(255)
+);
  
 -- insert data into `chu_ho`
 INSERT INTO `chu_ho` (`ma_can_ho`, `ten_chu_ho`, `cmnd`) VALUES
