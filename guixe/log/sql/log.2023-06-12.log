@@ -1,0 +1,29 @@
+2023-06-12 15:16:46 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE ma_ve = '4')
+2023-06-12 15:18:26 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE ma_ve = '4')
+2023-06-12 15:21:17 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE ma_ve = '4')
+2023-06-12 15:44:51 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-12 15:46:33 | INFO: SQL(table: chu_ho, query: SELECT * FROM chu_ho WHERE ma_can_ho = '4')
+2023-06-12 15:47:50 | INFO: SQL(table: ve, query: SELECT COUNT(loai_xe) AS SL FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho 
+             WHERE ve.loai_xe= 'Xe máy' AND chu_ho.ma_can_ho = '4')
+2023-06-12 15:47:50 | INFO: SQL(table: ve, query: UPDATE ve SET loai_ve='Tháng',loai_xe='Xe máy' WHERE ma_ve = '1')
+2023-06-12 15:50:17 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-12 15:50:34 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE ma_ve = '6')
+2023-06-12 15:51:07 | INFO: SQL(table: thong_tin_ve, query: SELECT * FROM thong_tin_ve WHERE ma_ve = '6')
+2023-06-12 15:51:20 | INFO: SQL(table: thong_tin_ve, query: SELECT * FROM thong_tin_ve WHERE ma_ve = '6')
+2023-06-12 15:51:37 | INFO: SQL(table: luot_gui, query: INSERT INTO luot_gui(ma_ve,bien_so_xe,hinh_anh_vao,gio_vao) VALUES('6','30-AA 1111','storage/images/1686559897.png','2023-06-12 15:51:37'))
+2023-06-12 15:51:37 | INFO: SQL(table: luot_gui, query: SELECT * FROM luot_gui WHERE ma_luot_gui = '39')
+2023-06-12 15:51:55 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE ma_ve = '6')
+2023-06-12 15:52:14 | INFO: SQL(table: thong_tin_ve, query: SELECT * FROM thong_tin_ve WHERE ma_ve = '6')
+2023-06-12 15:52:45 | INFO: SQL(table: luot_gui, query: UPDATE luot_gui SET hinh_anh_ra='storage/images/1686559965.png',gio_ra='2023-06-12 15:52:45' WHERE ma_luot_gui = '39')
+2023-06-12 15:52:45 | INFO: SQL(table: luot_gui, query: SELECT * FROM luot_gui WHERE ma_luot_gui = '39')
+2023-06-12 15:55:09 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE ma_ve = '7')
+2023-06-12 15:55:13 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE ma_ve = 's')
+2023-06-12 15:55:30 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE ma_ve = '7')
+2023-06-12 15:55:48 | INFO: SQL(table: luot_gui, query: INSERT INTO luot_gui(ma_ve,bien_so_xe,hinh_anh_vao,gio_vao) VALUES('7','1234','storage/images/1686560148.webp','2023-06-12 15:55:48'))
+2023-06-12 15:55:48 | INFO: SQL(table: luot_gui, query: SELECT * FROM luot_gui WHERE ma_luot_gui = '40')
+2023-06-12 15:56:14 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE ma_ve = '7')

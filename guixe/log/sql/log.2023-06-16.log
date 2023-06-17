@@ -1,0 +1,3 @@
+2023-06-16 10:05:09 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
