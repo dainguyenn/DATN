@@ -10,10 +10,7 @@ $allVe = $veModel->getInfo(null,['*'],$limit,$page);
 <?php ob_start(); ?>
 <!---->
 <div>
-    <h1>Quản lý thẻ</h1>
-    <a href="createMonthCard.php">Tạo thẻ tháng mới</a>
-    <a href="createDayCard.php">Tạo thẻ ngày mới</a>
-    <a href="listCardDay.php">Danh sách vé ngày</a>
+    <a href="createMonthCard.php">Thêm</a>
     <table>
         <thead>
         <tr>
