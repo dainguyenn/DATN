@@ -1,6 +1,10 @@
 ./log/sql/
 ./storage/images/
 
-log/sql/
+/log/sql/
+/storage/images/
 
+log/sql/
 storage/images/
+
+/Constant/EnvConst.php
