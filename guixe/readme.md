@@ -84,3 +84,9 @@ erDiagram
     ve ||--o{ luot_gui: have
 ```
 
+***Helper***
+
+-Session thì dùng helper
+
+-Các tác vụ vều auth dùng AuthHelper 
+

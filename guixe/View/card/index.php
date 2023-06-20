@@ -20,6 +20,7 @@ $allVe = $veModel->getInfo(null,['*'],$limit,$page);
             <th>Biển số xe</th>
             <th>Loại thẻ</th>
             <th>Loại xe</th>
+            <th></th>
         </tr>
         </thead>
         <?php
@@ -33,6 +34,10 @@ $allVe = $veModel->getInfo(null,['*'],$limit,$page);
                 <td><?php echo $item['bien_so_xe']?></td>
                 <td><?php echo $item['loai_ve']?></td>
                 <td><?php echo $item['loai_xe']?></td>
+                <td>
+                    <button>Xóa</button>
+                    <button>Sửa</button>
+                </td>
             </tr>
         <?php } ?>
     </table>
