@@ -31,7 +31,7 @@ class SessionHelper
         unset($_SESSION[$key]);
     }
 
-    public function get($key) : string|array|null
+    public static function get($key) : string|array|null
     {
         self::start();
         return $_SESSION[$key];

@@ -11,6 +11,7 @@ $allVe = $veModel->getInfo(null, ['*'], $limit, $page);
 <!---->
 <div>
     <a href="createMonthCard.php">Thêm</a>
+<<<<<<< HEAD
     <ul class="responsive-table">
         <li class="table-header">
             <div class="col col-1">Mã vé</div>
@@ -20,10 +21,25 @@ $allVe = $veModel->getInfo(null, ['*'], $limit, $page);
             <div class="col col-1">Loại thẻ</div>
             <div class="col col-1">Loại xe</div>
         </li>
+=======
+    <table>
+        <thead>
+        <tr>
+            <th>Mã vé</th>
+            <th>Mã căn hộ</th>
+            <th>Tên chủ hộ</th>
+            <th>Biển số xe</th>
+            <th>Loại thẻ</th>
+            <th>Loại xe</th>
+            <th></th>
+        </tr>
+        </thead>
+>>>>>>> 523e58589a6a9f192dc2be2b8ece0bfc71611e6d
         <?php
         foreach ($allVe['data'] as $item) {
 
             ?>
+<<<<<<< HEAD
             <li class="table-row">
                 <div class="col col-1">
                     <?php echo $item['ma_ve'] ?>
@@ -44,6 +60,20 @@ $allVe = $veModel->getInfo(null, ['*'], $limit, $page);
                     <?php echo $item['loai_xe'] ?>
                 </div>
             </li>
+=======
+            <tr>
+                <td><?php echo $item['ma_ve']?></td>
+                <td><?php echo $item['ma_can_ho']?></td>
+                <td><?php echo $item['ten_chu_ho']?></td>
+                <td><?php echo $item['bien_so_xe']?></td>
+                <td><?php echo $item['loai_ve']?></td>
+                <td><?php echo $item['loai_xe']?></td>
+                <td>
+                    <button>Xóa</button>
+                    <button>Sửa</button>
+                </td>
+            </tr>
+>>>>>>> 523e58589a6a9f192dc2be2b8ece0bfc71611e6d
         <?php } ?>
     </ul>
 </div>

@@ -49,8 +49,7 @@ if (isset($_POST["sub"])) {
                 "hinh_anh_vao" => $pathImage,
                 "gio_vao" => $now
             ]);
-        }
-        print_r($result);
+        } 
 
         if ($result) {
             echo "<h2>Xe đã được ghi nhận gửi thành công <h2><br> <a href='index.php> Quay lai</a>";

@@ -3,6 +3,7 @@
 require_once '../../autoload.php';
 
 use Constant\CardConst;
+use Helpers\WindowHelper;
 use Model\ChuHo;
 use Model\ThongTinVe;
 use Model\Ve;
@@ -40,19 +41,25 @@ if (isset($_POST['create'])) {
                 break;
         }
     }
+    $bienSo = $thongTinVeModel->findByCondition(
+        ['bien_so_xe','=',$_POST['bien_so_xe']]
+    );
+    if($bienSo){
+        $message = 'Đã tồn tại biển số xe này';
+    }
     if(!isset($message)){
-        $newVeId = $ve->update(1,[
+
+        $newVe = $ve->create([
             'loai_ve' => CardConst::TYPE_MONTH,
             'loai_xe' => $_POST['loai_xe'],
+        ])[0];
+        $thongTinVeModel->create([
+            'ma_ve' => $newVe['ma_ve'],
+            'ma_can_ho' => $_POST['ma_can_ho'],
+            'bien_so_xe' => $_POST['bien_so_xe'],
         ]);
-        print_r($newVeId);
-//        $thongTinVeModel->create([
-//            'ma_ve' => $newVeId,
-//            'ma_can_ho' => $_POST['ma_can_ho'],
-//            'bien_so_xe' => $_POST['bien_so_xe'],
-//        ]);
 
-//        echo "<script>window.location.href = 'index.php'</script>";
+        echo WindowHelper::location('index.php');
     }
 
 }
