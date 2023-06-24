@@ -21,7 +21,8 @@ CREATE TABLE thong_tin_ve
     ma_ve      INT PRIMARY KEY,
     ma_can_ho  INT,
     bien_so_xe VARCHAR(10) UNIQUE,
-    FOREIGN KEY (ma_ve) REFERENCES ve (ma_ve) ON DELETE CASCADE,
+    mo_ta TEXT,
+    FOREIGN KEY (ma_ve) REFERENCES ve (ma_ve) ON DELETE CASCADE  ,
     FOREIGN KEY (ma_can_ho) REFERENCES chu_ho (ma_can_ho) ON DELETE CASCADE
 );
 
@@ -48,7 +49,8 @@ CREATE TABLE bang_gia
 (
     ma_gia  INT PRIMARY KEY AUTO_INCREMENT,
     loai_xe VARCHAR(255),
-    loai_ve VARCHAR(255)
+    loai_ve VARCHAR(255),
+    gia INT,
 );
 
 -- insert data into `chu_ho`

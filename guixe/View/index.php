@@ -16,7 +16,6 @@ AuthHelper::isLogging();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-
 <body>
     <a href="/View/card/index.php">Quản lý thẻ</a> <br />
     <a href="/View/vehicle/parking/index.php">Gửi xe</a> <br />
