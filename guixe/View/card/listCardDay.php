@@ -1,35 +1,41 @@
-
 <?php
 require_once '../../autoload.php';
 
 $veModel = new \Model\Ve();
 $page = $_GET['page'] ?? 1;
 $limit = $_GET['limit'] ?? 25;
-$allVe = $veModel->getCardDay(null,['*'],$limit,$page);
+$allVe = $veModel->getCardDay(null, ['*'], $limit, $page);
 ?>
 <!--Luôn import-->
 <?php ob_start(); ?>
 <!---->
 <a href="createDayCard.php">Thêm</a>
-<table>
-    <thead>
-    <tr>
-        <th>Mã vé</th>
-        <th>Loại thẻ</th>
-        <th>Loại xe</th>
-    </tr>
-    </thead>
-    <?php
-    foreach ($allVe['data'] as $item) {
+<div>
+    <ul class="responsive-table">
+        <li class="table-header">
+            <div class="col col-1">Mã vé</div>
+            <div class="col col-1">Loại thẻ</div>
+            <div class="col col-1">Loại xe</div>
+        </li>
 
-        ?>
-        <tr>
-            <td><?php echo $item['ma_ve']?></td>
-            <td><?php echo $item['loai_ve']?></td>
-            <td><?php echo $item['loai_xe']?></td>
-        </tr>
-    <?php } ?>
-</table>
+        <?php
+        foreach ($allVe['data'] as $item) {
+
+            ?>
+            <li class="table-row">
+                <div class="col col-1">
+                    <?php echo $item['ma_ve'] ?>
+                </div class="col col-1">
+                <div class="col col-1">
+                    <?php echo $item['loai_ve'] ?>
+                </div class="col col-1">
+                <div class="col col-1">
+                    <?php echo $item['loai_xe'] ?>
+                </div class="col col-1">
+            </li>
+        <?php } ?>
+</div>
+</ul>
 
 <!--Luôn import (coppy vào file của mình)-->
 <?php $content = ob_get_clean(); ?>
