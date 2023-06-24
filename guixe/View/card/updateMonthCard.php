@@ -135,4 +135,5 @@ if (isset($message)) {
 <?php
 $content = ob_get_clean(); ?>
 <?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
+<?= str_replace('{{title}}', 'Cập nhập vé tháng', file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
 <!---->

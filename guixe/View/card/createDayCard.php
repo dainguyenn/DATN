@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 
 <?php
 require_once '../../autoload.php';
@@ -10,6 +11,7 @@ use Model\Ve;
 use Helpers\AuthHelper;
 
 AuthHelper::isLogging();
+
 $ve = new Ve();
 $thongTinVeModel = new ThongTinVe();
 $chuHoModel = new ChuHo();
@@ -26,9 +28,8 @@ if (isset($_POST['create'])) {
     echo "<script>window.location.href = 'index.php'</script>";
 }
 ?>
-<?php ob_start(); ?>
 
-<h1>Tạo thẻ mới</h1>
+
 <?php
 if (isset($message)) {
     echo "<p>$message</p>";
@@ -59,4 +60,5 @@ if (isset($message)) {
 <!--Luôn import (coppy vào file của mình)-->
 <?php $content = ob_get_clean(); ?>
 <?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
+<?= str_replace('{{title}}', 'Tạo thẻ ngày mới', file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
 <!---->

@@ -64,8 +64,7 @@
                 </li>
                 <li class="header-nav-item">
                     <a class="logo nav-link" href="">
-                        <span class="nav-head-title title-page">
-                            title current page
+                        <span class="nav-head-title title-page" id="page-title">
                         </span>
                     </a>
                 </li>

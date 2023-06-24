@@ -1,8 +1,10 @@
 <?php
-
+ob_start();
 require_once '../../autoload.php';
 
 use Helpers\AuthHelper;
+use Helpers\PathHelper;
+use Helpers\ViewHelper;
 
 AuthHelper::isLogging();
 
@@ -16,9 +18,7 @@ if(isset($_GET['delete']))
     $veModel->deleteById($_GET['delete']);
 }
 ?>
-<!--Luôn import-->
-<?php ob_start(); ?>
-<!---->
+
 <div>
     <a href="createMonthCard.php">Thêm</a>
     <ul class="responsive-table">
@@ -29,6 +29,8 @@ if(isset($_GET['delete']))
             <div class="col col-1">Biển số xe</div>
             <div class="col col-1">Loại thẻ</div>
             <div class="col col-1">Loại xe</div>
+            <div class="col col-1">Trạng thái</div>
+            <div class="col col-1"></div>
         </li>
         <?php
         foreach ($allVe['data'] as $item) {
@@ -66,5 +68,6 @@ if(isset($_GET['delete']))
 </div>
 <!--Luôn import (coppy vào file của mình)-->
 <?php $content = ob_get_clean(); ?>
-<?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
+<?= str_replace('{{content}}', $content, file_get_contents(PathHelper::app_path('View/sidebar-header.php'))) ?>
+<?php echo ViewHelper::title('Danh sách vé tháng');?>
 <!---->
