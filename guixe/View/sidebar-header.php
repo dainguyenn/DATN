@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Css/Sidebar-header.css">
     <link rel="stylesheet" href="/Css/style-table.css">
+    <link rel="stylesheet" href="/Css/style-form.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title></title>
 </head>
@@ -35,16 +36,16 @@
                 <li class="nav-item">
                     <div class="menu-title">
                         <i class=" menu-icon fa fa-car-side"></i>
-                        <span class="title">Quản lý vé</span>
+                        <span class="title">Quản lý trông xe</span>
                         <i class="menu-arrow fa fa-chevron-down"></i>
                     </div>
                     <div class="menu-items">
                         <ul class="nav-menu items-show">
                             <li class="nav-item">
-                                <a class="nav-link" href="/View/card/index.php">Vé tháng</a>
+                                <a class="nav-link" href="/View/vehicle/parking/index.php">Gửi xe</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/View/card/listCardDay.php">Vé ngày</a>
+                                <a class="nav-link" href="/View/vehicle/taking/index.php">Lấy xe</a>
                             </li>
                         </ul>
                     </div>
