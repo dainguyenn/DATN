@@ -6,7 +6,7 @@ class SessionHelper
 {
     public static function start()
     {
-        if(!$_SESSION){
+        if(!isset($_SESSION)){
             session_start();
         }
     }

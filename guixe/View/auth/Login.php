@@ -1,5 +1,11 @@
 <?php
+
+use Helpers\AuthHelper;
+use Helpers\SessionHelper;
+
 require_once '../../autoload.php';
+
+SessionHelper::start();
 ?>
 
 <!doctype html>
@@ -12,10 +18,21 @@ require_once '../../autoload.php';
     <title>Login</title>
 </head>
 <body>
+
+<form action="" method="POST">
     <div>
         <h1>Login</h1>
         <input type="text" name="username" id="">
         <input type="text" name="password" id="">
+        <button name="login">Login</button>
     </div>
+</form>
 </body>
+
+<?php
+if(isset($_POST['login']))
+{
+    AuthHelper::login('a');
+}
+?>
 </html>

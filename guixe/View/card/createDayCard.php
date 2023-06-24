@@ -7,7 +7,9 @@ use Model\ChuHo;
 use Model\ThongTinVe;
 use Model\Ve;
 
+use Helpers\AuthHelper;
 
+AuthHelper::isLogging();
 $ve = new Ve();
 $thongTinVeModel = new ThongTinVe();
 $chuHoModel = new ChuHo();

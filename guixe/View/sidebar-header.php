@@ -38,7 +38,7 @@
     <div class="header-bar">
         <nav class="header-nav">
             <li class="header-nav-item">
-                <a class="logo nav-link" href="">
+                <a class="logo nav-link" href="/View">
                     <img src="../storage/images/1686459031.png" alt="">
                     <span class="nav-head-title">
                             the demo parking solution

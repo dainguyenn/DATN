@@ -48,6 +48,11 @@ class BaseModel
         $values = "";
         $condition = " WHERE $this->primaryKey = '$id'";
         foreach ($attributes as $key => $value) {
+            if($value == 'true' || $values == 'false')
+            {
+                $values = $values . $key . "=" . "$value,";
+                continue;
+            }
             $values = $values . $key . "=" . "'$value',";
         }
         $values = substr($values, 0, -1);

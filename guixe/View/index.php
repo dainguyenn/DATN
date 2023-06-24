@@ -1,3 +1,11 @@
+<?php
+require_once dirname(__DIR__).'/autoload.php';
+
+use Helpers\AuthHelper;
+
+AuthHelper::isLogging();
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -8,19 +16,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<?php
 
-use Helpers\AuthHelper;
-use Helpers\WindowHelper;
-
-require_once 'autoload.php';
-
-if(!AuthHelper::user())
-{
-    echo WindowHelper::location('/View/auth/login.php');
-}
-
-?>
 <body>
     <a href="/View/card/index.php">Quản lý thẻ</a> <br />
     <a href="/View/vehicle/parking/index.php">Gửi xe</a> <br />

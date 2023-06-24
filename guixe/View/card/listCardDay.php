@@ -1,6 +1,10 @@
-
 <?php
+
 require_once '../../autoload.php';
+
+use Helpers\AuthHelper;
+
+AuthHelper::isLogging();
 
 $veModel = new \Model\Ve();
 $page = $_GET['page'] ?? 1;

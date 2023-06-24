@@ -1,7 +1,9 @@
 <?php ob_start(); ?>
 <?php
 require_once '../../autoload.php';
+use Helpers\AuthHelper;
 
+AuthHelper::isLogging();
 use Constant\CardConst;
 use Helpers\WindowHelper;
 use Model\ChuHo;
