@@ -1,5 +1,11 @@
 <?php
+
 require_once '../../autoload.php';
+
+use Helpers\AuthHelper;
+use Helpers\ViewHelper;
+
+AuthHelper::isLogging();
 
 $veModel = new \Model\Ve();
 $page = $_GET['page'] ?? 1;
@@ -40,4 +46,5 @@ $allVe = $veModel->getCardDay(null, ['*'], $limit, $page);
 <!--Luôn import (coppy vào file của mình)-->
 <?php $content = ob_get_clean(); ?>
 <?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
+<?php echo ViewHelper::title('Danh sách vé ngày');?>
 <!---->

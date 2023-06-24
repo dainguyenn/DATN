@@ -1,8 +1,11 @@
 <?php ob_start(); ?>
 <?php
 require_once '../../autoload.php';
+use Helpers\AuthHelper;
 
+AuthHelper::isLogging();
 use Constant\CardConst;
+use Helpers\ViewHelper;
 use Helpers\WindowHelper;
 use Model\ChuHo;
 use Model\ThongTinVe;
@@ -72,11 +75,11 @@ if (isset($_POST['create'])) {
     }
 ?>
 <div>
-    <form method="POST">
+    <form method="POST" class="form-style-6">
 
         <div>
             <label>Mã căn hộ</label>
-            <input  name="ma_can_ho" <?php echo $coChuHo ? 'readonly' : '' ?> value="<?php echo $_SESSION['ma_can_ho'] ?? '' ?>">
+            <input  name="ma_can_ho" type="number" <?php echo $coChuHo ? 'readonly' : '' ?> value="<?php echo \Helpers\SessionHelper::flash('ma_can_ho') ?? '' ?>">
         </div>
 
         <?php
@@ -86,7 +89,7 @@ if (isset($_POST['create'])) {
 
                 <div>
                     <label>Biển số xe</label>
-                    <input name="bien_so_xe">
+                    <input type="text" name="bien_so_xe">
                 </div>
 
                 <div>
@@ -104,9 +107,9 @@ if (isset($_POST['create'])) {
         ?>
         <?php
             if($coChuHo) {
-              echo "<button name='create'>Tạo</button>";
+              echo "<input type='submit' name='create' value='Tạo'>";
             } else {
-                echo "<button name='check'>Kiểm tra</button>";
+                echo "<input type='submit' name='check' value='Kiểm tra'>";
             }
         ?>
     </form>
@@ -114,4 +117,5 @@ if (isset($_POST['create'])) {
 <!--Luôn import (coppy vào file của mình)-->
 <?php $content = ob_get_clean(); ?>
 <?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
-<!---->
+<?php echo ViewHelper::title('Tạo vé tháng mới');?>
+ <!---->

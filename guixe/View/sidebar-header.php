@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/Css/Sidebar-header.css">
     <link rel="stylesheet" href="/Css/style-table.css">
     <link rel="stylesheet" href="/Css/style-form.css">
+    <link rel="stylesheet" href="/Css/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title></title>
 </head>
@@ -64,8 +65,7 @@
                 </li>
                 <li class="header-nav-item">
                     <a class="logo nav-link" href="">
-                        <span class="nav-head-title title-page">
-                            title current page
+                        <span class="nav-head-title title-page" id="page-title">
                         </span>
                     </a>
                 </li>
