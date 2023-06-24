@@ -36,8 +36,17 @@ $VE =
     1 -> [ma_the,ma_can_ho,loai_xe,bien_so]
 ]
 ```
+ 
 
-Sử dụng session bằng Helper có sẵn
+# ***Helper***
+
+-Session thì dùng helper
+
+-Các tác vụ vều auth dùng AuthHelper
+
+-Localtion dùng WindowHelper
+
+-Title trang dùng ViewHelper
 # biểu đồ cơ sở dữ liệu
 
 ```mermaid
@@ -84,9 +93,4 @@ erDiagram
     ve ||--o{ luot_gui: have
 ```
 
-***Helper***
-
--Session thì dùng helper
-
--Các tác vụ vều auth dùng AuthHelper 
 

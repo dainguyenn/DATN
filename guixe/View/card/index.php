@@ -20,7 +20,7 @@ if(isset($_GET['delete']))
 ?>
 
 <div>
-    <a href="createMonthCard.php">Thêm</a>
+    <a class="btn btn-primary" href="createMonthCard.php">Thêm thẻ tháng mới</a>
     <ul class="responsive-table">
         <li class="table-header">
             <div class="col col-1">Mã vé</div>
@@ -36,7 +36,7 @@ if(isset($_GET['delete']))
         foreach ($allVe['data'] as $item) {
 
             ?>
-            <li class="table-row">
+            <li class="table-row flex items-center">
                 <div class="col col-1">
                     <?php echo $item['ma_ve'] ?>
                 </div>
@@ -58,9 +58,9 @@ if(isset($_GET['delete']))
                 <div class="col col-1">
                     <?php echo $item['trang_thai'] ? 'Hoạt động' : 'Khóa' ?>
                 </div>
-                <div class="col col-1">
-                    <a onclick="return window.confirm('Bạn chắc chắn muốn xóa?')" href="<?php echo "index.php?delete=".$item['ma_ve']?>">Xóa</a>
-                    <a href="<?php echo "updateMonthCard.php?update=".$item['ma_ve']?>">Sửa</a>
+                <div class="col col-1 flex items-center">
+                    <a class="btn btn-danger" onclick="return window.confirm('Bạn chắc chắn muốn xóa?')" href="<?php echo "index.php?delete=".$item['ma_ve']?>">Xóa</a>
+                    <a class="btn btn-primary" href="<?php echo "updateMonthCard.php?update=".$item['ma_ve']?>">Sửa</a>
                 </div>
             </li>
         <?php } ?>
