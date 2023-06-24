@@ -78,7 +78,7 @@ if (isset($_POST['create'])) {
 
         <div>
             <label>Mã căn hộ</label>
-            <input  name="ma_can_ho" <?php echo $coChuHo ? 'readonly' : '' ?> value="<?php echo \Helpers\SessionHelper::flash('ma_can_ho') ?? '' ?>">
+            <input  name="ma_can_ho" type="number" <?php echo $coChuHo ? 'readonly' : '' ?> value="<?php echo \Helpers\SessionHelper::flash('ma_can_ho') ?? '' ?>">
         </div>
 
         <?php
@@ -88,7 +88,7 @@ if (isset($_POST['create'])) {
 
                 <div>
                     <label>Biển số xe</label>
-                    <input name="bien_so_xe">
+                    <input type="text" name="bien_so_xe">
                 </div>
 
                 <div>
@@ -106,9 +106,9 @@ if (isset($_POST['create'])) {
         ?>
         <?php
             if($coChuHo) {
-              echo "<button name='create'>Tạo</button>";
+              echo "<input type='submit' name='create' value='Tạo'>";
             } else {
-                echo "<button name='check'>Kiểm tra</button>";
+                echo "<input type='submit' name='check' value='Kiểm tra'>";
             }
         ?>
     </form>

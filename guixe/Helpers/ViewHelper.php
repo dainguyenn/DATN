@@ -9,6 +9,7 @@ class ViewHelper
         return "<script>
                 const title = document.querySelector('#page-title');
                 title.innerText = '$title';
+                document.title = '$title';
                 </script>";
     }
 }
