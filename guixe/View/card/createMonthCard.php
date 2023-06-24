@@ -68,7 +68,6 @@ if (isset($_POST['create'])) {
 }
 ?>
 <body>
-<h1>Tạo thẻ mới</h1>
 <?php
     if(isset($message)) {
         echo "<p>$message</p>";

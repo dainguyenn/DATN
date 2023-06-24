@@ -5,6 +5,7 @@ ob_start(); ?>
 require_once '../../autoload.php';
 
 use Constant\CardConst;
+use Helpers\ViewHelper;
 use Helpers\WindowHelper;
 use Model\ChuHo;
 use Model\ThongTinVe;
@@ -21,7 +22,6 @@ $id = $_GET['update'];
 
 $veUpdate = $veModel->findById($id)[0];
 $thongTinVe = $thongTinVeModel->findById($id)[0];
-
 if (isset($_POST['check'])) {
     $coChuHo = $chuHoModel->exists($_POST['ma_can_ho']);
     $message = $coChuHo ? null : 'Không tồn tại căn hộ có mã là: ' . $_POST['ma_can_ho'];
@@ -82,24 +82,23 @@ if (isset($_POST['update'])) {
 
 
 <body>
-<h1>Tạo thẻ mới</h1>
 <?php
 if (isset($message)) {
     echo "<p>$message</p>";
 }
 ?>
 <div>
-    <form method="POST">
+    <form method="POST" class="form-style-6">
 
         <div>
             <label>Mã căn hộ</label>
-            <input name="ma_can_ho" readonly value="<?php
+            <input type="number" name="ma_can_ho" readonly value="<?php
             echo $thongTinVe['ma_can_ho'] ?? '' ?>">
         </div>
         <div>
             <div>
                 <label>Biển số xe</label>
-                <input name="bien_so_xe" value="<?php
+                <input type="text" name="bien_so_xe" value="<?php
                 echo $thongTinVe['bien_so_xe'] ?>">
             </div>
             <div>
@@ -127,7 +126,7 @@ if (isset($message)) {
 
         </div>
 
-        <button name='update'>Sửa</button>
+        <input name='update' value="Sửa" type="submit">
 
     </form>
 </div>
@@ -135,5 +134,5 @@ if (isset($message)) {
 <?php
 $content = ob_get_clean(); ?>
 <?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
-<?= str_replace('{{title}}', 'Cập nhập vé tháng', file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
+<?php echo ViewHelper::title('Sửa vé tháng');?>
 <!---->
