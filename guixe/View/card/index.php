@@ -4,7 +4,9 @@ require_once '../../autoload.php';
 
 use Helpers\AuthHelper;
 use Helpers\PathHelper;
+use Helpers\SessionHelper;
 use Helpers\ViewHelper;
+use Helpers\WindowHelper;
 
 AuthHelper::isLogging();
 
@@ -13,9 +15,17 @@ $page = $_GET['page'] ?? 1;
 $limit = $_GET['limit'] ?? 25;
 $allVe = $veModel->getInfo(null,['*'],$limit,$page);
 
+if(SessionHelper::get('delete'))
+{
+    $deleteObj = SessionHelper::flash('delete');
+    echo ViewHelper::toast($deleteObj['title'],$deleteObj['message'],$deleteObj['type']);
+}
+
 if(isset($_GET['delete']))
 {
     $veModel->deleteById($_GET['delete']);
+    SessionHelper::store('delete',['title' => 'Thành ông','message' => 'Xóa thành công','type' => 'success']);
+    echo WindowHelper::location('index.php');
 }
 ?>
 
