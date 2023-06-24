@@ -77,7 +77,7 @@
             // } else {
             //     echo "Lấy xe đã được ghi nhận thành công";
             // }
-    
+
         } else {
             echo "<p class='invalid'>Bạn chưa nhập hình ảnh</p>";
         }

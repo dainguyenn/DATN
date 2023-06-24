@@ -1,8 +1,11 @@
 <?php ob_start(); ?>
 <?php
 require_once '../../autoload.php';
+use Helpers\AuthHelper;
 
+AuthHelper::isLogging();
 use Constant\CardConst;
+use Helpers\ViewHelper;
 use Helpers\WindowHelper;
 use Model\ChuHo;
 use Model\ThongTinVe;
@@ -65,18 +68,17 @@ if (isset($_POST['create'])) {
 }
 ?>
 <body>
-<h1>Tạo thẻ mới</h1>
 <?php
     if(isset($message)) {
         echo "<p>$message</p>";
     }
 ?>
 <div>
-    <form method="POST">
+    <form method="POST" class="form-style-6">
 
         <div>
             <label>Mã căn hộ</label>
-            <input  name="ma_can_ho" <?php echo $coChuHo ? 'readonly' : '' ?> value="<?php echo $_SESSION['ma_can_ho'] ?? '' ?>">
+            <input  name="ma_can_ho" <?php echo $coChuHo ? 'readonly' : '' ?> value="<?php echo \Helpers\SessionHelper::flash('ma_can_ho') ?? '' ?>">
         </div>
 
         <?php
@@ -114,4 +116,5 @@ if (isset($_POST['create'])) {
 <!--Luôn import (coppy vào file của mình)-->
 <?php $content = ob_get_clean(); ?>
 <?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
-<!---->
+<?php echo ViewHelper::title('Tạo vé tháng mới');?>
+ <!---->
