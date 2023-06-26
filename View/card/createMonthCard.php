@@ -1,8 +1,12 @@
 <?php ob_start(); ?>
 <?php
 require_once '../../autoload.php';
+use Helpers\AuthHelper;
 
+AuthHelper::isLogging();
 use Constant\CardConst;
+use Helpers\ViewHelper;
+use Helpers\WindowHelper;
 use Model\ChuHo;
 use Model\ThongTinVe;
 use Model\Ve;
@@ -40,19 +44,25 @@ if (isset($_POST['create'])) {
                 break;
         }
     }
+    $bienSo = $thongTinVeModel->findByCondition(
+        ['bien_so_xe','=',$_POST['bien_so_xe']]
+    );
+    if($bienSo){
+        $message = 'Đã tồn tại biển số xe này';
+    }
     if(!isset($message)){
-        $newVeId = $ve->update(1,[
+
+        $newVe = $ve->create([
             'loai_ve' => CardConst::TYPE_MONTH,
             'loai_xe' => $_POST['loai_xe'],
+        ])[0];
+        $thongTinVeModel->create([
+            'ma_ve' => $newVe['ma_ve'],
+            'ma_can_ho' => $_POST['ma_can_ho'],
+            'bien_so_xe' => $_POST['bien_so_xe'],
         ]);
-        print_r($newVeId);
-//        $thongTinVeModel->create([
-//            'ma_ve' => $newVeId,
-//            'ma_can_ho' => $_POST['ma_can_ho'],
-//            'bien_so_xe' => $_POST['bien_so_xe'],
-//        ]);
 
-//        echo "<script>window.location.href = 'index.php'</script>";
+        echo WindowHelper::location('index.php');
     }
 
 }
@@ -65,11 +75,11 @@ if (isset($_POST['create'])) {
     }
 ?>
 <div>
-    <form method="POST">
+    <form method="POST" class="form-style-6">
 
         <div>
             <label>Mã căn hộ</label>
-            <input  name="ma_can_ho" <?php echo $coChuHo ? 'readonly' : '' ?> value="<?php echo $_SESSION['ma_can_ho'] ?? '' ?>">
+            <input  name="ma_can_ho" type="number" <?php echo $coChuHo ? 'readonly' : '' ?> value="<?php echo \Helpers\SessionHelper::flash('ma_can_ho') ?? '' ?>">
         </div>
 
         <?php
@@ -79,7 +89,7 @@ if (isset($_POST['create'])) {
 
                 <div>
                     <label>Biển số xe</label>
-                    <input name="bien_so_xe">
+                    <input type="text" name="bien_so_xe">
                 </div>
 
                 <div>
@@ -97,9 +107,9 @@ if (isset($_POST['create'])) {
         ?>
         <?php
             if($coChuHo) {
-              echo "<button name='create'>Tạo</button>";
+              echo "<input type='submit' name='create' value='Tạo'>";
             } else {
-                echo "<button name='check'>Kiểm tra</button>";
+                echo "<input type='submit' name='check' value='Kiểm tra'>";
             }
         ?>
     </form>
@@ -107,4 +117,5 @@ if (isset($_POST['create'])) {
 <!--Luôn import (coppy vào file của mình)-->
 <?php $content = ob_get_clean(); ?>
 <?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
-<!---->
+<?php echo ViewHelper::title('Tạo vé tháng mới');?>
+ <!---->

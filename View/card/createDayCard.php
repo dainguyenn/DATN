@@ -1,12 +1,17 @@
+<?php ob_start(); ?>
 
 <?php
 require_once '../../autoload.php';
 
 use Constant\CardConst;
+use Helpers\ViewHelper;
 use Model\ChuHo;
 use Model\ThongTinVe;
 use Model\Ve;
 
+use Helpers\AuthHelper;
+
+AuthHelper::isLogging();
 
 $ve = new Ve();
 $thongTinVeModel = new ThongTinVe();
@@ -21,19 +26,18 @@ if (isset($_POST['create'])) {
     ]);
 
 
-    echo "<script>window.location.href = 'index.php'</script>";
+    echo "<script>window.location.href = 'listCardDay.php'</script>";
 }
 ?>
-<?php ob_start(); ?>
 
-<h1>Tạo thẻ mới</h1>
+
 <?php
 if (isset($message)) {
     echo "<p>$message</p>";
 }
 ?>
 <div>
-    <form method="POST">
+    <form method="POST" class="form-style-6">
 
         <div>
 
@@ -48,7 +52,7 @@ if (isset($message)) {
 
         </div>
 
-        <button name='create'>Tạo</button>
+        <input name='create'value="Tạo" type="submit">
 
     </form>
 </div>
@@ -57,4 +61,5 @@ if (isset($message)) {
 <!--Luôn import (coppy vào file của mình)-->
 <?php $content = ob_get_clean(); ?>
 <?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
+<?php echo ViewHelper::title('Tạo vé ngày mới');?>
 <!---->
