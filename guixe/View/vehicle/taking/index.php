@@ -10,6 +10,8 @@
     </form>
     <?php
     require_once '../../../autoload.php';
+    use Helpers\ViewHelper;
+
     session_start();
     $veModel = new \Model\Ve();
     $luotGuiModel = new \Model\LuotGui();
@@ -41,4 +43,5 @@ echo "<h1>" . $actual_link . "</h1>";
 <!--Luôn import (coppy vào file của mình)-->
 <?php $content = ob_get_clean(); ?>
 <?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
+<?php echo ViewHelper::title('Quản lí gửi lấy xe'); ?>
 <!---->

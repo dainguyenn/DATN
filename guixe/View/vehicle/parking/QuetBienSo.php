@@ -32,7 +32,6 @@
                     exit;
                 }
                 if ($_POST["bien_so_xe"] == $result["bien_so_xe"]) {
-                    echo "<p class='invalid'>xác nhận biển số thành công</p>";
                     $_SESSION["bien_so_xe_gui"] = $result["bien_so_xe"];
                     echo "<p class='valid'>Đang ghi nhận thông tin gửi</p>";
                     echo "<script>window.location.href = 'GhiNhanThongTin.php'</script>";

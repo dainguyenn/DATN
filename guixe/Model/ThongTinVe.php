@@ -1,6 +1,7 @@
 <?php
 
 namespace Model;
+
 require_once 'BaseModel.php';
 class ThongTinVe extends BaseModel
 {
