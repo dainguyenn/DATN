@@ -1,8 +1,6 @@
 body{
-    padding: 10px;
     font-family: 'Roboto', sans-serif;
     background-color: #F5F5F5;
-    display: block;
 }
 .sign-in{
     position: relative;
@@ -44,7 +42,6 @@ body{
 }
 #form-login{
     padding: 60px 90px 0px;
-    /* text-align: center; */
 }
 .form-item{
     position: relative;
@@ -112,5 +109,9 @@ body{
     background-color: rgba(63, 78, 191, 1);
     color: #fff;
     cursor: pointer;
+}
+.btn-login:hover{
+    background-color: #BDBDBD;
+    color: #111;
 }
   

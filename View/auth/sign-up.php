@@ -41,21 +41,13 @@ SessionHelper::start();
                 </div>
                 <br/>
                 <div class="form-item">
-                    <input class="form-input" type="password" name="password" placeholder=" ">
+                    <input class="form-input" type="password" name="re-password" placeholder=" ">
                     <label for="password" class="form-label">
                         Nhập lại mật khẩu 
                     </label>
                 </div>
-                
-                <!-- <div class="form-option">
-                    <i class="forgot-text">Forgot Password ?</i>
-                    <label class="check-label" for="checkbox-1">
-                        <input type="checkbox" id="checkbox-1" class="checkbox__input" checked>
-                        <span class="keep-text">Keep me Signed In</span>
-                    </label>
-                </div> -->
-                <button type="submit" name="btn-login" class="btn-login">
-                        Sign up
+                <button type="submit" name="btn-signup" class="btn-login">
+                    Sign up
                 </button>   
             </form>
         

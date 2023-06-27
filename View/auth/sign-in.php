@@ -49,8 +49,8 @@ SessionHelper::start();
                     </div>
                     <a class="forgot-text" href="#">Quên mật khẩu?</a>
                 </div>
-                <button type="submit" name="btn-login" class="btn-login">
-                        Sign in
+                <button type="submit" name="btn-signin" class="btn-login">
+                    Sign in
                 </button>   
             </form>
         
