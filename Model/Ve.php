@@ -68,19 +68,28 @@ class Ve extends BaseModel
         ];
     }
 
-    public function DangGui($conditions, $limit = 25, $page = 1)
+    public function DanhSachVe($id = null, $limit = 25, $page = 1)
+    {
+        $sql= "SELECT * FROM $this->table INNER JOIN luot_gui ON $this->table.ma_ve = luot_gui.ma_ve
+                                          INNER JOIN thong_tin_ve ON $this->table.ma_ve = thong_tin_ve.ma_ve";
+        $totalRecord = $this->pdo->query($sql);
+        $this->SQL_LOG($sql);
+        $result = $this->pdo->query($sql);
+        $total = count($result);
+        return [
+            'data' => $totalRecord,
+            'total' => $total,
+            'current_page' => $page,
+            'last_page' => 1
+        ];
+    }
+    public function DangGui($id = null, $limit = 25, $page = 1)
     {
         
         $start = ($page - 1) * $limit;
 
-        $tbJoin = ThongTinVe::TB_NAME;
         $sql = "SELECT * FROM $this->table INNER JOIN luot_gui ON $this->table.ma_ve = luot_gui.ma_ve
-        WHERE luot_gui.gio_ra IS null";
-        // $sql = "SELECT ma_luot_gui , ma_ve , loai_ve FROM $this->table 
-        //     INNER JOIN " . $tbJoin . " ON $this->table.ma_ve = $tbJoin.ma_ve
-        //     INNER JOIN luot_gui ON luot_gui.ma_ve = $this->table.ma_ve
-        //       LIMIT $start, $limit";
-        // $sqlCountRecord = "SELECT COUNT(*) AS total_record FROM $this->table";
+                WHERE luot_gui.gio_ra IS null";
   
         $totalRecord = $this->pdo->query($sql);
         return [
@@ -101,9 +110,18 @@ class Ve extends BaseModel
         ];
     }
 
-    public function DaThanhToan(){
-       
-        $sql="SELECT * FROM  $this->table INNER JOIN luot_gui ON $this->table.ma_ve = luot_gui.ma_ve WHERE luot_gui.thanh_toan IS NOT NULL "
+    public function DaThanhToan($id = null, $limit = 25, $page = 1)
+    {
+        $sql="SELECT * FROM  $this->table INNER JOIN luot_gui ON $this->table.ma_ve = luot_gui.ma_ve WHERE luot_gui.thanh_toan IS NOT NULL ";
+
+        $totalRecord = $this->pdo->query($sql);
+        return [
+            'data' => $totalRecord,
+            'total' => $total,
+            'current_page' => $page,
+            'last_page' => 1
+        ];
+
     }
     /**
      * @param $maCanHo

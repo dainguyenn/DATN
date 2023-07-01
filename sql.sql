@@ -13,7 +13,8 @@ CREATE TABLE ve
     ma_ve      INT PRIMARY KEY AUTO_INCREMENT,
     loai_ve    VARCHAR(50),
     loai_xe    VARCHAR(255),
-    trang_thai BIT DEFAULT true
+    trang_thai BIT DEFAULT true,
+    deleted_at DATE 
 );
 
 CREATE TABLE thong_tin_ve
@@ -35,6 +36,7 @@ CREATE TABLE luot_gui
     hinh_anh_ra  VARCHAR(255),
     gio_vao      DATETIME,
     gio_ra       DATETIME,
+    thanh_toan   INT,
     FOREIGN KEY (ma_ve) REFERENCES ve (ma_ve)
 );
 
