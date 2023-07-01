@@ -1,0 +1,133 @@
+2023-07-01 15:34:19 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-07-01 15:34:25 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-07-01 15:34:25 | INFO: SQL(table: ve, query: UPDATE ve SET deleted_at = 2023-07-01 WHERE ma_ve = 59)
+2023-07-01 15:34:55 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-07-01 15:34:56 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-07-01 15:34:59 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-07-01 15:35:48 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-07-01 15:35:56 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-07-01 15:36:58 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-07-01 15:37:06 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-07-01 15:37:06 | INFO: SQL(table: ve, query: UPDATE ve SET deleted_at = 2023-07-01 WHERE ma_ve = 59)
+2023-07-01 15:37:16 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-07-01 15:37:16 | INFO: SQL(table: ve, query: UPDATE ve SET deleted_at = 01-07-2023 WHERE ma_ve = 59)
+2023-07-01 15:37:37 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-07-01 15:37:37 | INFO: SQL(table: ve, query: UPDATE ve SET deleted_at = 01-07-2023 WHERE ma_ve = 59)
+2023-07-01 15:37:40 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-07-01 15:37:40 | INFO: SQL(table: ve, query: UPDATE ve SET deleted_at = 01-07-2023 WHERE ma_ve = 59)
+2023-07-01 15:37:55 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-07-01 15:38:15 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-07-01 15:38:15 | INFO: SQL(table: ve, query: UPDATE ve SET deleted_at = '01-07-2023' WHERE ma_ve = 59)
+2023-07-01 15:38:36 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-07-01 15:38:36 | INFO: SQL(table: ve, query: UPDATE ve SET deleted_at = '01-07-2023 15:38:36' WHERE ma_ve = 59)
+2023-07-01 15:38:51 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-07-01 15:38:51 | INFO: SQL(table: ve, query: UPDATE ve SET deleted_at = '2023-07-01 15:38:51' WHERE ma_ve = 59)
+2023-07-01 15:38:51 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-07-01 15:38:56 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-07-01 15:38:59 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-07-01 15:38:59 | INFO: SQL(table: ve, query: UPDATE ve SET deleted_at = '2023-07-01 15:38:59' WHERE ma_ve = 59)
+2023-07-01 15:39:00 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-07-01 15:40:17 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+             WHERE ve.deleted_at IS NULL
+              LIMIT 0, 25)
+2023-07-01 15:40:19 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' LIMIT 0, 25)
+2023-07-01 15:41:18 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' AND 
+          WHERE ve.deleted_at IS NULL
+         LIMIT 0, 25)
+2023-07-01 15:41:27 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' AND 
+          WHERE ve.deleted_at IS NULL LIMIT 0, 25)
+2023-07-01 15:42:22 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' AND 
+          ve.deleted_at IS NULL LIMIT 0, 25)
+2023-07-01 15:42:24 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' AND 
+          ve.deleted_at IS NULL LIMIT 0, 25)
+2023-07-01 15:42:24 | INFO: SQL(table: ve, query: UPDATE ve SET deleted_at = '2023-07-01 15:42:24' WHERE ma_ve = 7)
+2023-07-01 15:42:25 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' AND 
+          ve.deleted_at IS NULL LIMIT 0, 25)
+2023-07-01 15:42:27 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' AND 
+          ve.deleted_at IS NULL LIMIT 0, 25)
+2023-07-01 15:42:27 | INFO: SQL(table: ve, query: UPDATE ve SET deleted_at = '2023-07-01 15:42:27' WHERE ma_ve = 23)
+2023-07-01 15:42:28 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' AND 
+          ve.deleted_at IS NULL LIMIT 0, 25)
+2023-07-01 15:42:31 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' AND 
+          ve.deleted_at IS NULL LIMIT 0, 25)
+2023-07-01 15:42:36 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+             WHERE ve.deleted_at IS NULL
+              LIMIT 0, 25)
+2023-07-01 15:47:07 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+             WHERE ve.deleted_at IS NULL
+              LIMIT 0, 25)
+2023-07-01 15:47:08 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' AND 
+          ve.deleted_at IS NULL LIMIT 0, 25)
+2023-07-01 15:47:10 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+             WHERE ve.deleted_at IS NULL
+              LIMIT 0, 25)
+2023-07-01 15:47:17 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+             WHERE ve.deleted_at IS NULL
+              LIMIT 0, 25)
+2023-07-01 15:47:20 | INFO: SQL(table: chu_ho, query: SELECT * FROM chu_ho WHERE ma_can_ho = '1')
+2023-07-01 15:47:21 | INFO: SQL(table: ve, query: SELECT COUNT(loai_xe) AS SL FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho 
+             WHERE ve.loai_xe= 'Xe máy' AND chu_ho.ma_can_ho = '1')
+2023-07-01 15:47:21 | INFO: SQL(table: thong_tin_ve, query: SELECT * FROM thong_tin_ve WHERE bien_so_xe = '123')
+2023-07-01 15:47:21 | INFO: SQL(table: ve, query: INSERT INTO ve(loai_ve,loai_xe) VALUES('Tháng','Xe máy'))
+2023-07-01 15:47:21 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE ma_ve = '61')
+2023-07-01 15:47:22 | INFO: SQL(table: thong_tin_ve, query: INSERT INTO thong_tin_ve(ma_ve,ma_can_ho,bien_so_xe) VALUES('61','1','123'))
+2023-07-01 15:47:22 | INFO: SQL(table: thong_tin_ve, query: SELECT * FROM thong_tin_ve WHERE ma_ve = '0')
+2023-07-01 15:47:22 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+             WHERE ve.deleted_at IS NULL
+              LIMIT 0, 25)
+2023-07-01 15:47:25 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+             WHERE ve.deleted_at IS NULL
+              LIMIT 0, 25)
+2023-07-01 15:47:25 | INFO: SQL(table: ve, query: UPDATE ve SET deleted_at = '2023-07-01 15:47:25' WHERE ma_ve = 61)
+2023-07-01 15:47:26 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+             WHERE ve.deleted_at IS NULL
+              LIMIT 0, 25)
