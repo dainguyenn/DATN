@@ -31,6 +31,8 @@
 
             echo "<p class='invalid'>Thẻ không tồn tại</p>";
 
+        } else if ($allVe["trang_thai"] === 0) {
+            echo "<p class='invalid'> Thẻ đang tạm thời bị khóa, gặp ban quản lý để giải quyết </p>";
         } else {
 
             $_SESSION["ve_gui"] = $allVe;

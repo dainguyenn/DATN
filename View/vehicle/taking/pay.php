@@ -17,6 +17,7 @@ $bangGiaModel = new \Model\BangGia();
 $ve = $_SESSION["ve_lay"];
 $laDangGui = $_SESSION["la_dang_gui"];
 $xacNhanBienSoLay = $_SESSION["xac_nhan_bien_so_lay"];
+$thanhTien = 0;
 //print_r($_SESSION);
 if ((!isset($ve) || !isset($xacNhanBienSoLay) || !$xacNhanBienSoLay) && $ve["loai_ve"] != "Ngày") {
     header("location:index.php");
@@ -81,28 +82,28 @@ if ($ve["loai_xe"] == "Ô tô") {
     $timeSpan = $startTime->diff($endTime);
     $dayTotal = 0;
     $nightToTal = 0;
-    print_r($timeSpan);
+    //print_r($timeSpan);
     // gửi trong nhiều ngày
     if ($startTime->format("d") != $endTime->format("d")) {
         //tiền ngày gửi đầu
         if ($startTime->format("H") < 6) {
             $dayTotal += 1; //1 ca ngày
             $nightToTal += 2; //2 ca đêm
-            echo "<h1>A1</h1>";
+            //echo "<h1>A1</h1>";
         }
         if ($startTime->format("H") >= 6 && $startTime->format("H") < 18) {
             $dayTotal += 1; //1 ca ngày
             $nightToTal += 1; // 1 ca đêm
-            echo "<h1>A2</h1>";
+            //echo "<h1>A2</h1>";
         }
         if ($startTime->format("H") >= 18) {
             $nightToTal = $nightToTal + 1; // 1 ca đêm
-            echo "<h1>A3 ${nightToTal}</h1>";
+            //echo "<h1>A3 ${nightToTal}</h1>";
         }
 
         //tiền gửi ngày giữa
         $totalDays = $endTime->format("d") - $startTime->format("d") - 1;
-        echo ($totalDays);
+        //echo ($totalDays);
         //$totalPrice += ($totalDays - 1) * ($dayPrice);
         if ($totalDays >= 2) {
             $dayTotal += $totalDays * 2;
@@ -112,58 +113,58 @@ if ($ve["loai_xe"] == "Ô tô") {
         //tiền gửi ngày cuối
         if ($endTime->format("H") < 6) { //
             $nightToTal = $nightToTal + 1; //1 ca đêm
-            echo "<h1>C1</h1>";
+            //echo "<h1>C1</h1>";
         }
         if ($endTime->format("H") >= 6 && $startTime->format("H") < 18) {
             $dayTotal += 1; //1 ca ngày
             $nightToTal += 1; // 1 ca đêm
-            echo "<h1>C2</h1>";
+            //echo "<h1>C2</h1>";
         }
         if ($endTime->format("H") >= 18) {
             $dayTotal += 1; //1 ca ngày
             $nightToTal = $nightToTal + 1; //2 ca đêm
-            echo "<h1>C3 ${nightToTal}</h1>";
+            //echo "<h1>C3 ${nightToTal}</h1>";
         }
     } else {
         if ($startTime->format("H") < 6) {
             if ($endTime->format("H") < 6) {
                 $dayTotal += 0; //0 ca ngày
                 $nightToTal += 1; //1 ca đêm
-                echo "<h1>A1</h1>";
+                //echo "<h1>A1</h1>";
             }
             if ($endTime->format("H") >= 6 && $endTime->format("H") < 18) {
                 $dayTotal += 1; //1 ca ngày
                 $nightToTal += 1; // 1 ca đêm
-                echo "<h1>A2</h1>";
+                //echo "<h1>A2</h1>";
             }
             if ($startTime->format("H") >= 18) {
                 $nightToTal = $nightToTal + 2; // 1 ca đêm
                 $dayTotal += 1; //1 ca ngày
-                echo "<h1>A3 ${nightToTal}</h1>";
+                //echo "<h1>A3 ${nightToTal}</h1>";
             }
         }
         if ($startTime->format("H") >= 6 && $startTime->format("H") < 18) {
             if ($endTime->format("H") >= 6 && $endTime->format("H") < 18) {
                 $dayTotal += 1; //1 ca ngày
-                echo "<h1>A2</h1>";
+                //echo "<h1>A2</h1>";
             }
             if ($startTime->format("H") >= 18) {
                 $nightToTal = $nightToTal + 1; // 1 ca đêm
                 $dayTotal += 1; //1 ca ngày
-                echo "<h1>A3 ${nightToTal}</h1>";
+                //echo "<h1>A3 ${nightToTal}</h1>";
             }
         }
         if ($startTime->format("H") >= 18) {
             $nightToTal = $nightToTal + 1; // 1 ca đêm
-            echo "<h1>A3 ${nightToTal}</h1>";
+            //echo "<h1>A3 ${nightToTal}</h1>";
         }
 
     }
     echo <<<LOG
-            <table>
+            <table border ='1' cellpadding='3' cellspacing='0'>
             <tr> 
-                <td>Số mức tính ban ngày</td>
-                <td>Số mức tính ban đêm</td>
+                <td>Số lượt gửi ban ngày</td>
+                <td>Số lượt gửi ban đêm</td>
             </tr>
             <tr> 
                 <td>${dayTotal}</td>
@@ -201,6 +202,7 @@ if ($ve["loai_xe"] == "Ô tô") {
 
 if (isset($_POST["sub"])) {
     $_SESSION["da_thanh_toan"] = true;
+    $_SESSION["so_tien_thanh_toan"] = $thanhTien;
     echo "<script>window.location.href = 'GhiNhanThongTin.php'</script>";
 }
 ?>

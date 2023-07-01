@@ -11,7 +11,7 @@
     <?php
     require_once '../../../autoload.php';
     use Helpers\ViewHelper;
-    
+
     session_start();
     $veModel = new \Model\Ve();
     $luotGuiModel = new \Model\LuotGui();
@@ -20,6 +20,8 @@
         $ve = $veModel->findById($_POST["ma_the"])[0];
         if (!$ve) {
             echo "<p class='invalid'>Thẻ không tồn tại</p>";
+        } else if ($ve["trang_thai"] === 0) {
+            echo "<p class='invalid'> Thẻ đang tạm thời bị khóa, gặp ban quản lý để giải quyết </p>";
         } else if (!$luotGuiModel->CheckMaTheDangGui($_POST["ma_the"])) {
             echo "<p class='invalid' class='invalid'>Thẻ chưa được ghi nhận gửi</p>";
         } else {

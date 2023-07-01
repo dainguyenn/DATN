@@ -15,7 +15,6 @@ class BangGia extends BaseModel
     public function getGia($loaiVe, $loaiXe, $khungGio)
     {
         $sql = "select * from " . BangGia::TB_NAME . " where loai_ve = '${loaiVe}' and loai_xe = '${loaiXe}' and khung_gio = '${khungGio}' ";
-        echo $sql;
         $gia = $this->pdo->query($sql);
         if ($gia) {
             return $this->pdo->query($sql)[0]["gia"];
