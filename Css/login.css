@@ -110,6 +110,9 @@ body{
     color: #fff;
     cursor: pointer;
 }
+.btn-login a{
+    text-decoration: none;
+}
 .btn-login:hover{
     background-color: #BDBDBD;
     color: #111;

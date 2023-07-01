@@ -46,11 +46,10 @@ SessionHelper::start();
                         Nhập lại mật khẩu 
                     </label>
                 </div>
-                <button type="submit" name="btn-signup" class="btn-login">
+                <button type="submit" name="btn-signup" class="btn-login" value="Sign-up">
                     Sign up
                 </button>   
             </form>
-        
     </div>
 </body>
 

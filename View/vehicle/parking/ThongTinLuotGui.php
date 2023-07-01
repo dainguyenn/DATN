@@ -34,7 +34,6 @@ use Model\ThongTinVe;
             echo "<td>" . $nameRow . "</td>";
         }
         break;
-
     }
     echo "</tr>";
     foreach ($danhsach as $key => $value) {

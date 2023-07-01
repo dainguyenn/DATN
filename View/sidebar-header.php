@@ -60,10 +60,16 @@
                     <div class="menu-items">
                         <ul class="nav-menu items-show">
                             <li class="nav-item">
-                                <a class="nav-link" href="/View/statistics/index.php">Tìm kiếm</a>
+                                <a class="nav-link" href="/View/statistics/searchCard.php">Tìm kiếm</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/View/vehicle/taking/index.php">Báo cáo doanh thu</a>
+                                <a class="nav-link" href="/View/statistics/parking.php">Xe đang gửi</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/View/statistics/income.php">Doanh thu</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/View/statistics/reportMonthCard.php">Vé tháng chưa đóng</a>
                             </li>
                         </ul>
                     </div>
