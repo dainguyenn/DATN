@@ -1,4 +1,4 @@
-    <h3>Gửi xe - Quét mã thẻ</h3>
+<h3>Gửi xe - Quét mã thẻ</h3>
 
 
 <div class="form-style-6">
@@ -15,6 +15,8 @@
 
     require_once '../../../autoload.php';
     session_start();
+    use Helpers\ViewHelper;
+
     $veModel = new \Model\Ve();
     $luotGuiModel = new \Model\LuotGui();
 
@@ -29,6 +31,8 @@
 
             echo "<p class='invalid'>Thẻ không tồn tại</p>";
 
+        } else if ($allVe["trang_thai"] === 0) {
+            echo "<p class='invalid'> Thẻ đang tạm thời bị khóa, gặp ban quản lý để giải quyết </p>";
         } else {
 
             $_SESSION["ve_gui"] = $allVe;
@@ -44,4 +48,5 @@
 <!--Luôn import (coppy vào file của mình)-->
 <?php $content = ob_get_clean(); ?>
 <?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
+<?php echo ViewHelper::title('Quản lí gửi lấy xe'); ?>
 <!---->

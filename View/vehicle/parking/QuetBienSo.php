@@ -17,12 +17,14 @@
 
         <?php
         require_once '../../../autoload.php';
+        use Helpers\ViewHelper;
+
         $veModel = new \Model\Ve();
         $thongTinVeModel = new \Model\ThongTinVe();
         $ve = $_SESSION["ve_gui"];
         if (!isset($ve))
             header("location:index.php");
-        print_r($_SESSION);
+        //print_r($_SESSION);
         if (isset($_POST["sub"])) {
             if ($ve["loai_ve"] == "Tháng") {
                 $result = $thongTinVeModel->findById($ve["ma_ve"])[0];
@@ -32,13 +34,12 @@
                     exit;
                 }
                 if ($_POST["bien_so_xe"] == $result["bien_so_xe"]) {
-                    echo "<p class='invalid'>xác nhận biển số thành công</p>";
                     $_SESSION["bien_so_xe_gui"] = $result["bien_so_xe"];
                     echo "<p class='valid'>Đang ghi nhận thông tin gửi</p>";
                     echo "<script>window.location.href = 'GhiNhanThongTin.php'</script>";
                 } else {
                     echo "<p class='invalid'>xác nhận biến số không hợp lệ </p>";
-                    echo $_POST["bien_so_xe"] . "---" . $result["bien_so_xe"];
+                    //echo $_POST["bien_so_xe"] . "---" . $result["bien_so_xe"];
                 }
             } else {
                 $_SESSION["bien_so_xe_gui"] = $_POST["bien_so_xe"];
@@ -50,4 +51,5 @@
         <!--Luôn import (coppy vào file của mình)-->
         <?php $content = ob_get_clean(); ?>
         <?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
+        <?php echo ViewHelper::title('Quản lí gửi lấy xe'); ?>
         <!---->

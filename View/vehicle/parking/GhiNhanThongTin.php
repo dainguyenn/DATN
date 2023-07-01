@@ -18,6 +18,7 @@
     require_once '../../../autoload.php';
 
     use Helpers\UploadFileHelper;
+    use Helpers\ViewHelper;
 
     $veModel = new \Model\Ve();
     $luotGuiModel = new \Model\LuotGui();
@@ -27,8 +28,8 @@
 
     if (!isset($ve) && !isset($bienSoXe))
         header("location:index.php");
-    print_r($_SESSION);
-
+    //print_r($_SESSION);
+    
     if (isset($_POST["sub"])) {
 
         if (isset($_FILES["hinh_anh"])) {
@@ -59,7 +60,7 @@
             }
 
             if ($result) {
-                echo "<p class='valid'>Xe đã được ghi nhận gửi thành công <h2><p> <a href='index.php'> Quay lại</a>";
+                echo "<p class='valid'>Xe đã được ghi nhận gửi thành công <h2><p> <a class='btn btn-primary' href='index.php'> Quay lại</a>";
                 unset($_SESSION["ve_gui"]);
                 unset($_SESSION["thong_tin_ve_gui"]);
                 unset($_SESSION["bien_so_xe_gui"]);
@@ -80,4 +81,5 @@
 <!--Luôn import (coppy vào file của mình)-->
 <?php $content = ob_get_clean(); ?>
 <?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
+<?php echo ViewHelper::title('Quản lí gửi lấy xe'); ?>
 <!---->

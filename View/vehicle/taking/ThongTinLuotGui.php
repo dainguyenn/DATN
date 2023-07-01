@@ -17,6 +17,7 @@ use Helpers\PathHelper;
     <img src="<?php echo PathHelper::storage_path('storage/images/1686414968.jpeg'); ?>">
     <?php
     require_once '../../../autoload.php';
+    
     session_start();
 
     use Helpers\UploadFileHelper;

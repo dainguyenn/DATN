@@ -13,13 +13,14 @@
     require_once '../../../autoload.php';
     session_start();
     use Helpers\UploadFileHelper;
+    use Helpers\ViewHelper;
 
     $veModel = new \Model\Ve();
     $luotGuiModel = new \Model\LuotGui();
     $ve = $_SESSION["ve_lay"];
     $xacNhanBienSoLay = $_SESSION["xac_nhan_bien_so_lay"];
     $xacNhanThanhToan = $_SESSION["da_thanh_toan"];
-
+    $thanhTien = $_SESSION["so_tien_thanh_toan"];
     //kiểm tra thẻ đã có thông tin vé hay chưa
     // đã xác nhận biển số chưa, biển số đã hợp lệ chưa
     if (!isset($ve) || !isset($xacNhanBienSoLay) || !$xacNhanBienSoLay) {
@@ -31,8 +32,8 @@
     }
 
     $luotGui = $luotGuiModel->GetThongTinTheDangGui($ve["ma_ve"]);
-    print_r($_SESSION);
-
+    //print_r($_SESSION);
+    
     if (isset($_POST["sub"])) {
 
         // ghi nhận có thông tin ảnh
@@ -57,7 +58,8 @@
                         $luotGui["ma_luot_gui"],
                         [
                             "hinh_anh_ra" => $pathImage,
-                            "gio_ra" => $now
+                            "gio_ra" => $now,
+                            "thanh_toan" => $thanhTien
                         ]
                     );
                 }
@@ -66,7 +68,7 @@
 
             }
 
-            echo "<p class='valid'>Xe đã được ghi nhận lấy thành công </p> <br/> <a href='index.php'> Quay lại</a>";
+            echo "<p class='valid'>Xe đã được ghi nhận lấy thành công </p> <br/> <a class='btn btn-primary' href='index.php'> Quay lại</a>";
             unset($_SESSION["ve_lay"]);
             unset($_SESSION["xac_nhan_bien_so_lay"]);
             unset($_SESSION["la_dang_gui"]);
@@ -77,7 +79,7 @@
             // } else {
             //     echo "Lấy xe đã được ghi nhận thành công";
             // }
-
+    
         } else {
             echo "<p class='invalid'>Bạn chưa nhập hình ảnh</p>";
         }
@@ -90,4 +92,5 @@
 <!--Luôn import (coppy vào file của mình)-->
 <?php $content = ob_get_clean(); ?>
 <?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
+<?php echo ViewHelper::title('Quản lí gửi lấy xe'); ?>
 <!---->

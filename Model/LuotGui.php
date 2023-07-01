@@ -26,9 +26,10 @@ class LuotGui extends BaseModel
         return $this->pdo->query($sql)[0];
     }
 
-    public function LocDuLieu($bienSoXe){
-        $sql = "SELECT * FROM ". self::TB_NAME . 
-        " WHERE bien_so_xe like '%".$bienSoXe."%'";
+    public function LocDuLieu($bienSoXe)
+    {
+        $sql = "SELECT * FROM " . self::TB_NAME .
+            " WHERE bien_so_xe like '%" . $bienSoXe . "%'";
         return $this->pdo->query($sql);
     }
 }
