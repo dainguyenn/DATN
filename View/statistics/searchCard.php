@@ -12,7 +12,14 @@ use Model\Ve;
 $veModel = new Ve();
 $page = $_GET['page'] ?? 1;
 $limit = $_GET['limit'] ?? 25;
-$allVe = $veModel->DanhSachVe(null, $limit, $page);
+$allVe = null;
+if(isset($_GET["sub"])){
+    $allVe = $veModel->DanhSachVe(null, $limit, $page, $_GET["bien_so_xe"]);
+} else {
+
+    $allVe = $veModel->DanhSachVe(null, $limit, $page);
+}
+
 
 ?>
 
@@ -20,11 +27,14 @@ $allVe = $veModel->DanhSachVe(null, $limit, $page);
 <!---->
 
 <div>
-    <form action="" method="post" class="style-search">
+    <form action="" method="GET" class="style-search">
         <div class="form-item">
-            <input class="form-input" type="text" name="account" placeholder="Nhập biển số xe">
-            <button class="search-btn">Tìm</button>
+            <input class="form-input" type="text" name="bien_so_xe" placeholder=" ">
+            <label for="name" class="form-label">
+                Biển số xe
+            </label>
         </div>
+        <input type="submit" name="sub" value="Tìm" class="btn btn-primary" />
         <a class="btn btn-primary " href="parking.php">Danh sách xe đang gửi</a>
     </form>
     <ul class="responsive-table">

@@ -70,10 +70,10 @@ class Ve extends BaseModel
         ];
     }
 
-    public function DanhSachVe($id = null, $limit = 25, $page = 1)
+    public function DanhSachVe($id = null, $limit = 25, $page = 1, $bienSoXe = '')
     {
         $sql= "SELECT * FROM $this->table INNER JOIN luot_gui ON $this->table.ma_ve = luot_gui.ma_ve
-                                          INNER JOIN thong_tin_ve ON $this->table.ma_ve = thong_tin_ve.ma_ve";
+                                           where bien_so_xe like '%$bienSoXe%'";
         $totalRecord = $this->pdo->query($sql);
         $this->SQL_LOG($sql);
         $result = $this->pdo->query($sql);
