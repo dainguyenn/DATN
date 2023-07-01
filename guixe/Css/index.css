@@ -126,16 +126,28 @@
     padding: 7px 0;
 }
 
-.toast-success, .toast_icon > i{
+.toast-success{
     color: #47d864;
 }
 
-.toast-warning .toast_icon > i{
+.toast-success .toast_icon>i{
+    color: #47d864;
+}
+
+.toast-warning {
     color: #ffcc00;
 }
 
-.toast-err .toast_icon > i{
+.toast-warning .toast_icon>i{
+    color: #47d864;
+}
+
+.toast-error {
     color: #cc3300;
+}
+
+.toast-error .toast_icon>i{
+    color: #47d864;
 }
 
 .toast_msg {
@@ -145,7 +157,6 @@
 .toast_icon {
     padding: 0 12px;
 }
-
 .toast_message {
     margin-left: 11px;
     margin-top: 4px;

@@ -1,10 +1,14 @@
-<?php ob_start(); ?>
+<?php
+ob_start(); ?>
 <?php
 require_once '../../autoload.php';
+
 use Helpers\AuthHelper;
 
 AuthHelper::isLogging();
+
 use Constant\CardConst;
+use Helpers\SessionHelper;
 use Helpers\ViewHelper;
 use Helpers\WindowHelper;
 use Model\ChuHo;
@@ -17,69 +21,79 @@ $thongTinVeModel = new ThongTinVe();
 $chuHoModel = new ChuHo();
 $coChuHo = false;
 
-if(isset($_POST['check']))
-{
+if (SessionHelper::get('error')) {
+    $errObj = SessionHelper::flash('error');
+    echo ViewHelper::toast($errObj['title'], $errObj['message'], $errObj['type']);
+}
+
+if (isset($_POST['check'])) {
     $coChuHo = $chuHoModel->exists($_POST['ma_can_ho']);
-        $message = $coChuHo ? null : 'Không tồn tại căn hộ có mã là: '.$_POST['ma_can_ho'];
-    if($coChuHo) {
+    $message = $coChuHo ? null : 'Không tồn tại căn hộ có mã là: ' . $_POST['ma_can_ho'];
+    if ($message) {
+        SessionHelper::store('error', ['title' => 'Lỗi', 'message' => $message, 'type' => 'error']);
+        echo WindowHelper::location('createMonthCard.php');
+    }
+    if ($coChuHo) {
         $_SESSION['ma_can_ho'] = $_POST['ma_can_ho'];
     }
 }
 
 if (isset($_POST['create'])) {
     $loaiXe = $_POST['loai_xe'];
-    $soluong = $ve->check($_POST['ma_can_ho'],$_POST['loai_xe']);
+    $soluong = $ve->check($_POST['ma_can_ho'], $_POST['loai_xe']);
 
-    switch ($loaiXe){
-        case 'Ô tô': {
-            if($soluong >= 1 ) {
+    switch ($loaiXe) {
+        case 'Ô tô':
+        {
+            if ($soluong >= 1) {
                 $message = "Vượt quá số lượng ô tô cho phép đăng ký.";
+                SessionHelper::store('error', ['title' => 'Lỗi', 'message' => $message, 'type' => 'warning']);
+                echo WindowHelper::location('createMonthCard.php');
             }
             break;
         }
-        case 'Xe máy': {
-            if($soluong >= 3 ) {
+        case 'Xe máy':
+        {
+            if ($soluong >= 3) {
                 $message = "Vượt quá số lượng xe máy cho phép đăng ký.";
+                SessionHelper::store('error', ['title' => 'Lỗi', 'message' => $message, 'type' => 'warning']);
+                echo WindowHelper::location('createMonthCard.php');
             }
-                break;
+            break;
         }
     }
     $bienSo = $thongTinVeModel->findByCondition(
-        ['bien_so_xe','=',$_POST['bien_so_xe']]
+        ['bien_so_xe', '=', $_POST['bien_so_xe']]
     );
-    if($bienSo){
+    if ($bienSo) {
         $message = 'Đã tồn tại biển số xe này';
+        SessionHelper::store('error', ['title' => 'Lỗi', 'message' => $message, 'type' => 'warning']);
+        echo WindowHelper::location('createMonthCard.php');
     }
-    if(!isset($message)){
+    $newVe = $ve->create([
+        'loai_ve' => CardConst::TYPE_MONTH,
+        'loai_xe' => $_POST['loai_xe'],
+    ])[0];
+    $thongTinVeModel->create([
+        'ma_ve' => $newVe['ma_ve'],
+        'ma_can_ho' => $_POST['ma_can_ho'],
+        'bien_so_xe' => $_POST['bien_so_xe'],
+    ]);
 
-        $newVe = $ve->create([
-            'loai_ve' => CardConst::TYPE_MONTH,
-            'loai_xe' => $_POST['loai_xe'],
-        ])[0];
-        $thongTinVeModel->create([
-            'ma_ve' => $newVe['ma_ve'],
-            'ma_can_ho' => $_POST['ma_can_ho'],
-            'bien_so_xe' => $_POST['bien_so_xe'],
-        ]);
-
-        echo WindowHelper::location('index.php');
-    }
-
+    echo WindowHelper::location('index.php');
 }
 ?>
 <body>
 <h1>Tạo thẻ mới</h1>
-<?php
-    if(isset($message)) {
-        echo "<p>$message</p>";
-    }
-?>
+
 <div>
     <form method="POST" class="form-style-6">
 
         <div>
             <label>Mã căn hộ</label>
-            <input  name="ma_can_ho" type="number" <?php echo $coChuHo ? 'readonly' : '' ?> value="<?php echo \Helpers\SessionHelper::flash('ma_can_ho') ?? '' ?>">
+            <input name="ma_can_ho" type="number" <?php
+            echo $coChuHo ? 'readonly' : '' ?> value="<?php
+            echo \Helpers\SessionHelper::flash('ma_can_ho') ?? '' ?>">
         </div>
 
         <?php
@@ -106,16 +120,18 @@ if (isset($_POST['create'])) {
         }
         ?>
         <?php
-            if($coChuHo) {
-              echo "<input type='submit' name='create' value='Tạo'>";
-            } else {
-                echo "<input type='submit' name='check' value='Kiểm tra'>";
-            }
+        if ($coChuHo) {
+            echo "<input type='submit' name='create' value='Tạo'>";
+        } else {
+            echo "<input type='submit' name='check' value='Kiểm tra'>";
+        }
         ?>
     </form>
 </div>
 <!--Luôn import (coppy vào file của mình)-->
-<?php $content = ob_get_clean(); ?>
+<?php
+$content = ob_get_clean(); ?>
 <?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
-<?php echo ViewHelper::title('Tạo vé tháng mới');?>
- <!---->
+<?php
+echo ViewHelper::title('Tạo vé tháng mới'); ?>
+<!---->

@@ -13,14 +13,14 @@ class ViewHelper
                 </script>";
     }
 
-    public static function toast($title ,$message, $type = 'success',$duration=3000)
+    public static function toast($title, $message, $type = 'success', $duration = 3000)
     {
         $icons = [
-        'success' => 'fa-check-circle',
-                'error' => 'fa-solid fa-circle-exclamation',
-                'info'=> 'fa-circle-info',
-                'warning'=> 'fa-solid fa-circle-exclamation',
-            ];
+            'success' => 'fas fa-check-circle',
+            'error' => 'fas fa-exclamation-circle',
+            'info' => 'fas fa-info-circle',
+            'warning' => 'fas fa-exclamation-circle',
+        ];
         $iconType = $icons[$type];
         return " 
         <div id='toast'>
@@ -42,7 +42,7 @@ class ViewHelper
             }  
             toast.innerHTML = `
                 <div class='toast_icon'>
-                <i class='fas fa-sharp $iconType'></i>
+                <i class='$iconType'></i>
                 </div>
                 <div class='toast_message'>
                     <h3 class='toast_title''>$title</h3>

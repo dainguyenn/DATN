@@ -4,6 +4,7 @@
 require_once '../../autoload.php';
 
 use Constant\CardConst;
+use Helpers\SessionHelper;
 use Helpers\ViewHelper;
 use Model\ChuHo;
 use Model\ThongTinVe;
@@ -16,6 +17,7 @@ AuthHelper::isLogging();
 $ve = new Ve();
 $thongTinVeModel = new ThongTinVe();
 $chuHoModel = new ChuHo();
+
 
 
 if (isset($_POST['create'])) {
