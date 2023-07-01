@@ -36,7 +36,7 @@ CREATE TABLE luot_gui
     hinh_anh_ra  VARCHAR(255),
     gio_vao      DATETIME,
     gio_ra       DATETIME,
-    thanh_toan   DATETIME,
+    thanh_toan   INT,
     FOREIGN KEY (ma_ve) REFERENCES ve (ma_ve)
 );
 

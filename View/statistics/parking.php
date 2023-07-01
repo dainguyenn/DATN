@@ -7,10 +7,13 @@ use Model\LuotGui;
 use Model\ThongTinVe;
 use Model\Ve;
 
+// AuthHelper::isLogging();
+
 $veModel = new Ve();
 $page = $_GET['page'] ?? 1;
 $limit = $_GET['limit'] ?? 25;
-$allVe = $veModel->DaThanhToan(null, $limit, $page);
+$allVe = $veModel->DangGui(null, $limit, $page);
+
 ?>
 
 <?php ob_start(); ?>
@@ -60,9 +63,8 @@ $allVe = $veModel->DaThanhToan(null, $limit, $page);
     </ul>
 </div>
 
-
 <?php $content = ob_get_clean(); ?>
 <?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
 <!--Đây là title-->
-<?php echo \Helpers\ViewHelper::title('Báo cáo doanh thu');?><!---->
+<?php echo \Helpers\ViewHelper::title('Danh sách xe đang gửi');?><!---->
 

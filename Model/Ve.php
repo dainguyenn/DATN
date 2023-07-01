@@ -70,6 +70,61 @@ class Ve extends BaseModel
         ];
     }
 
+    public function DanhSachVe($id = null, $limit = 25, $page = 1, $bienSoXe = '')
+    {
+        $sql= "SELECT * FROM $this->table INNER JOIN luot_gui ON $this->table.ma_ve = luot_gui.ma_ve
+                                           where bien_so_xe like '%$bienSoXe%'";
+        $totalRecord = $this->pdo->query($sql);
+        $this->SQL_LOG($sql);
+        $result = $this->pdo->query($sql);
+        $total = count($result);
+        return [
+            'data' => $totalRecord,
+            'total' => $total,
+            'current_page' => $page,
+            'last_page' => 1
+        ];
+    }
+    public function DangGui($id = null, $limit = 25, $page = 1)
+    {
+        
+        $start = ($page - 1) * $limit;
+
+        $sql = "SELECT * FROM $this->table INNER JOIN luot_gui ON $this->table.ma_ve = luot_gui.ma_ve
+                WHERE luot_gui.gio_ra IS null";
+  
+        $totalRecord = $this->pdo->query($sql);
+        return [
+            'data' => $totalRecord,
+            'total' => $total,
+            'current_page' => $page,
+            'last_page' => 1
+        ];
+        $lastPage = ceil(count($totalRecord)/$limit);
+        $this->SQL_LOG($sql);
+        $result = $this->pdo->query($sql);
+        $total = count($result);
+        return [
+            'data' => $result,
+            'total' => $total,
+            'current_page' => $page,
+            'last_page' => $lastPage
+        ];
+    }
+
+    public function DaThanhToan($id = null, $limit = 25, $page = 1)
+    {
+        $sql="SELECT * FROM  $this->table INNER JOIN luot_gui ON $this->table.ma_ve = luot_gui.ma_ve WHERE luot_gui.thanh_toan IS NOT NULL ";
+
+        $totalRecord = $this->pdo->query($sql);
+        return [
+            'data' => $totalRecord,
+            'total' => $total,
+            'current_page' => $page,
+            'last_page' => 1
+        ];
+
+    }
     public function getAll()
     {
         $sql = "SELECT * FROM $this->table WHERE deleted_at IS NULL";
