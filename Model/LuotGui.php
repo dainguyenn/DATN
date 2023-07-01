@@ -25,4 +25,10 @@ class LuotGui extends BaseModel
             . " WHERE gio_ra is null and hinh_anh_ra is null and ma_ve = " . $maVe;
         return $this->pdo->query($sql)[0];
     }
+
+    public function LocDuLieu($bienSoXe){
+        $sql = "SELECT * FROM ". $this::TB_NAME . 
+        " WHERE bien_so_xe = '".$bienSoXe."'";
+        return $this->pdo->query($sql);
+    }
 }
