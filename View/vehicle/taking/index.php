@@ -11,7 +11,7 @@
     <?php
     require_once '../../../autoload.php';
     use Helpers\ViewHelper;
-
+    
     session_start();
     $veModel = new \Model\Ve();
     $luotGuiModel = new \Model\LuotGui();

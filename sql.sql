@@ -50,7 +50,8 @@ CREATE TABLE bang_gia
     ma_gia  INT PRIMARY KEY AUTO_INCREMENT,
     loai_xe VARCHAR(255),
     loai_ve VARCHAR(255),
-    gia INT,
+    khung_gio VARCHAR(255),
+    gia INT
 );
 
 -- insert data into `chu_ho`

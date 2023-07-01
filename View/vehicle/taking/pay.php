@@ -4,13 +4,16 @@
     <form method="POST" enctype="multipart/form-data" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
         <input type="submit" name="sub" value="Xác nhận thanh toán">
     </form>
-</div>  
+</div>
 <?php
 require_once '../../../autoload.php';
+use Helpers\ViewHelper;
+
 session_start();
 $veModel = new \Model\Ve();
 $thongTinVeModel = new \Model\ThongTinVe();
 $luotGuiModel = new \Model\LuotGui();
+$bangGiaModel = new \Model\BangGia();
 $ve = $_SESSION["ve_lay"];
 $laDangGui = $_SESSION["la_dang_gui"];
 $xacNhanBienSoLay = $_SESSION["xac_nhan_bien_so_lay"];
@@ -21,21 +24,20 @@ if ((!isset($ve) || !isset($xacNhanBienSoLay) || !$xacNhanBienSoLay) && $ve["loa
 $luotGui = $luotGuiModel->GetThongTinTheDangGui($ve["ma_ve"]);
 if ($ve["loai_xe"] == "Ô tô") {
     echo "<h1>Thanh toán cho ô tô </h1>";
-
     $startTime = new DateTime($luotGui["gio_vao"]);
     $endTimeStr = date("Y-m-d H:i:s");
     $endTime = new DateTime($endTimeStr);
 
-    $priceLevel = 20000;
+    $priceLevel = $bangGiaModel->getGia("Ngày", "Ô tô", "Sáng");
     if (
         $startTime->format("d") != $endTime->format("d")
         || $endTime->format("H") >= 18
     ) {
-        $priceLevel = 40000;
+        $priceLevel = $bangGiaModel->getGia("Ngày", "Ô tô", "Tối");
     }
     $timeSpan = $endTime->diff($startTime);
     $hoursNotRound = $timeSpan->h + ceil($timeSpan->i / 60) + $timeSpan->d * 24;
-    $intoMoney = $hoursNotRound * 20000;
+    $intoMoney = $hoursNotRound * $priceLevel;
 
     $result_str_show = <<<result
         <table border='1' cellpadding='5' cellspacing='0'>
@@ -72,10 +74,10 @@ if ($ve["loai_xe"] == "Ô tô") {
     $endTimeStr = date("Y-m-d H:i:s");
     $endTime = new DateTime($endTimeStr);
     // Giá tiền ban ngày
-    $dayPrice = 5000;
+    $dayPrice = $bangGiaModel->getGia("Ngày", "Xe máy", "Sáng");
 
     // Giá tiền ban đêm
-    $nightPrice = 10000;
+    $nightPrice = $bangGiaModel->getGia("Ngày", "Xe máy", "Tối");
     $timeSpan = $startTime->diff($endTime);
     $dayTotal = 0;
     $nightToTal = 0;
@@ -205,4 +207,5 @@ if (isset($_POST["sub"])) {
 <!--Luôn import (coppy vào file của mình)-->
 <?php $content = ob_get_clean(); ?>
 <?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
+<?php echo ViewHelper::title('Quản lí gửi lấy xe'); ?>
 <!---->

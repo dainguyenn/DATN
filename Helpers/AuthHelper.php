@@ -26,7 +26,7 @@ class AuthHelper
     public static function isLogging()
     {
         if (!SessionHelper::get('user')) {
-            echo WindowHelper::location('/View/auth/login.php');
+            echo WindowHelper::location('/View/auth/sign-in.php');
         }
     }
 }

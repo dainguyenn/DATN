@@ -15,6 +15,8 @@
 
     require_once '../../../autoload.php';
     session_start();
+    use Helpers\ViewHelper;
+
     $veModel = new \Model\Ve();
     $luotGuiModel = new \Model\LuotGui();
 
@@ -44,4 +46,5 @@
 <!--Luôn import (coppy vào file của mình)-->
 <?php $content = ob_get_clean(); ?>
 <?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
+<?php echo ViewHelper::title('Quản lí gửi lấy xe'); ?>
 <!---->
