@@ -31,6 +31,7 @@ class Ve extends BaseModel
             . $tbJoin
             . " ON $this->table.$this->primaryKey = $tbJoin.$this->primaryKey
              INNER JOIN chu_ho ON chu_ho.ma_can_ho = $tbJoin.ma_can_ho
+             WHERE $this->table.deleted_at IS NULL
               LIMIT $start, $limit";
         $sqlCountRecord = "SELECT COUNT(*) AS total_record FROM $this->table";
 
@@ -56,7 +57,8 @@ class Ve extends BaseModel
         $columns = $this->implodeColumns($columns);
         $start = ($page - 1) * $limit;
 
-        $sql = "SELECT $columns FROM $this->table WHERE loai_ve ='" . CardConst::TYPE_DAY . "' LIMIT $start, $limit";
+        $sql = "SELECT $columns FROM $this->table WHERE loai_ve ='" . CardConst::TYPE_DAY . "' AND 
+          $this->table.deleted_at IS NULL LIMIT $start, $limit";
         $this->SQL_LOG($sql);
         $result = $this->pdo->query($sql);
         $total = count($result);
@@ -66,6 +68,21 @@ class Ve extends BaseModel
             'total' => $total,
             'current_page' => $page
         ];
+    }
+
+    public function getAll()
+    {
+        $sql = "SELECT * FROM $this->table WHERE deleted_at IS NULL";
+        $this->SQL_LOG($sql);
+        return $this->pdo->query($sql);
+    }
+
+    public function deleteById($id): bool|array|null
+    {
+        $now = date('Y-m-d H:i:s'); ;
+        $sql = "UPDATE $this->table SET deleted_at = '$now' WHERE $this->primaryKey = $id";
+        $this->SQL_LOG($sql);
+        return $this->pdo->query($sql);
     }
 
     /**
@@ -82,7 +99,8 @@ class Ve extends BaseModel
             . $tbJoin
             . " ON $this->table.$this->primaryKey = $tbJoin.$this->primaryKey
              INNER JOIN chu_ho ON chu_ho.ma_can_ho = $tbJoin.ma_can_ho 
-             WHERE $this->table.loai_xe= '$loaiXe' AND chu_ho.ma_can_ho = '$maCanHo'";
+             WHERE $this->table.loai_xe= '$loaiXe' AND chu_ho.ma_can_ho = '$maCanHo'
+             AND $this->table.deleted_at IS NULL";
         $this->SQL_LOG($sql);
         return $this->pdo->query($sql)[0]['SL'];
     }

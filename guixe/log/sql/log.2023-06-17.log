@@ -1,0 +1,165 @@
+2023-06-17 11:19:26 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 11:20:20 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 11:20:43 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 11:21:14 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 11:21:16 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 11:21:20 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' LIMIT 0, 25)
+2023-06-17 11:21:39 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 11:21:40 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' LIMIT 0, 25)
+2023-06-17 11:22:38 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 11:22:39 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' LIMIT 0, 25)
+2023-06-17 11:22:41 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 11:22:42 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' LIMIT 0, 25)
+2023-06-17 11:23:08 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 11:23:32 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 11:23:34 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' LIMIT 0, 25)
+2023-06-17 11:23:49 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' LIMIT 0, 25)
+2023-06-17 11:23:50 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 11:23:51 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 11:25:44 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 11:25:45 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' LIMIT 0, 25)
+2023-06-17 11:25:47 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 11:26:45 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 11:26:50 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 11:26:51 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' LIMIT 0, 25)
+2023-06-17 11:27:00 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' LIMIT 0, 25)
+2023-06-17 11:27:06 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' LIMIT 0, 25)
+2023-06-17 11:27:18 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' LIMIT 0, 25)
+2023-06-17 11:27:28 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' LIMIT 0, 25)
+2023-06-17 11:27:52 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' LIMIT 0, 25)
+2023-06-17 11:28:02 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' LIMIT 0, 25)
+2023-06-17 11:28:04 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' LIMIT 0, 25)
+2023-06-17 11:28:05 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' LIMIT 0, 25)
+2023-06-17 11:28:51 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' LIMIT 0, 25)
+2023-06-17 11:28:52 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 11:28:57 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' LIMIT 0, 25)
+2023-06-17 11:30:02 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' LIMIT 0, 25)
+2023-06-17 11:30:03 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' LIMIT 0, 25)
+2023-06-17 11:30:04 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 11:30:27 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 11:30:46 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' LIMIT 0, 25)
+2023-06-17 11:31:02 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' LIMIT 0, 25)
+2023-06-17 11:31:06 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 11:31:49 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE loai_ve ='Ngày' LIMIT 0, 25)
+2023-06-17 12:19:59 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 12:20:02 | INFO: SQL(table: chu_ho, query: SELECT * FROM chu_ho WHERE ma_can_ho = '1')
+2023-06-17 12:20:04 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 12:20:06 | INFO: SQL(table: chu_ho, query: SELECT * FROM chu_ho WHERE ma_can_ho = '3')
+2023-06-17 12:20:10 | INFO: SQL(table: ve, query: SELECT COUNT(loai_xe) AS SL FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho 
+             WHERE ve.loai_xe= 'Ô tô' AND chu_ho.ma_can_ho = '3')
+2023-06-17 12:20:10 | INFO: SQL(table: ve, query: UPDATE ve SET loai_ve='Tháng',loai_xe='Ô tô' WHERE ma_ve = '1')
+2023-06-17 12:20:10 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE ma_ve = '1')
+2023-06-17 12:21:01 | INFO: SQL(table: chu_ho, query: SELECT * FROM chu_ho WHERE ma_can_ho = '4')
+2023-06-17 12:21:05 | INFO: SQL(table: ve, query: SELECT COUNT(loai_xe) AS SL FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho 
+             WHERE ve.loai_xe= 'Xe máy' AND chu_ho.ma_can_ho = '4')
+2023-06-17 12:21:05 | INFO: SQL(table: ve, query: UPDATE ve SET loai_ve='Tháng',loai_xe='Xe máy' WHERE ma_ve = '1')
+2023-06-17 12:21:05 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE ma_ve = '1')
+2023-06-17 12:21:05 | INFO: SQL(table: thong_tin_ve, query: INSERT INTO thong_tin_ve(ma_ve,ma_can_ho,bien_so_xe) VALUES('1','4','123123'))
+2023-06-17 12:21:32 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 12:21:35 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 12:21:39 | INFO: SQL(table: chu_ho, query: SELECT * FROM chu_ho WHERE ma_can_ho = '4')
+2023-06-17 12:21:42 | INFO: SQL(table: ve, query: SELECT COUNT(loai_xe) AS SL FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho 
+             WHERE ve.loai_xe= 'Xe máy' AND chu_ho.ma_can_ho = '4')
+2023-06-17 12:21:42 | INFO: SQL(table: ve, query: UPDATE ve SET loai_ve='Tháng',loai_xe='Xe máy' WHERE ma_ve = '1')
+2023-06-17 12:21:42 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE ma_ve = '1')
+2023-06-17 12:21:46 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 12:23:29 | INFO: SQL(table: chu_ho, query: SELECT * FROM chu_ho WHERE ma_can_ho = '12')
+2023-06-17 12:23:32 | INFO: SQL(table: ve, query: SELECT COUNT(loai_xe) AS SL FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho 
+             WHERE ve.loai_xe= 'Xe máy' AND chu_ho.ma_can_ho = '12')
+2023-06-17 12:23:32 | INFO: SQL(table: ve, query: INSERT INTO ve(loai_ve,loai_xe) VALUES('Tháng','Xe máy'))
+2023-06-17 12:23:32 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE ma_ve = '15')
+2023-06-17 12:23:32 | INFO: SQL(table: thong_tin_ve, query: INSERT INTO thong_tin_ve(ma_ve,ma_can_ho,bien_so_xe) VALUES('','12','123'))
+2023-06-17 12:23:47 | INFO: SQL(table: chu_ho, query: SELECT * FROM chu_ho WHERE ma_can_ho = '12')
+2023-06-17 12:24:17 | INFO: SQL(table: chu_ho, query: SELECT * FROM chu_ho WHERE ma_can_ho = '12')
+2023-06-17 12:24:20 | INFO: SQL(table: ve, query: SELECT COUNT(loai_xe) AS SL FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho 
+             WHERE ve.loai_xe= 'Xe máy' AND chu_ho.ma_can_ho = '12')
+2023-06-17 12:24:20 | INFO: SQL(table: ve, query: INSERT INTO ve(loai_ve,loai_xe) VALUES('Tháng','Xe máy'))
+2023-06-17 12:24:20 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE ma_ve = '16')
+2023-06-17 12:24:20 | INFO: SQL(table: thong_tin_ve, query: INSERT INTO thong_tin_ve(ma_ve,ma_can_ho,bien_so_xe) VALUES('16','12','BC-1123'))
+2023-06-17 12:24:34 | INFO: SQL(table: ve, query: SELECT COUNT(loai_xe) AS SL FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho 
+             WHERE ve.loai_xe= 'Xe máy' AND chu_ho.ma_can_ho = '12')
+2023-06-17 12:24:34 | INFO: SQL(table: ve, query: INSERT INTO ve(loai_ve,loai_xe) VALUES('Tháng','Xe máy'))
+2023-06-17 12:24:34 | INFO: SQL(table: ve, query: SELECT * FROM ve WHERE ma_ve = '17')
+2023-06-17 12:24:34 | INFO: SQL(table: thong_tin_ve, query: INSERT INTO thong_tin_ve(ma_ve,ma_can_ho,bien_so_xe) VALUES('17','12','33112'))
+2023-06-17 12:24:34 | INFO: SQL(table: thong_tin_ve, query: SELECT * FROM thong_tin_ve WHERE ma_ve = '0')
+2023-06-17 12:24:34 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 12:28:25 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-17 12:28:28 | INFO: SQL(table: chu_ho, query: SELECT * FROM chu_ho WHERE ma_can_ho = '4')
+2023-06-17 12:28:30 | INFO: SQL(table: ve, query: SELECT COUNT(loai_xe) AS SL FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho 
+             WHERE ve.loai_xe= 'Xe máy' AND chu_ho.ma_can_ho = '4')
+2023-06-17 12:28:30 | INFO: SQL(table: thong_tin_ve, query: SELECT * FROM thong_tin_ve WHERE bien_so_xe = BC-1123)
+2023-06-17 12:29:19 | INFO: SQL(table: ve, query: SELECT COUNT(loai_xe) AS SL FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho 
+             WHERE ve.loai_xe= 'Xe máy' AND chu_ho.ma_can_ho = '4')
+2023-06-17 12:29:19 | INFO: SQL(table: thong_tin_ve, query: SELECT * FROM thong_tin_ve WHERE bien_so_xe = 'BC-1123')
+2023-06-17 12:29:23 | INFO: SQL(table: ve, query: SELECT COUNT(loai_xe) AS SL FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho 
+             WHERE ve.loai_xe= 'Xe máy' AND chu_ho.ma_can_ho = '4')
+2023-06-17 12:29:23 | INFO: SQL(table: thong_tin_ve, query: SELECT * FROM thong_tin_ve WHERE bien_so_xe = 'BC-1123')
+2023-06-17 12:29:50 | INFO: SQL(table: chu_ho, query: SELECT * FROM chu_ho WHERE ma_can_ho = '4')
+2023-06-17 12:30:12 | INFO: SQL(table: chu_ho, query: SELECT * FROM chu_ho WHERE ma_can_ho = '4')
+2023-06-17 12:30:14 | INFO: SQL(table: ve, query: SELECT COUNT(loai_xe) AS SL FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho 
+             WHERE ve.loai_xe= 'Xe máy' AND chu_ho.ma_can_ho = '4')
+2023-06-17 12:30:14 | INFO: SQL(table: thong_tin_ve, query: SELECT * FROM thong_tin_ve WHERE bien_so_xe = 'BC-1123')
