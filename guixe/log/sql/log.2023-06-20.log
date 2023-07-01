@@ -1,0 +1,9 @@
+2023-06-20 13:38:42 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-20 13:38:56 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)
+2023-06-20 13:43:17 | INFO: SQL(table: ve, query: SELECT * FROM ve INNER JOIN thong_tin_ve ON ve.ma_ve = thong_tin_ve.ma_ve
+             INNER JOIN chu_ho ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho
+              LIMIT 0, 25)

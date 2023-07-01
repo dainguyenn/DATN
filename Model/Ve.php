@@ -99,7 +99,8 @@ class Ve extends BaseModel
             . $tbJoin
             . " ON $this->table.$this->primaryKey = $tbJoin.$this->primaryKey
              INNER JOIN chu_ho ON chu_ho.ma_can_ho = $tbJoin.ma_can_ho 
-             WHERE $this->table.loai_xe= '$loaiXe' AND chu_ho.ma_can_ho = '$maCanHo'";
+             WHERE $this->table.loai_xe= '$loaiXe' AND chu_ho.ma_can_ho = '$maCanHo'
+             AND $this->table.deleted_at IS NULL";
         $this->SQL_LOG($sql);
         return $this->pdo->query($sql)[0]['SL'];
     }
