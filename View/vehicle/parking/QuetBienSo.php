@@ -24,34 +24,29 @@
 
         $veModel = new \Model\Ve();
         $thongTinVeModel = new \Model\ThongTinVe();
-        $ve = SessionHelper::get("ve_gui"); //$_SESSION["ve_gui"]
+        $ve = SessionHelper::get("ve_gui"); 
+
         if (!isset($ve))
             echo WindowHelper::location("index.php");
-        //header("location:index.php");
-        //print_r($_SESSION);
+
         if (isset($_POST["sub"])) {
             if ($ve["loai_ve"] == "Tháng") {
                 $result = $thongTinVeModel->findById($ve["ma_ve"])[0];
-                //print_r($result);
+                
                 if (!$result) {
                     echo "<p class='invalid'>lỗi trong quá trình kiểm tra</p>";
                     exit;
                 }
                 if ($_POST["bien_so_xe"] == $result["bien_so_xe"]) {
-                    //$_SESSION["bien_so_xe_gui"] = $result["bien_so_xe"];
                     SessionHelper::store("bien_so_xe_gui", $result["bien_so_xe"]);
                     echo "<p class='valid'>Đang ghi nhận thông tin gửi</p>";
-                    //echo "<script>window.location.href = 'GhiNhanThongTin.php'</script>";
                     echo WindowHelper::location('GhiNhanThongTin.php');
                 } else {
                     echo "<p class='invalid'>xác nhận biến số không hợp lệ </p>";
-                    //echo $_POST["bien_so_xe"] . "---" . $result["bien_so_xe"];
                 }
             } else {
-                //$_SESSION["bien_so_xe_gui"] = $_POST["bien_so_xe"];
                 SessionHelper::store("bien_so_xe_gui", $_POST["bien_so_xe"]);
                 echo "<p class='valid'>Đang ghi nhận thông tin gửi</p>";
-                //echo "<script>window.location.href = 'GhiNhanThongTin.php'</script>";
                 echo WindowHelper::location('GhiNhanThongTin.php');
             }
         }

@@ -37,9 +37,7 @@
             echo "<p class='invalid'> Thẻ đang tạm thời bị khóa, gặp ban quản lý để giải quyết </p>";
         } else {
 
-            //$_SESSION["ve_gui"] = $allVe;
             SessionHelper::store("ve_gui", $allVe);
-            //echo "<script>window.location.href = 'QuetBienSo.php'</script>";
             echo WindowHelper::location('QuetBienSo.php');
         }
 

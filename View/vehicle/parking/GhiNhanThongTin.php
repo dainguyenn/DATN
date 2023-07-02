@@ -24,26 +24,21 @@
 
     $veModel = new \Model\Ve();
     $luotGuiModel = new \Model\LuotGui();
-    $ve = SessionHelper::get("ve_gui"); //$_SESSION["ve_gui"];
-    $bienSoXe = SessionHelper::get("bien_so_xe_gui"); // $_SESSION["bien_so_xe_gui"];
+    $ve = SessionHelper::get("ve_gui");
+    $bienSoXe = SessionHelper::get("bien_so_xe_gui");
     $result = false;
 
     if (!isset($ve) && !isset($bienSoXe)) {
         echo WindowHelper::location("index.php");
     }
-    //header("location:index.php");
-    
+
     if (isset($_POST["sub"])) {
 
         if (isset($_FILES["hinh_anh"])) {
             $now = date("Y-m-d H:i:s");
             $pathImage = UploadFileHelper::SaveFile($_FILES["hinh_anh"]);
 
-            //print_r($pathImage . "  log thông tin");
             if (str_contains($ve["loai_the"], "Tháng")) {
-                // echo "<hr>";
-                // print_r($thongTinVe);
-                // echo "<hr>";
                 $result = $luotGuiModel->create([
                     "ma_ve" => $ve["ma_ve"],
                     "bien_so_xe" => $bienSoXe,
@@ -51,9 +46,6 @@
                     "gio_vao" => $now
                 ]);
             } else {
-                // echo "<hr>";
-                // print_r($ve["loai_the"]);
-                // echo "<hr>";
                 $result = $luotGuiModel->create([
                     "ma_ve" => $ve["ma_ve"],
                     "bien_so_xe" => $bienSoXe,
@@ -67,9 +59,6 @@
                 SessionHelper::delete("ve_gui");
                 SessionHelper::delete("thong_tin_ve_gui");
                 SessionHelper::delete("bien_so_xe_gui");
-                //unset($_SESSION["ve_gui"]);
-                //unset($_SESSION["thong_tin_ve_gui"]);
-                //unset($_SESSION["bien_so_xe_gui"]);
             } else {
                 echo "lỗi trong quá trình thêm";
                 exit;
