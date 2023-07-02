@@ -14,21 +14,26 @@
     session_start();
     use Helpers\UploadFileHelper;
     use Helpers\ViewHelper;
+    use Helpers\SessionHelper;
+    use Helpers\WindowHelper;
 
     $veModel = new \Model\Ve();
     $luotGuiModel = new \Model\LuotGui();
     $ve = $_SESSION["ve_lay"];
-    $xacNhanBienSoLay = $_SESSION["xac_nhan_bien_so_lay"];
-    $xacNhanThanhToan = $_SESSION["da_thanh_toan"];
-    $thanhTien = $_SESSION["so_tien_thanh_toan"];
+    $xacNhanBienSoLay = SessionHelper::get("xac_nhan_bien_so_lay"); //$_SESSION["xac_nhan_bien_so_lay"];
+    $xacNhanThanhToan = SessionHelper::get("da_thanh_toan"); //$_SESSION["da_thanh_toan"];
+    $thanhTien = SessionHelper::get("da_thanh_toan"); //$_SESSION["so_tien_thanh_toan"];
+    print_r($_SESSION);
     //kiểm tra thẻ đã có thông tin vé hay chưa
     // đã xác nhận biển số chưa, biển số đã hợp lệ chưa
     if (!isset($ve) || !isset($xacNhanBienSoLay) || !$xacNhanBienSoLay) {
-        echo "<script>window.location.href = 'index.php'</script>";
+        //echo "<script>window.location.href = 'index.php'</script>";
+        echo WindowHelper::location('index.php');
     }
     //kiểm tra thẻ ngày đã thanh toán chưa
     if ($ve["loai_the"] == "Ngày" && !isset($xacNhanThanhToan) && !$xacNhanThanhToan) {
-        echo "<script>window.location.href = 'index.php'</script>";
+        //echo "<script>window.location.href = 'index.php'</script>";
+        echo WindowHelper::location('index.php');
     }
 
     $luotGui = $luotGuiModel->GetThongTinTheDangGui($ve["ma_ve"]);
@@ -69,11 +74,20 @@
             }
 
             echo "<p class='valid'>Xe đã được ghi nhận lấy thành công </p> <br/> <a class='btn btn-primary' href='index.php'> Quay lại</a>";
+
+            /*
             unset($_SESSION["ve_lay"]);
             unset($_SESSION["xac_nhan_bien_so_lay"]);
             unset($_SESSION["la_dang_gui"]);
             unset($_SESSION["bien_so_xe"]);
+            */
 
+            SessionHelper::delete("ve_lay");
+            SessionHelper::delete("xac_nhan_bien_so_lay");
+            SessionHelper::delete("la_dang_gui");
+            SessionHelper::delete("bien_so_xe");
+            SessionHelper::delete("da_thanh_toan");
+            SessionHelper::delete("so_tien_thanh_toan");
             // if (!$result) {
             //     exit;
             // } else {

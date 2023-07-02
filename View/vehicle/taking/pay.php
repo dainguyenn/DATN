@@ -8,19 +8,24 @@
 <?php
 require_once '../../../autoload.php';
 use Helpers\ViewHelper;
+use Helpers\SessionHelper;
+use Helpers\WindowHelper;
 
 session_start();
 $veModel = new \Model\Ve();
 $thongTinVeModel = new \Model\ThongTinVe();
 $luotGuiModel = new \Model\LuotGui();
 $bangGiaModel = new \Model\BangGia();
-$ve = $_SESSION["ve_lay"];
-$laDangGui = $_SESSION["la_dang_gui"];
-$xacNhanBienSoLay = $_SESSION["xac_nhan_bien_so_lay"];
+
+$ve = SessionHelper::get("ve_lay"); //$_SESSION["ve_lay"];
+$laDangGui = SessionHelper::get("la_dang_gui"); //$_SESSION["la_dang_gui"];
+$xacNhanBienSoLay = SessionHelper::get("xac_nhan_bien_so_lay"); //$_SESSION["xac_nhan_bien_so_lay"];
 $thanhTien = 0;
+
 //print_r($_SESSION);
 if ((!isset($ve) || !isset($xacNhanBienSoLay) || !$xacNhanBienSoLay) && $ve["loai_ve"] != "Ngày") {
-    header("location:index.php");
+    echo WindowHelper::location("index.php");
+    //header("location:index.php");
 }
 $luotGui = $luotGuiModel->GetThongTinTheDangGui($ve["ma_ve"]);
 if ($ve["loai_xe"] == "Ô tô") {
@@ -108,7 +113,7 @@ if ($ve["loai_xe"] == "Ô tô") {
         if ($totalDays >= 2) {
             $dayTotal += $totalDays * 2;
             $nightToTal += $totalDays * 2 - 1;
-            echo "<h1>B1 ${dayTotal} - ${nightToTal}</h1>";
+            //echo "<h1>B1 ${dayTotal} - ${nightToTal}</h1>";
         }
         //tiền gửi ngày cuối
         if ($endTime->format("H") < 6) { //
@@ -201,9 +206,12 @@ if ($ve["loai_xe"] == "Ô tô") {
 }
 
 if (isset($_POST["sub"])) {
-    $_SESSION["da_thanh_toan"] = true;
-    $_SESSION["so_tien_thanh_toan"] = $thanhTien;
-    echo "<script>window.location.href = 'GhiNhanThongTin.php'</script>";
+    //$_SESSION["da_thanh_toan"] = true;
+    //$_SESSION["so_tien_thanh_toan"] = $thanhTien;
+    SessionHelper::store("da_thanh_toan", true);
+    SessionHelper::store("so_tien_thanh_toan", $thanhTien);
+    echo WindowHelper::location('GhiNhanThongTin.php');
+    //echo "<script>window.location.href = 'GhiNhanThongTin.php'</script>";
 }
 ?>
 <!--Luôn import (coppy vào file của mình)-->

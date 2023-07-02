@@ -16,6 +16,8 @@
     require_once '../../../autoload.php';
     session_start();
     use Helpers\ViewHelper;
+    use Helpers\SessionHelper;
+    use Helpers\WindowHelper;
 
     $veModel = new \Model\Ve();
     $luotGuiModel = new \Model\LuotGui();
@@ -35,9 +37,10 @@
             echo "<p class='invalid'> Thẻ đang tạm thời bị khóa, gặp ban quản lý để giải quyết </p>";
         } else {
 
-            $_SESSION["ve_gui"] = $allVe;
-            echo "<script>window.location.href = 'QuetBienSo.php'</script>";
-
+            //$_SESSION["ve_gui"] = $allVe;
+            SessionHelper::store("ve_gui", $allVe);
+            //echo "<script>window.location.href = 'QuetBienSo.php'</script>";
+            echo WindowHelper::location('QuetBienSo.php');
         }
 
     }

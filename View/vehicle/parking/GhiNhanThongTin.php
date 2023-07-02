@@ -19,16 +19,19 @@
 
     use Helpers\UploadFileHelper;
     use Helpers\ViewHelper;
+    use Helpers\SessionHelper;
+    use Helpers\WindowHelper;
 
     $veModel = new \Model\Ve();
     $luotGuiModel = new \Model\LuotGui();
-    $ve = $_SESSION["ve_gui"];
-    $bienSoXe = $_SESSION["bien_so_xe_gui"];
+    $ve = SessionHelper::get("ve_gui"); //$_SESSION["ve_gui"];
+    $bienSoXe = SessionHelper::get("bien_so_xe_gui"); // $_SESSION["bien_so_xe_gui"];
     $result = false;
 
-    if (!isset($ve) && !isset($bienSoXe))
-        header("location:index.php");
-    //print_r($_SESSION);
+    if (!isset($ve) && !isset($bienSoXe)) {
+        echo WindowHelper::location("index.php");
+    }
+    //header("location:index.php");
     
     if (isset($_POST["sub"])) {
 
@@ -61,9 +64,12 @@
 
             if ($result) {
                 echo "<p class='valid'>Xe đã được ghi nhận gửi thành công <h2><p> <a class='btn btn-primary' href='index.php'> Quay lại</a>";
-                unset($_SESSION["ve_gui"]);
-                unset($_SESSION["thong_tin_ve_gui"]);
-                unset($_SESSION["bien_so_xe_gui"]);
+                SessionHelper::delete("ve_gui");
+                SessionHelper::delete("thong_tin_ve_gui");
+                SessionHelper::delete("bien_so_xe_gui");
+                //unset($_SESSION["ve_gui"]);
+                //unset($_SESSION["thong_tin_ve_gui"]);
+                //unset($_SESSION["bien_so_xe_gui"]);
             } else {
                 echo "lỗi trong quá trình thêm";
                 exit;
