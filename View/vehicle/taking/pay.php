@@ -8,19 +8,24 @@
 <?php
 require_once '../../../autoload.php';
 use Helpers\ViewHelper;
+use Helpers\SessionHelper;
+use Helpers\WindowHelper;
 
 session_start();
 $veModel = new \Model\Ve();
 $thongTinVeModel = new \Model\ThongTinVe();
 $luotGuiModel = new \Model\LuotGui();
 $bangGiaModel = new \Model\BangGia();
-$ve = $_SESSION["ve_lay"];
-$laDangGui = $_SESSION["la_dang_gui"];
-$xacNhanBienSoLay = $_SESSION["xac_nhan_bien_so_lay"];
+
+$ve = SessionHelper::get("ve_lay"); //$_SESSION["ve_lay"];
+$laDangGui = SessionHelper::get("la_dang_gui"); //$_SESSION["la_dang_gui"];
+$xacNhanBienSoLay = SessionHelper::get("xac_nhan_bien_so_lay"); //$_SESSION["xac_nhan_bien_so_lay"];
 $thanhTien = 0;
+
 //print_r($_SESSION);
 if ((!isset($ve) || !isset($xacNhanBienSoLay) || !$xacNhanBienSoLay) && $ve["loai_ve"] != "Ngày") {
-    header("location:index.php");
+    echo WindowHelper::location("index.php");
+    //header("location:index.php");
 }
 $luotGui = $luotGuiModel->GetThongTinTheDangGui($ve["ma_ve"]);
 if ($ve["loai_xe"] == "Ô tô") {
@@ -66,9 +71,6 @@ if ($ve["loai_xe"] == "Ô tô") {
         result;
     echo $result_str_show;
 
-    //print_r($startTime->diff($endTime));
-    //print_r($startTime->format("d"));
-    //print_r($priceLevel);
 } else {
     echo "<h1>Thanh toán cho xe máy </h1>";
     $startTime = new DateTime($luotGui["gio_vao"]);
@@ -82,81 +84,66 @@ if ($ve["loai_xe"] == "Ô tô") {
     $timeSpan = $startTime->diff($endTime);
     $dayTotal = 0;
     $nightToTal = 0;
-    //print_r($timeSpan);
-    // gửi trong nhiều ngày
+    //gửi trong nhiều ngày
     if ($startTime->format("d") != $endTime->format("d")) {
         //tiền ngày gửi đầu
         if ($startTime->format("H") < 6) {
             $dayTotal += 1; //1 ca ngày
             $nightToTal += 2; //2 ca đêm
-            //echo "<h1>A1</h1>";
         }
         if ($startTime->format("H") >= 6 && $startTime->format("H") < 18) {
             $dayTotal += 1; //1 ca ngày
             $nightToTal += 1; // 1 ca đêm
-            //echo "<h1>A2</h1>";
         }
         if ($startTime->format("H") >= 18) {
             $nightToTal = $nightToTal + 1; // 1 ca đêm
-            //echo "<h1>A3 ${nightToTal}</h1>";
         }
 
         //tiền gửi ngày giữa
         $totalDays = $endTime->format("d") - $startTime->format("d") - 1;
-        //echo ($totalDays);
-        //$totalPrice += ($totalDays - 1) * ($dayPrice);
         if ($totalDays >= 2) {
             $dayTotal += $totalDays * 2;
             $nightToTal += $totalDays * 2 - 1;
-            echo "<h1>B1 ${dayTotal} - ${nightToTal}</h1>";
         }
         //tiền gửi ngày cuối
         if ($endTime->format("H") < 6) { //
             $nightToTal = $nightToTal + 1; //1 ca đêm
-            //echo "<h1>C1</h1>";
         }
         if ($endTime->format("H") >= 6 && $startTime->format("H") < 18) {
             $dayTotal += 1; //1 ca ngày
             $nightToTal += 1; // 1 ca đêm
-            //echo "<h1>C2</h1>";
         }
         if ($endTime->format("H") >= 18) {
             $dayTotal += 1; //1 ca ngày
             $nightToTal = $nightToTal + 1; //2 ca đêm
-            //echo "<h1>C3 ${nightToTal}</h1>";
         }
-    } else {
+    } else { // gửi trong ngày
+        // lúc bắt đầu gửi là ca sáng
         if ($startTime->format("H") < 6) {
             if ($endTime->format("H") < 6) {
                 $dayTotal += 0; //0 ca ngày
                 $nightToTal += 1; //1 ca đêm
-                //echo "<h1>A1</h1>";
             }
             if ($endTime->format("H") >= 6 && $endTime->format("H") < 18) {
                 $dayTotal += 1; //1 ca ngày
                 $nightToTal += 1; // 1 ca đêm
-                //echo "<h1>A2</h1>";
             }
             if ($startTime->format("H") >= 18) {
                 $nightToTal = $nightToTal + 2; // 1 ca đêm
                 $dayTotal += 1; //1 ca ngày
-                //echo "<h1>A3 ${nightToTal}</h1>";
             }
         }
         if ($startTime->format("H") >= 6 && $startTime->format("H") < 18) {
             if ($endTime->format("H") >= 6 && $endTime->format("H") < 18) {
                 $dayTotal += 1; //1 ca ngày
-                //echo "<h1>A2</h1>";
             }
             if ($startTime->format("H") >= 18) {
                 $nightToTal = $nightToTal + 1; // 1 ca đêm
                 $dayTotal += 1; //1 ca ngày
-                //echo "<h1>A3 ${nightToTal}</h1>";
             }
         }
         if ($startTime->format("H") >= 18) {
-            $nightToTal = $nightToTal + 1; // 1 ca đêm
-            //echo "<h1>A3 ${nightToTal}</h1>";
+            $nightToTal = $nightToTal + 1;
         }
 
     }
@@ -201,9 +188,9 @@ if ($ve["loai_xe"] == "Ô tô") {
 }
 
 if (isset($_POST["sub"])) {
-    $_SESSION["da_thanh_toan"] = true;
-    $_SESSION["so_tien_thanh_toan"] = $thanhTien;
-    echo "<script>window.location.href = 'GhiNhanThongTin.php'</script>";
+    SessionHelper::store("da_thanh_toan", true);
+    SessionHelper::store("so_tien_thanh_toan", $thanhTien);
+    echo WindowHelper::location('GhiNhanThongTin.php');
 }
 ?>
 <!--Luôn import (coppy vào file của mình)-->

@@ -16,37 +16,43 @@
     <?php
     require_once '../../../autoload.php';
     use Helpers\ViewHelper;
+    use Helpers\SessionHelper;
+    use Helpers\WindowHelper;
 
     $veModel = new \Model\Ve();
     $thongTinVeModel = new \Model\ThongTinVe();
     $luotGuiModel = new \Model\LuotGui();
-    $ve = $_SESSION["ve_lay"];
-    $laDangGui = $_SESSION["la_dang_gui"];
+
+    $ve = SessionHelper::get("ve_lay");
+    $laDangGui = SessionHelper::get("la_dang_gui");
+
     if (!isset($ve) || !isset($laDangGui) || !$laDangGui)
-        header("location:index.php");
+        echo WindowHelper::location("index.php");
     $luotGui = $luotGuiModel->GetThongTinTheDangGui($ve["ma_ve"]);
-    //print_r($_SESSION);
+
     if (isset($_POST["sub"])) {
         if ($ve["loai_ve"] == "Tháng") {
+            // lấy thông tin vé tháng
             $result = $thongTinVeModel->findById($ve["ma_ve"])[0];
-            //print_r($result);
             if (!$result) {
                 echo "<p class='invalid'>lỗi trong quá trình kiểm tra</p>";
                 exit;
             }
+            // kiểm tra trùn khớp biển số
             if ($_POST["bien_so_xe"] == $result["bien_so_xe"]) {
                 echo "<p class='valid'>xác nhận biển số thành công </p>";
-                $_SESSION["xac_nhan_bien_so_lay"] = true;
-                echo "<script>window.location.href = 'GhiNhanThongTin.php'</script>";
+                SessionHelper::store("xac_nhan_bien_so_lay", true);
+                echo WindowHelper::location("GhiNhanThongTin.php");
             } else {
                 echo "<p class='invalid'>xác nhận biến số không hợp lệ<p>";
                 echo "<p>" . $_POST["bien_so_xe"] . "---" . $result["bien_so_xe"] . "</p>";
             }
         } else {
+            // kiểm tra biển số lượt gửi với biển số vừa quét
             if ($luotGui["bien_so_xe"] == $_POST["bien_so_xe"]) {
                 echo "<p class='valid'>Là thẻ ngày, Tiến hành thanh toán</p>";
-                $_SESSION["xac_nhan_bien_so_lay"] = true;
-                echo "<script>window.location.href = 'pay.php'</script>";
+                SessionHelper::store("xac_nhan_bien_so_lay", true);
+                echo WindowHelper::location("pay.php");
             } else {
                 echo "<p class='invalid'>Biển số xe không trùng khớp</p>";
             }

@@ -11,6 +11,8 @@
     <?php
     require_once '../../../autoload.php';
     use Helpers\ViewHelper;
+    use Helpers\SessionHelper;
+    use Helpers\WindowHelper;
 
     session_start();
     $veModel = new \Model\Ve();
@@ -25,9 +27,9 @@
         } else if (!$luotGuiModel->CheckMaTheDangGui($_POST["ma_the"])) {
             echo "<p class='invalid' class='invalid'>Thẻ chưa được ghi nhận gửi</p>";
         } else {
-            $_SESSION["ve_lay"] = $ve;
-            $_SESSION["la_dang_gui"] = true;
-            echo "<script>window.location.href = 'QuetBienSo.php'</script>";
+            SessionHelper::store("ve_lay", $ve);
+            SessionHelper::store("la_dang_gui", true);
+            echo WindowHelper::location("QuetBienSo.php");
         }
     }
 
