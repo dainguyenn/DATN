@@ -62,9 +62,7 @@ if (isset($_POST['create'])) {
             break;
         }
     }
-    $bienSo = $thongTinVeModel->findByCondition(
-        ['bien_so_xe', '=', $_POST['bien_so_xe']]
-    );
+    $bienSo = $thongTinVeModel->kiemTraBienSo($_POST['bien_so_xe']);
     if ($bienSo) {
         $message = 'Đã tồn tại biển số xe này';
         SessionHelper::store('error', ['title' => 'Lỗi', 'message' => $message, 'type' => 'warning']);
@@ -80,9 +78,14 @@ if (isset($_POST['create'])) {
         'bien_so_xe' => $_POST['bien_so_xe'],
     ]);
 
-    echo WindowHelper::location('index.php');
+    echo WindowHelper::location('index.php?id='. SessionHelper::get('ma'));
+}
+if (isset($_GET['ma_can_ho']))
+{
+    SessionHelper::store('ma',$_GET['ma_can_ho']);
 }
 ?>
+
 <body>
 <h1>Tạo thẻ mới</h1>
 
@@ -91,19 +94,15 @@ if (isset($_POST['create'])) {
 
         <div>
             <label>Mã căn hộ</label>
-            <input name="ma_can_ho" type="number" <?php
-            echo $coChuHo ? 'readonly' : '' ?> value="<?php
-            echo \Helpers\SessionHelper::flash('ma_can_ho') ?? '' ?>">
+            <input name="ma_can_ho" type="number"
+            readonly value="<?php echo SessionHelper::get('ma') ?>">
         </div>
 
-        <?php
-        if ($coChuHo) {
-            ?>
             <div>
 
                 <div>
                     <label>Biển số xe</label>
-                    <input type="text" name="bien_so_xe">
+                    <input required type="text" name="bien_so_xe">
                 </div>
 
                 <div>
@@ -116,16 +115,8 @@ if (isset($_POST['create'])) {
 
 
             </div>
-            <?php
-        }
-        ?>
-        <?php
-        if ($coChuHo) {
-            echo "<input type='submit' name='create' value='Tạo'>";
-        } else {
-            echo "<input type='submit' name='check' value='Kiểm tra'>";
-        }
-        ?>
+        <input type='submit' name='create' value='Tạo'>
+
     </form>
 </div>
 <!--Luôn import (coppy vào file của mình)-->
