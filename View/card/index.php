@@ -7,13 +7,17 @@ use Helpers\PathHelper;
 use Helpers\SessionHelper;
 use Helpers\ViewHelper;
 use Helpers\WindowHelper;
+use Model\ChuHo;
 
 AuthHelper::isLogging();
 
 $veModel = new \Model\Ve();
+$chuhoModel = new ChuHo();
+
 $page = $_GET['page'] ?? 1;
 $limit = $_GET['limit'] ?? 25;
-$allVe = $veModel->getInfo(null,['*'],$limit,$page);
+$allVe = $veModel->getInfo($_GET['id'],['*'],$limit,$page);
+$chuho = $chuhoModel->findById($_GET['id'])[0];
 
 if(SessionHelper::get('delete'))
 {
@@ -25,12 +29,13 @@ if(isset($_GET['delete']))
 {
     $veModel->deleteById($_GET['delete']);
     SessionHelper::store('delete',['title' => 'Thành ông','message' => 'Xóa thành công','type' => 'success']);
-    echo WindowHelper::location('index.php');
+    echo WindowHelper::location('index.php?id='.$_GET['id']);
 }
 ?>
 
 <div>
-    <a class="btn btn-primary" href="createMonthCard.php">Thêm thẻ tháng mới</a>
+    <h3>Chủ hộ: <?php echo $chuho['ten_chu_ho'] ?></h3>
+    <a class="btn btn-primary" href="<?php echo 'createMonthCard.php?ma_can_ho='.$_GET['id']?>">Thêm thẻ tháng mới</a>
     <ul class="responsive-table">
         <li class="table-header">
             <div class="col col-1">Mã vé</div>
@@ -69,7 +74,7 @@ if(isset($_GET['delete']))
                     <?php echo $item['trang_thai'] ? 'Hoạt động' : 'Khóa' ?>
                 </div>
                 <div class="col col-1 flex items-center">
-                    <a class="btn btn-danger" onclick="return window.confirm('Bạn chắc chắn muốn xóa?')" href="<?php echo "index.php?delete=".$item['ma_ve']?>">Xóa</a>
+                    <a class="btn btn-danger" onclick="return window.confirm('Bạn chắc chắn muốn xóa?')" href="<?php echo "index.php?delete=".$item['ma_ve']."&id=".$_GET['id']?>">Xóa</a>
                     <a class="btn btn-primary" href="<?php echo "updateMonthCard.php?update=".$item['ma_ve']?>">Sửa</a>
                 </div>
             </li>

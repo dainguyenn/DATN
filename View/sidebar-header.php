@@ -26,7 +26,7 @@
                     <div class="menu-items">
                         <ul class="nav-menu items-show">
                             <li class="nav-item">
-                                <a class="nav-link" href="/View/card/index.php">Vé tháng</a>
+                                <a class="nav-link" href="/View/card/chuho.php">Chủ hộ</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/View/card/listCardDay.php">Vé ngày</a>

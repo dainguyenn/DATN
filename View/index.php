@@ -17,7 +17,7 @@ AuthHelper::isLogging();
     <title>Document</title>
 </head>
 <body>
-    <a href="/View/card/index.php">Quản lý thẻ</a> <br />
+    <a href="/View/card/chuho.php">Quản lý chủ hộ</a> <br />
     <a href="/View/vehicle/parking/index.php">Gửi xe</a> <br />
     <a href="/View/vehicle/taking/index.php">Lấy xe</a>
 </body>

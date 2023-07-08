@@ -58,7 +58,7 @@ SessionHelper::start();
 </body>
 
 <?php
-if(isset($_POST['login']))
+if(isset($_POST['btn-signin']))
 {
     AuthHelper::login('a');
 }
