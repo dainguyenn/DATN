@@ -82,7 +82,7 @@
                     <a class="logo nav-link" href="">
                         <img src="../storage/images/1686459031.png" alt="">
                         <span class="nav-head-title">
-                            the demo parking solution
+                            Quản lý trông giữ xe chung cư
                         </span>
                     </a>
                 </li>
@@ -95,7 +95,7 @@
                 <li class="header-nav-item user-dropdown">
                     <div class="user-dropdown">
                         <i class="fa-solid fa-circle-user"></i>
-                        <span>Admin Name</span>
+                        <span>Admin</span>
                         <i class="user-arrow fa fa-chevron-down"></i>
                         <ul class="drop-menu">
                             <li class="drop-menu-item">
