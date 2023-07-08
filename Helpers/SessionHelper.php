@@ -33,7 +33,7 @@ class SessionHelper
     public static function get($key): string|array|null
     {
         self::start();
-        return $_SESSION[$key];
+        return $_SESSION[$key] ?? null;
     }
 
 

@@ -75,7 +75,7 @@ if (isset($_POST['update'])) {
             'bien_so_xe' => $_POST['bien_so_xe'],
         ]);
 
-        echo WindowHelper::location('index.php');
+        echo WindowHelper::location('chuho.php');
     }
 }
 ?>
@@ -103,14 +103,9 @@ if (isset($message)) {
             </div>
             <div>
                 <label>Loại xe</label>
-                <select name="loai_xe">
-                    <option <?php
-                    echo checkValue($veUpdate['loai_xe'], 'Xe máy') ? 'selected' : '' ?> value="Xe máy">Xe máy
-                    </option>
-                    <option <?php
-                    echo checkValue($veUpdate['loai_xe'], 'Ô tô') ? 'selected' : '' ?> value="Ô tô">Ô tô
-                    </option>
-                </select>
+                <input type="text" name="loai_xe" value="<?php
+                echo $veUpdate['loai_xe'] ?>" readonly>
+
             </div>
             <div>
                 <label>Trạng thái</label>

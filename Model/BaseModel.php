@@ -11,6 +11,7 @@ class BaseModel
     protected $table;
     protected $primaryKey;
     protected $pdo;
+    protected $softDelete = false;
 
     public function __construct($table)
     {
@@ -66,6 +67,10 @@ class BaseModel
     {
         $columns = $this->implodeColumns($columns);
         $sql = "SELECT $columns FROM $this->table WHERE $this->primaryKey = '$id'";
+        if ($this->softDelete)
+        {
+            $sql.=" AND deleted_at IS NULL";
+        }
         $this->SQL_LOG($sql);
         return $this->pdo->query($sql);
     }
