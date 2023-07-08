@@ -26,10 +26,15 @@ class LuotGui extends BaseModel
         return $this->pdo->query($sql)[0];
     }
 
-    public function LocDuLieu($bienSoXe)
+    public function LocDuLieu($filter)
     {
         $sql = "SELECT * FROM " . self::TB_NAME .
-            " WHERE bien_so_xe like '%" . $bienSoXe . "%'";
-        return $this->pdo->query($sql);
+            " LEFT JOIN " . ThongTinVe::TB_NAME .
+            " ON " . self::TB_NAME . ".ma_ve = " . ThongTinVe::TB_NAME . ".ma_ve" .
+            " LEFT JOIN " . ChuHo::TB_NAME .
+            "ON" . ChuHo::TB_NAME . "ma_can_ho = " . ThongTinVe::TB_NAME . "ma_can_ho";
+        print_r($sql);
+
+        //return $this->pdo->query($sql);
     }
 }

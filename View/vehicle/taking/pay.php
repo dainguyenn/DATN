@@ -44,7 +44,6 @@ if ($ve["loai_xe"] == "Ô tô") {
     $timeSpan = $endTime->diff($startTime);
     $hoursNotRound = $timeSpan->h + ceil($timeSpan->i / 60) + $timeSpan->d * 24;
     $intoMoney = $hoursNotRound * $priceLevel;
-
     $result_str_show = <<<result
         <table border='1' cellpadding='5' cellspacing='0'>
         <tr>
