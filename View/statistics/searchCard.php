@@ -98,6 +98,11 @@ if (isset($_GET["sub"])) {
                     <?php
                     echo $item['trang_thai'] ? 'Hoạt động' : 'Khóa' ?>
                 </div class="col col-1">
+                <div class="col col-1">
+                    <a class="btn btn-primary" href="detailSearchCard.php?id=<?php
+                    echo $item['ma_luot_gui'];
+                    ?>">Chi tiết</a>
+                </div class="col col-1">
             </li>
             <?php
         } ?>

@@ -33,8 +33,32 @@ class LuotGui extends BaseModel
             " ON " . self::TB_NAME . ".ma_ve = " . ThongTinVe::TB_NAME . ".ma_ve" .
             " LEFT JOIN " . ChuHo::TB_NAME .
             "ON" . ChuHo::TB_NAME . "ma_can_ho = " . ThongTinVe::TB_NAME . "ma_can_ho";
-        print_r($sql);
+        return $this->pdo->query($sql);
+    }
 
-        //return $this->pdo->query($sql);
+    public function TongTienTheoThang($month = null, $year = null)
+    {
+        if (!isset($month)) {
+            $month = date("m");
+        }
+
+        if (!isset($year)) {
+            $year = date("yyyy");
+        }
+
+        $tbNameSelf = self::TB_NAME;
+        $tbNameVe = Ve::TB_NAME;
+
+        $sql = <<<SQL
+            SELECT MONTH(gio_ra), SUM(thanh_toan) AS total_revenue
+            FROM $tbNameSelf
+            JOIN $tbNameVe  ON $tbNameSelf.ma_ve = $tbNameVe.ma_ve
+            WHERE ve.loai_ve = 'Ngày'
+                AND MONTH(gio_ra) = $month
+                AND YEAR(gio_ra) = $year
+            GROUP BY MONTH(gio_ra),  YEAR(gio_ra)
+        SQL;
+        echo $sql;
+        return $this->pdo->query($sql);
     }
 }

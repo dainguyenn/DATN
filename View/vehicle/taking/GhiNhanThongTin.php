@@ -20,19 +20,19 @@
     $veModel = new \Model\Ve();
     $luotGuiModel = new \Model\LuotGui();
     $ve = $_SESSION["ve_lay"];
-    $xacNhanBienSoLay = SessionHelper::get("xac_nhan_bien_so_lay"); 
-    $xacNhanThanhToan = SessionHelper::get("da_thanh_toan"); 
-    $thanhTien = SessionHelper::get("da_thanh_toan"); 
+    $xacNhanBienSoLay = SessionHelper::get("xac_nhan_bien_so_lay");
+    $xacNhanThanhToan = SessionHelper::get("da_thanh_toan");
+    $thanhTien = SessionHelper::get("so_tien_thanh_toan");
     if (!isset($ve) || !isset($xacNhanBienSoLay) || !$xacNhanBienSoLay) {
         echo WindowHelper::location('index.php');
     }
-    
+
     if ($ve["loai_the"] == "Ngày" && !isset($xacNhanThanhToan) && !$xacNhanThanhToan) {
         echo WindowHelper::location('index.php');
     }
 
     $luotGui = $luotGuiModel->GetThongTinTheDangGui($ve["ma_ve"]);
-    
+
     if (isset($_POST["sub"])) {
         if (isset($_FILES["hinh_anh"]) && $_FILES["hinh_anh"]["size"] > 0) {
             $now = date("Y-m-d H:i:s");
@@ -71,7 +71,7 @@
             SessionHelper::delete("bien_so_xe");
             SessionHelper::delete("da_thanh_toan");
             SessionHelper::delete("so_tien_thanh_toan");
-    
+
         } else {
             echo "<p class='invalid'>Bạn chưa nhập hình ảnh</p>";
         }

@@ -43,7 +43,7 @@ if ($ve["loai_xe"] == "Ô tô") {
     }
     $timeSpan = $endTime->diff($startTime);
     $hoursNotRound = $timeSpan->h + ceil($timeSpan->i / 60) + $timeSpan->d * 24;
-    $intoMoney = $hoursNotRound * $priceLevel;
+    $thanhTien = $hoursNotRound * $priceLevel;
     $result_str_show = <<<result
         <table border='1' cellpadding='5' cellspacing='0'>
         <tr>
@@ -64,7 +64,7 @@ if ($ve["loai_xe"] == "Ô tô") {
         </tr>
         <tr>
             <td>Thành tiền </td>
-            <td>${intoMoney}</td>
+            <td>${thanhTien}</td>
         </tr>
         </table>
         result;
@@ -185,7 +185,6 @@ if ($ve["loai_xe"] == "Ô tô") {
         result;
     echo $result_str_show;
 }
-
 if (isset($_POST["sub"])) {
     SessionHelper::store("da_thanh_toan", true);
     SessionHelper::store("so_tien_thanh_toan", $thanhTien);
