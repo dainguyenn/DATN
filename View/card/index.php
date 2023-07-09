@@ -10,7 +10,6 @@ use Helpers\WindowHelper;
 use Model\ChuHo;
 
 AuthHelper::isLogging();
-
 $veModel = new \Model\Ve();
 $chuhoModel = new ChuHo();
 
