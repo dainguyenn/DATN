@@ -10,7 +10,7 @@ class Ve extends BaseModel
 {
     protected $primaryKey = 'ma_ve';
     public const TB_NAME = 've';
-
+    protected $softDelete = true;
     public function __construct()
     {
         parent::__construct('ve');
@@ -32,7 +32,7 @@ class Ve extends BaseModel
             . $tbJoin
             . " ON $this->table.$this->primaryKey = $tbJoin.$this->primaryKey
              INNER JOIN chu_ho ON chu_ho.ma_can_ho = $tbJoin.ma_can_ho
-             WHERE chu_ho.ma_can_ho = $id LIMIT $start, $limit";
+             WHERE chu_ho.ma_can_ho = $id AND ve.deleted_at IS NULL LIMIT $start, $limit";
         $sqlCountRecord = "SELECT COUNT(*) AS total_record FROM $this->table";
 
         $totalRecord = $this->pdo->query($sqlCountRecord);
@@ -167,9 +167,17 @@ class Ve extends BaseModel
             . $tbJoin
             . " ON $this->table.$this->primaryKey = $tbJoin.$this->primaryKey
              INNER JOIN chu_ho ON chu_ho.ma_can_ho = $tbJoin.ma_can_ho 
-             WHERE $this->table.loai_xe= '$loaiXe' AND chu_ho.ma_can_ho = '$maCanHo'
+             WHERE $this->table.loai_xe= '$loaiXe' AND chu_ho.ma_can_ho = '$maCanHo' AND ve.deleted_at IS NULL
              ";
         $this->SQL_LOG($sql);
         return $this->pdo->query($sql)[0]['SL'];
+    }
+
+    public function deleteById($id): bool|array|null
+    {
+        $now = date('Y-m-d H:i:s');
+        $sql = "UPDATE $this->table SET deleted_at = '$now' WHERE id=$id";
+        $this->SQL_LOG($sql);
+        return $this->pdo->query($sql);
     }
 }

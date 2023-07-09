@@ -15,7 +15,7 @@ class ThongTinVe extends BaseModel
     public function kiemTraBienSo($bienSo)
     {
         $sql = "SELECT * FROM $this->table INNER JOIN ve ON ve.ma_ve = $this->table.ma_ve  
-        WHERE $this->table.bien_so_xe = '$bienSo'";
+        WHERE $this->table.bien_so_xe = '$bienSo' AND ve.deleted_at IS NULL";
         return $this->pdo->query($sql);
     }
 }
