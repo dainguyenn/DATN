@@ -13,11 +13,11 @@ $veModel = new Ve();
 $page = $_GET['page'] ?? 1;
 $limit = $_GET['limit'] ?? 25;
 $allVe = null;
-if(isset($_GET["sub"])){
-    $allVe = $veModel->DanhSachVe(null, $limit, $page, $_GET["bien_so_xe"]);
+if (isset($_GET["sub"])) {
+    $allVe = $veModel->DanhSachVe(null, $limit, $page, $_GET);
 } else {
 
-    $allVe = $veModel->DanhSachVe(null, $limit, $page);
+    $allVe = $veModel->DanhSachVe(null, $limit, $page, null);
 }
 
 
@@ -27,15 +27,29 @@ if(isset($_GET["sub"])){
 <!---->
 
 <div>
-    <form action="" method="GET" class="style-search">
-        <div class="form-item">
-            <input class="form-input" type="text" name="bien_so_xe" placeholder=" ">
-            <label for="name" class="form-label">
-                Biển số xe
-            </label>
-        </div>
-        <input type="submit" name="sub" value="Tìm" class="btn btn-primary" />
-        <a class="btn btn-primary " href="parking.php">Danh sách xe đang gửi</a>
+    <form action="" method="GET">
+        <table class="table" border="0" cellspacing="10px">
+            <tr>
+                <td>Biển số xe</td>
+                <td>Mã vé</td>
+                <td>Loại vé</td>
+                <td>Tên chủ hộ</td>
+            </tr>
+            <tr>
+                <td scope="row"><input class="form-control" type="text" name="bien_so_xe" placeholder="Nhập biển số xe">
+                </td>
+                <td><input class="form-control" type="text" name="ma_ve" placeholder="Nhập mã vé"></td>
+                <td>
+                    <select class="form-control" name="loai_ve" id="">
+                        <option></option>
+                        <option value="Ngày">Vé ngày</option>
+                        <option value="Tháng">Vé tháng</option>
+                    </select>
+                </td>
+                <td><input class="form-control" type="text" name="ten_chu_ho" placeholder="Nhập tên chủ hộ"></td>
+            </tr>
+        </table>
+        <input type="submit" name="sub" value="Tìm kiếm" class="btn btn-primary" />
     </form>
     <ul class="responsive-table">
         <li class="table-header">
@@ -49,42 +63,42 @@ if(isset($_GET["sub"])){
             <div class="col col-1">Trạng thái </div>
         </li>
         <?php
-            foreach ($allVe['data'] as $item) {
-                ?>
-                <li class="table-row">
+        foreach ($allVe['data'] as $item) {
+            ?>
+            <li class="table-row">
                 <div class="col col-1">
-                        <?php
-                        echo $item['ma_luot_gui'] ?>
-                    </div class="col col-1">
-                    <div class="col col-1">
-                        <?php
-                        echo $item['ma_ve'] ?>
-                    </div class="col col-1">
-                    <div class="col col-1">
-                        <?php
-                        echo $item['loai_ve'] ?>
-                    </div class="col col-1">
-                    <div class="col col-1">
-                        <?php
-                        echo $item['loai_xe'] ?>
-                    </div class="col col-1">
-                    <div class="col col-1">
-                        <?php
-                        echo $item['bien_so_xe'] ?>
-                    </div class="col col-1">
-                    <div class="col col-1">
-                        <?php
-                        echo $item['gio_vao'] ?>
-                    </div class="col col-1">
-                    <div class="col col-1">
-                        <?php
-                        echo $item['gio_ra'] ?>
-                    </div class="col col-1">
-                    <div class="col col-1">
+                    <?php
+                    echo $item['ma_luot_gui'] ?>
+                </div class="col col-1">
+                <div class="col col-1">
+                    <?php
+                    echo $item['ma_ve'] ?>
+                </div class="col col-1">
+                <div class="col col-1">
+                    <?php
+                    echo $item['loai_ve'] ?>
+                </div class="col col-1">
+                <div class="col col-1">
+                    <?php
+                    echo $item['loai_xe'] ?>
+                </div class="col col-1">
+                <div class="col col-1">
+                    <?php
+                    echo $item['bien_so_xe'] ?>
+                </div class="col col-1">
+                <div class="col col-1">
+                    <?php
+                    echo $item['gio_vao'] ?>
+                </div class="col col-1">
+                <div class="col col-1">
+                    <?php
+                    echo $item['gio_ra'] ?>
+                </div class="col col-1">
+                <div class="col col-1">
                     <?php
                     echo $item['trang_thai'] ? 'Hoạt động' : 'Khóa' ?>
-                    </div class="col col-1">
-                </li>
+                </div class="col col-1">
+            </li>
             <?php
         } ?>
     </ul>
@@ -94,5 +108,4 @@ if(isset($_GET["sub"])){
 <?php $content = ob_get_clean(); ?>
 <?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
 <!--Đây là title-->
-<?php echo \Helpers\ViewHelper::title('Tìm kiếm');?><!---->
-
+<?php echo \Helpers\ViewHelper::title('Tìm kiếm'); ?><!---->

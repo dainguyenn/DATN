@@ -1,4 +1,5 @@
 <?php
+use Helpers\SessionHelper;
 ob_start(); ?>
 <?php
 
@@ -39,24 +40,7 @@ function checkValue($origin, $value)
 
 if (isset($_POST['update'])) {
     $loaiXe = $_POST['loai_xe'];
-    $soluong = $veModel->check($_POST['ma_can_ho'], $_POST['loai_xe']);
-
-    switch ($loaiXe) {
-        case 'Ô tô':
-        {
-            if ($soluong - 1 >= 1) {
-                $message = "Vượt quá số lượng ô tô cho phép đăng ký.";
-            }
-            break;
-        }
-        case 'Xe máy':
-        {
-            if ($soluong - 1 >= 3) {
-                $message = "Vượt quá số lượng xe máy cho phép đăng ký.";
-            }
-            break;
-        }
-    }
+     
     $bienSo = $thongTinVeModel->findByCondition(
         ['bien_so_xe', '=', $_POST['bien_so_xe']]
     );
@@ -75,7 +59,7 @@ if (isset($_POST['update'])) {
             'bien_so_xe' => $_POST['bien_so_xe'],
         ]);
 
-        echo WindowHelper::location('chuho.php');
+        echo WindowHelper::location('index.php?id='.$thongTinVe['ma_can_ho']);
     }
 }
 ?>
