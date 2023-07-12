@@ -15,26 +15,26 @@ $chuhoModel = new ChuHo();
 
 $page = $_GET['page'] ?? 1;
 $limit = $_GET['limit'] ?? 25;
-$allVe = $veModel->getInfo($_GET['id'],['*'],$limit,$page);
+$allVe = $veModel->getInfo($_GET['id'], ['*'], $limit, $page);
 $chuho = $chuhoModel->findById($_GET['id'])[0];
 
-if(SessionHelper::get('delete'))
-{
+if (SessionHelper::get('delete')) {
     $deleteObj = SessionHelper::flash('delete');
-    echo ViewHelper::toast($deleteObj['title'],$deleteObj['message'],$deleteObj['type']);
+    echo ViewHelper::toast($deleteObj['title'], $deleteObj['message'], $deleteObj['type']);
 }
 
-if(isset($_GET['delete']))
-{
+if (isset($_GET['delete'])) {
     $veModel->deleteById($_GET['delete']);
-    SessionHelper::store('delete',['title' => 'Thành ông','message' => 'Xóa thành công','type' => 'success']);
-    echo WindowHelper::location('index.php?id='.$_GET['id']);
+    SessionHelper::store('delete', ['title' => 'Thành ông', 'message' => 'Xóa thành công', 'type' => 'success']);
+    echo WindowHelper::location('index.php?id=' . $_GET['id']);
 }
 ?>
 
 <div>
-    <h3>Chủ hộ: <?php echo $chuho['ten_chu_ho'] ?></h3>
-    <a class="btn btn-primary" href="<?php echo 'createMonthCard.php?ma_can_ho='.$_GET['id']?>">Thêm thẻ tháng mới</a>
+    <h3>Chủ hộ:
+        <?php echo $chuho['ten_chu_ho'] ?>
+    </h3>
+    <a class="btn btn-primary" href="<?php echo 'createMonthCard.php?ma_can_ho=' . $_GET['id'] ?>">Thêm thẻ tháng mới</a>
     <ul class="responsive-table">
         <li class="table-header">
             <div class="col col-1">Mã vé</div>
@@ -73,8 +73,9 @@ if(isset($_GET['delete']))
                     <?php echo $item['trang_thai'] ? 'Hoạt động' : 'Khóa' ?>
                 </div>
                 <div class="col col-1 flex items-center">
-                    <a class="btn btn-danger" onclick="return window.confirm('Bạn chắc chắn muốn xóa?')" href="<?php echo "index.php?delete=".$item['ma_ve']."&id=".$_GET['id']?>">Xóa</a>
-                    <a class="btn btn-primary" href="<?php echo "updateMonthCard.php?update=".$item['ma_ve']?>">Sửa</a>
+                    <a class="btn btn-danger" onclick="return window.confirm('Bạn chắc chắn muốn xóa?')"
+                        href="<?php echo "index.php?delete=" . $item['ma_ve'] . "&id=" . $_GET['id'] ?>">Xóa</a>
+                    <a class="btn btn-primary" href="<?php echo "updateMonthCard.php?update=" . $item['ma_ve'] ?>">Sửa</a>
                 </div>
             </li>
         <?php } ?>
@@ -83,5 +84,6 @@ if(isset($_GET['delete']))
 <!--Luôn import (coppy vào file của mình)-->
 <?php $content = ob_get_clean(); ?>
 <?= str_replace('{{content}}', $content, file_get_contents(PathHelper::app_path('View/sidebar-header.php'))) ?>
-<?php echo ViewHelper::title('Danh sách vé tháng');?>
+<?php echo ViewHelper::title('Danh sách vé tháng');
+echo ViewHelper::user($_SESSION["user"]); ?>
 <!---->

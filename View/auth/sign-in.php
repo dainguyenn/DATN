@@ -53,7 +53,7 @@ SessionHelper::start();
                 <a class="forgot-text" href="#">Quên mật khẩu?</a>
             </div>
             <button type="submit" name="btn-signin" class="btn-login">
-                <a href="./View/index">Sign in</a>
+                Sign in
             </button>
         </form>
 
@@ -61,8 +61,24 @@ SessionHelper::start();
 </body>
 
 <?php
+use Model\TaiKhoan;
+
 if (isset($_POST['btn-signin'])) {
-    AuthHelper::login('a');
+    $taiKhoanModel = new TaiKhoan();
+    $taiKhoan = null;
+    if ($_POST["account"] == null || $_POST["password"] == null) {
+        echo "<p class='invalid'>Phai nhap day du tai khoan mat khau </p>";
+    } else {
+        $taiKhoan = $taiKhoanModel->Login($_POST["account"], $_POST["password"]);
+        if (count($taiKhoan) == 0) {
+            echo "<p class='invalid'>Phai nhap day du tai khoan mat khau </p>";
+        } else {
+            print_r($taiKhoan);
+            AuthHelper::login($taiKhoan[0]["ten_tai_khoan"]);
+        }
+
+    }
+
 }
 ?>
 

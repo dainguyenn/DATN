@@ -13,14 +13,23 @@ class ViewHelper
                 </script>";
     }
 
-    public static function toast($title ,$message, $type = 'success',$duration=3000)
+    public static function user($user)
+    {
+        return "<script>
+                const userName = document.querySelector('#user');
+                userName.innerText = '$user';
+                document.userName = '$user';
+                </script>";
+    }
+
+    public static function toast($title, $message, $type = 'success', $duration = 3000)
     {
         $icons = [
-        'success' => 'fa-check-circle',
-                'error' => 'fa-solid fa-circle-exclamation',
-                'info'=> 'fa-circle-info',
-                'warning'=> 'fa-solid fa-circle-exclamation',
-            ];
+            'success' => 'fa-check-circle',
+            'error' => 'fa-solid fa-circle-exclamation',
+            'info' => 'fa-circle-info',
+            'warning' => 'fa-solid fa-circle-exclamation',
+        ];
         $iconType = $icons[$type];
         return " 
         <div id='toast'>

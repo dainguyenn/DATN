@@ -111,6 +111,7 @@ if (isset($_GET["sub"])) {
 
 
 <?php $content = ob_get_clean(); ?>
-<?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
+<?= str_replace('{{content}}', $content, file_get_contents(PathHelper::app_path('view/sidebar-header.php'))) ?>
 <!--Đây là title-->
-<?php echo \Helpers\ViewHelper::title('Tìm kiếm'); ?><!---->
+<?php echo \Helpers\ViewHelper::title('Tìm kiếm');
+echo ViewHelper::user($_SESSION["user"]); ?><!---->

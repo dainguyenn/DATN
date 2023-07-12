@@ -79,7 +79,7 @@
         <div class="header-bar">
             <nav class="header-nav">
                 <li class="header-nav-item">
-                    <a class="logo nav-link" href="">
+                    <a class="logo nav-link" href="/View">
                         <img src="../storage/images/1686459031.png" alt="">
                         <span class="nav-head-title">
                             Quản lý trông giữ xe chung cư
@@ -95,7 +95,8 @@
                 <li class="header-nav-item user-dropdown">
                     <div class="user-dropdown">
                         <i class="fa-solid fa-circle-user"></i>
-                        <span>Admin</span>
+                        <span id="user">
+                        </span>
                         <i class="user-arrow fa fa-chevron-down"></i>
                         <ul class="drop-menu">
                             <li class="drop-menu-item">

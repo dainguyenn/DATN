@@ -54,7 +54,7 @@ if (isset($message)) {
 
         </div>
 
-        <input name='create'value="Tạo" type="submit">
+        <input name='create' value="Tạo" type="submit">
 
     </form>
 </div>
@@ -63,5 +63,6 @@ if (isset($message)) {
 <!--Luôn import (coppy vào file của mình)-->
 <?php $content = ob_get_clean(); ?>
 <?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
-<?php echo ViewHelper::title('Tạo vé ngày mới');?>
+<?php echo ViewHelper::title('Tạo vé ngày mới');
+echo ViewHelper::user($_SESSION["user"]); ?>
 <!---->

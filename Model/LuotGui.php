@@ -36,29 +36,27 @@ class LuotGui extends BaseModel
         return $this->pdo->query($sql);
     }
 
-    public function TongTienTheoThang($month = null, $year = null)
+    public function ChiTietDoanhThuCacNgay($month = null, $year = null)
     {
-        if (!isset($month)) {
+
+        if ($month == null) {
             $month = date("m");
         }
 
-        if (!isset($year)) {
-            $year = date("yyyy");
+        if ($year == null) {
+            $year = date("Y");
         }
 
         $tbNameSelf = self::TB_NAME;
-        $tbNameVe = Ve::TB_NAME;
 
         $sql = <<<SQL
-            SELECT MONTH(gio_ra), SUM(thanh_toan) AS total_revenue
+            SELECT DAY(DATE(gio_ra)) AS ngay, SUM(thanh_toan) AS tong_doanh_thu
             FROM $tbNameSelf
-            JOIN $tbNameVe  ON $tbNameSelf.ma_ve = $tbNameVe.ma_ve
-            WHERE ve.loai_ve = 'Ngày'
-                AND MONTH(gio_ra) = $month
+            WHERE MONTH(gio_ra) = $month
                 AND YEAR(gio_ra) = $year
-            GROUP BY MONTH(gio_ra),  YEAR(gio_ra)
+            GROUP BY DATE(gio_ra)
+            ORDER BY DATE(gio_ra)
         SQL;
-        echo $sql;
         return $this->pdo->query($sql);
     }
 }
