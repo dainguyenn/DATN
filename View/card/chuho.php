@@ -14,17 +14,15 @@ AuthHelper::isLogging();
 $veModel = new ChuHo();
 $page = $_GET['page'] ?? 1;
 $limit = $_GET['limit'] ?? 25;
-$allVe = $veModel->getAll(null,['*'],$limit,$page);
-if(SessionHelper::get('delete'))
-{
+$allVe = $veModel->getAll(null, ['*'], $limit, $page);
+if (SessionHelper::get('delete')) {
     $deleteObj = SessionHelper::flash('delete');
-    echo ViewHelper::toast($deleteObj['title'],$deleteObj['message'],$deleteObj['type']);
+    echo ViewHelper::toast($deleteObj['title'], $deleteObj['message'], $deleteObj['type']);
 }
 
-if(isset($_GET['delete']))
-{
+if (isset($_GET['delete'])) {
     $veModel->deleteById($_GET['delete']);
-    SessionHelper::store('delete',['title' => 'Thành ông','message' => 'Xóa thành công','type' => 'success']);
+    SessionHelper::store('delete', ['title' => 'Thành ông', 'message' => 'Xóa thành công', 'type' => 'success']);
     echo WindowHelper::location('index.php');
 }
 ?>
@@ -52,7 +50,7 @@ if(isset($_GET['delete']))
                     <?php echo $item['cmnd'] ?>
                 </div>
                 <div class="col col-1 flex items-center">
-                    <a class="btn btn-primary" href="<?php echo "index.php?id=".$item['ma_can_ho']?>">Chi tiết</a>
+                    <a class="btn btn-primary" href="<?php echo "index.php?id=" . $item['ma_can_ho'] ?>">Chi tiết</a>
                 </div>
             </li>
         <?php } ?>
@@ -61,5 +59,6 @@ if(isset($_GET['delete']))
 <!--Luôn import (coppy vào file của mình)-->
 <?php $content = ob_get_clean(); ?>
 <?= str_replace('{{content}}', $content, file_get_contents(PathHelper::app_path('View/sidebar-header.php'))) ?>
-<?php echo ViewHelper::title('Danh sách chủ hộ');?>
+<?php echo ViewHelper::title('Danh sách chủ hộ');
+echo ViewHelper::user($_SESSION["user"]); ?>
 <!---->

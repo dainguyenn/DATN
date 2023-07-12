@@ -43,24 +43,22 @@ if (isset($_POST['create'])) {
     $soluong = $ve->check($_POST['ma_can_ho'], $_POST['loai_xe']);
 
     switch ($loaiXe) {
-        case 'Ô tô':
-        {
-            if ($soluong >= 1) {
-                $message = "Vượt quá số lượng ô tô cho phép đăng ký.";
-                SessionHelper::store('error', ['title' => 'Lỗi', 'message' => $message, 'type' => 'warning']);
-                echo WindowHelper::location('createMonthCard.php');
+        case 'Ô tô': {
+                if ($soluong >= 1) {
+                    $message = "Vượt quá số lượng ô tô cho phép đăng ký.";
+                    SessionHelper::store('error', ['title' => 'Lỗi', 'message' => $message, 'type' => 'warning']);
+                    echo WindowHelper::location('createMonthCard.php');
+                }
+                break;
             }
-            break;
-        }
-        case 'Xe máy':
-        {
-            if ($soluong >= 3) {
-                $message = "Vượt quá số lượng xe máy cho phép đăng ký.";
-                SessionHelper::store('error', ['title' => 'Lỗi', 'message' => $message, 'type' => 'warning']);
-                echo WindowHelper::location('createMonthCard.php');
+        case 'Xe máy': {
+                if ($soluong >= 3) {
+                    $message = "Vượt quá số lượng xe máy cho phép đăng ký.";
+                    SessionHelper::store('error', ['title' => 'Lỗi', 'message' => $message, 'type' => 'warning']);
+                    echo WindowHelper::location('createMonthCard.php');
+                }
+                break;
             }
-            break;
-        }
     }
     $bienSo = $thongTinVeModel->kiemTraBienSo($_POST['bien_so_xe']);
     if ($bienSo) {
@@ -78,25 +76,23 @@ if (isset($_POST['create'])) {
         'bien_so_xe' => $_POST['bien_so_xe'],
     ]);
 
-    echo WindowHelper::location('index.php?id='. SessionHelper::get('ma'));
+    echo WindowHelper::location('index.php?id=' . SessionHelper::get('ma'));
 }
-if (isset($_GET['ma_can_ho']))
-{
-    SessionHelper::store('ma',$_GET['ma_can_ho']);
+if (isset($_GET['ma_can_ho'])) {
+    SessionHelper::store('ma', $_GET['ma_can_ho']);
 }
 ?>
 
 <body>
-<h1>Tạo thẻ mới</h1>
+    <h1>Tạo thẻ mới</h1>
 
-<div>
-    <form method="POST" class="form-style-6">
+    <div>
+        <form method="POST" class="form-style-6">
 
-        <div>
-            <label>Mã căn hộ</label>
-            <input name="ma_can_ho" type="number"
-            readonly value="<?php echo SessionHelper::get('ma') ?>">
-        </div>
+            <div>
+                <label>Mã căn hộ</label>
+                <input name="ma_can_ho" type="number" readonly value="<?php echo SessionHelper::get('ma') ?>">
+            </div>
 
             <div>
 
@@ -115,14 +111,15 @@ if (isset($_GET['ma_can_ho']))
 
 
             </div>
-        <input type='submit' name='create' value='Tạo'>
+            <input type='submit' name='create' value='Tạo'>
 
-    </form>
-</div>
-<!--Luôn import (coppy vào file của mình)-->
-<?php
-$content = ob_get_clean(); ?>
-<?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
-<?php
-echo ViewHelper::title('Tạo vé tháng mới'); ?>
-<!---->
+        </form>
+    </div>
+    <!--Luôn import (coppy vào file của mình)-->
+    <?php
+    $content = ob_get_clean(); ?>
+    <?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
+    <?php
+    echo ViewHelper::title('Tạo vé tháng mới');
+    echo ViewHelper::user($_SESSION["user"]); ?>
+    <!---->

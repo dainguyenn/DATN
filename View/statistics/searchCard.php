@@ -98,6 +98,11 @@ if (isset($_GET["sub"])) {
                     <?php
                     echo $item['trang_thai'] ? 'Hoạt động' : 'Khóa' ?>
                 </div class="col col-1">
+                <div class="col col-1">
+                    <a class="btn btn-primary" href="detailSearchCard.php?id=<?php
+                    echo $item['ma_luot_gui'];
+                    ?>">Chi tiết</a>
+                </div class="col col-1">
             </li>
             <?php
         } ?>
@@ -106,6 +111,7 @@ if (isset($_GET["sub"])) {
 
 
 <?php $content = ob_get_clean(); ?>
-<?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
+<?= str_replace('{{content}}', $content, file_get_contents(PathHelper::app_path('view/sidebar-header.php'))) ?>
 <!--Đây là title-->
-<?php echo \Helpers\ViewHelper::title('Tìm kiếm'); ?><!---->
+<?php echo \Helpers\ViewHelper::title('Tìm kiếm');
+echo ViewHelper::user($_SESSION["user"]); ?><!---->

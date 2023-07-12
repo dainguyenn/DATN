@@ -9,8 +9,8 @@ require_once 'BaseModel.php';
 class Ve extends BaseModel
 {
     protected $primaryKey = 'ma_ve';
-    public const TB_NAME = 've';
-    protected $softDelete = true;
+    public const TB_NAME = 've'; 
+    protected $softDelete = true; 
     public function __construct()
     {
         parent::__construct('ve');
@@ -152,6 +152,26 @@ class Ve extends BaseModel
             'last_page' => 1
         ];
 
+    }
+
+    public function ChuaDongTien($id = null, $limit = 25, $page = 1)
+    {
+        $sql="SELECT * FROM thong_tin_ve 
+            INNER JOIN chu_ho ON thong_tin_ve.ma_can_ho = chu_ho.ma_can_ho
+            INNER JOIN $this->table ON thong_tin_ve.ma_ve = $this->table.ma_ve
+            WHERE loai_ve = '" . CardConst::TYPE_MONTH . "'
+                AND trang_thai =  0 ";
+
+        $totalRecord = $this->pdo->query($sql);
+        $this->SQL_LOG($sql);
+        $result = $this->pdo->query($sql);
+        $total = count($result);
+        return [
+            'data' => $totalRecord,
+            'total' => $total,
+            'current_page' => $page,
+            'last_page' => 1
+        ];
     }
     /**
      * @param $maCanHo
