@@ -10,6 +10,7 @@
     </form>
     <?php
     require_once '../../../autoload.php';
+    Helpers\AuthHelper::isLogging();
     use Helpers\ViewHelper;
     use Helpers\SessionHelper;
     use Helpers\WindowHelper;

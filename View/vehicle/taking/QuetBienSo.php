@@ -5,6 +5,11 @@
     echo $_SESSION["ve_lay"]["loai_ve"];
     ?>
 </h4>
+<h4>Loại xe:
+    <?php
+    echo $_SESSION["ve_lay"]["loai_xe"]
+        ?>
+</h4>
 <div class="form-style-6">
     <form method="POST" enctype="multipart/form-data" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
         <input type="hidden" name="action" value="lay_xe">
@@ -45,7 +50,7 @@
                 echo WindowHelper::location("GhiNhanThongTin.php");
             } else {
                 echo "<p class='invalid'>xác nhận biến số không hợp lệ<p>";
-                echo "<p>" . $_POST["bien_so_xe"] . "---" . $result["bien_so_xe"] . "</p>";
+                //echo "<p>" . $_POST["bien_so_xe"] . "---" . $result["bien_so_xe"] . "</p>";
             }
         } else {
             // kiểm tra biển số lượt gửi với biển số vừa quét

@@ -7,6 +7,7 @@
 </div>
 <?php
 require_once '../../../autoload.php';
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 use Helpers\ViewHelper;
 use Helpers\SessionHelper;
 use Helpers\WindowHelper;
@@ -42,7 +43,7 @@ if ($ve["loai_xe"] == "Ô tô") {
         $priceLevel = $bangGiaModel->getGia("Ngày", "Ô tô", "Tối");
     }
     $timeSpan = $endTime->diff($startTime);
-    $hoursNotRound = $timeSpan->h + ceil($timeSpan->i / 60) + $timeSpan->d * 24;
+    $hoursNotRound = $timeSpan->h + ceil($timeSpan->i / 60 + $timeSpan->s / 3600) + $timeSpan->d * 24;
     $thanhTien = $hoursNotRound * $priceLevel;
     $result_str_show = <<<result
         <table border='1' cellpadding='5' cellspacing='0'>
@@ -59,12 +60,12 @@ if ($ve["loai_xe"] == "Ô tô") {
             <td>${hoursNotRound}</td>
         </tr>
         <tr>
-            <td>Đơn giá( tiếng) </td>
-            <td>${priceLevel}</td>
+            <td>Đơn giá</td>
+            <td>${priceLevel} VND/1 tiếng</td>
         </tr>
         <tr>
             <td>Thành tiền </td>
-            <td>${thanhTien}</td>
+            <td>${thanhTien} VND</td>
         </tr>
         </table>
         result;
@@ -100,24 +101,24 @@ if ($ve["loai_xe"] == "Ô tô") {
 
         //tiền gửi ngày giữa
         $totalDays = $endTime->format("d") - $startTime->format("d") - 1;
-        if ($totalDays >= 2) {
-            $dayTotal += $totalDays * 2;
-            $nightToTal += $totalDays * 2 - 1;
+        if ($totalDays >= 1) {
+            $dayTotal = $dayTotal + 1;
+            $nightToTal = $nightToTal + 1;
         }
         //tiền gửi ngày cuối
         if ($endTime->format("H") < 6) { //
-            $nightToTal = $nightToTal + 1; //1 ca đêm
+            //0 ca đêm
         }
         if ($endTime->format("H") >= 6 && $startTime->format("H") < 18) {
             $dayTotal += 1; //1 ca ngày
-            $nightToTal += 1; // 1 ca đêm
+            // 0 ca đêm
         }
         if ($endTime->format("H") >= 18) {
             $dayTotal += 1; //1 ca ngày
-            $nightToTal = $nightToTal + 1; //2 ca đêm
+            $nightToTal = $nightToTal + 1; //1 ca đêm
         }
     } else { // gửi trong ngày
-        // lúc bắt đầu gửi là ca sáng
+        // lúc bắt đầu gửi là sáng sớm
         if ($startTime->format("H") < 6) {
             if ($endTime->format("H") < 6) {
                 $dayTotal += 0; //0 ca ngày
@@ -132,20 +133,35 @@ if ($ve["loai_xe"] == "Ô tô") {
                 $dayTotal += 1; //1 ca ngày
             }
         }
+        //ca ngày
         if ($startTime->format("H") >= 6 && $startTime->format("H") < 18) {
             if ($endTime->format("H") >= 6 && $endTime->format("H") < 18) {
                 $dayTotal += 1; //1 ca ngày
             }
-            if ($startTime->format("H") >= 18) {
+            if ($endTime->format("H") >= 18) {
                 $nightToTal = $nightToTal + 1; // 1 ca đêm
                 $dayTotal += 1; //1 ca ngày
             }
         }
+        //ca đêm
         if ($startTime->format("H") >= 18) {
             $nightToTal = $nightToTal + 1;
         }
-
     }
+
+    echo <<<LOG
+            <table border ='1' cellpadding='3' cellspacing='0'>
+            <tr> 
+                <td>Giá ban ngày</td>
+                <td>Giá ban đêm</td>
+            </tr>
+            <tr> 
+                <td>${dayPrice} VND/1 buổi</td>
+                <td>${nightPrice} VND/1 buổi</td>
+            </tr>
+            </table>
+        LOG;
+
     echo <<<LOG
             <table border ='1' cellpadding='3' cellspacing='0'>
             <tr> 
@@ -158,6 +174,7 @@ if ($ve["loai_xe"] == "Ô tô") {
             </tr>
             </table>
         LOG;
+
     $thanhTien = $dayTotal * $dayPrice + $nightToTal * $nightPrice;
     $result_str_show = <<<result
         <table border='1' cellpadding='5' cellspacing='0'>
@@ -179,7 +196,7 @@ if ($ve["loai_xe"] == "Ô tô") {
         </tr>
         <tr>
             <td>Thành tiền </td>
-            <td>${thanhTien}</td>
+            <td>${thanhTien} VND</td>
         </tr>
         </table>
         result;
@@ -191,9 +208,20 @@ if (isset($_POST["sub"])) {
     echo WindowHelper::location('GhiNhanThongTin.php');
 }
 ?>
+<style>
+    td {
+        padding: 5px 10px;
+    }
+
+    table {
+        margin: 10px auto;
+        width: 550px;
+    }
+</style>
 <!--Luôn import (coppy vào file của mình)-->
 <?php $content = ob_get_clean(); ?>
 <?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
 <?php echo ViewHelper::title('Quản lí gửi lấy xe');
 echo ViewHelper::user($_SESSION["user"]); ?>
+
 <!---->

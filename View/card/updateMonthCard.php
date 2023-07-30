@@ -76,7 +76,7 @@ if (isset($message)) {
 
         <div>
             <label>Mã căn hộ</label>
-            <input type="number" name="ma_can_ho" readonly value="<?php
+            <input type="text" name="ma_can_ho" readonly value="<?php
             echo $thongTinVe['ma_can_ho'] ?? '' ?>">
         </div>
         <div>

@@ -8,7 +8,8 @@ class UploadFileHelper
     {
         $fileName = time();
         $extension = explode('/', $files['type'])[1];
-        $pathImage = '/mnt/d/DATA/DATN/Project/storage/images/' . $fileName . '.' . $extension;
+        $rootDir = $_SERVER['DOCUMENT_ROOT'];
+        $pathImage = $rootDir . '/storage/images/' . $fileName . '.' . $extension;
         $pathSrc = 'storage/images/' . $fileName . '.' . $extension;
         $isSuccess = move_uploaded_file($files["tmp_name"], $pathImage);
         echo "<h3> Kết quả lưu file: "

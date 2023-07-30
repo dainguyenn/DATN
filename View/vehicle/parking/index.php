@@ -15,6 +15,8 @@
 
     require_once '../../../autoload.php';
     session_start();
+    Helpers\AuthHelper::isLogging();
+
     use Helpers\ViewHelper;
     use Helpers\SessionHelper;
     use Helpers\WindowHelper;

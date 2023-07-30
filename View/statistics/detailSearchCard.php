@@ -1,5 +1,6 @@
 <?php
 require_once '../../autoload.php';
+session_start();
 
 use Helpers\AuthHelper;
 use Helpers\PathHelper;
@@ -18,7 +19,6 @@ $luotGui = $luotGuiModel->findById($_GET["id"])[0];
 if (!isset($luotGui) || empty($luotGui)) {
     echo Helpers\WindowHelper::location("searchCard.php");
 }
-print_r($luotGui);
 ?>
 
 <?php ob_start(); ?>
@@ -72,21 +72,21 @@ print_r($luotGui);
             </div>
         </li>
         <li class="table-row">
-            <div class="col col-1">
+            <div class="col col-2">
                 Hình ảnh vào
             </div>
-            <div class="col col-4">
-                <?php
-                echo "<img src='" . Helpers\PathHelper::storage_path($luotGui['hinh_anh_vao']) . "' /> " ?>
+            <div class="col col-3">
+                Hình ảnh ra
             </div>
         </li>
         <li class="table-row">
             <div class="col col-1">
-                Hình ảnh ra
+                <?php
+                echo "<img width='550px' src='" . Helpers\PathHelper::storage_path($luotGui['hinh_anh_vao']) . "' /> " ?>
             </div>
             <div class="col col-4">
                 <?php
-                echo isset($luotGui["hinh_anh_ra"]) ? "<img src='" . Helpers\PathHelper::storage_path($luotGui['hinh_anh_ra']) . "' /> " : "" ?>
+                echo isset($luotGui["hinh_anh_ra"]) ? "<img width='550px' src='" . Helpers\PathHelper::storage_path($luotGui['hinh_anh_ra']) . "' /> " : "" ?>
             </div>
         </li>
     </ul>
@@ -96,4 +96,4 @@ print_r($luotGui);
 <?= str_replace('{{content}}', $content, file_get_contents(PathHelper::app_path('view/sidebar-header.php'))) ?>
 <!--Đây là title-->
 <?php echo \Helpers\ViewHelper::title('Tìm kiếm');
-echo ViewHelper::user($_SESSION["user"]); ?><!---->
+echo \Helpers\ViewHelper::user($_SESSION["user"]); ?><!---->

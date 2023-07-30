@@ -52,8 +52,11 @@ class LuotGui extends BaseModel
         $sql = <<<SQL
             SELECT DAY(DATE(gio_ra)) AS ngay, SUM(thanh_toan) AS tong_doanh_thu
             FROM $tbNameSelf
+            LEFT JOIN ve
+                	ON luot_gui.ma_ve = ve.ma_ve
             WHERE MONTH(gio_ra) = $month
                 AND YEAR(gio_ra) = $year
+                AND loai_ve = 'Ngày'
             GROUP BY DATE(gio_ra)
             ORDER BY DATE(gio_ra)
         SQL;

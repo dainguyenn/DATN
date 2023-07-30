@@ -93,4 +93,24 @@ erDiagram
     ve ||--o{ luot_gui: have
 ```
 
+## hai câu truy vấn lấy thông tin lượt gửi là tương đương nhau
+```SQL
 
+SELECT luot_gui.ma_luot_gui, luot_gui.ma_ve, ve.loai_ve, ve.loai_xe, luot_gui.bien_so_xe, luot_gui.gio_vao, luot_gui.gio_ra, ve.trang_thai FROM ve
+            RIGHT JOIN luot_gui
+            ON  luot_gui.ma_ve = ve.ma_ve
+            LEFT JOIN thong_tin_ve
+            ON ve.ma_ve = thong_tin_ve.ma_ve
+            LEFT JOIN chu_ho 
+            ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho;
+
+
+SELECT luot_gui.ma_luot_gui, luot_gui.ma_ve, ve.loai_ve, ve.loai_xe, luot_gui.bien_so_xe, luot_gui.gio_vao, luot_gui.gio_ra
+FROM luot_gui
+	LEFT JOIN ve
+    	ON  luot_gui.ma_ve = ve.ma_ve
+    LEFT JOIN thong_tin_ve
+    ON ve.ma_ve = thong_tin_ve.ma_ve
+            LEFT JOIN chu_ho 
+            ON chu_ho.ma_can_ho = thong_tin_ve.ma_can_ho;
+```

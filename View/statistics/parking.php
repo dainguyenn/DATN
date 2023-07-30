@@ -1,5 +1,6 @@
 <?php
 require_once '../../autoload.php';
+session_start();
 
 use Helpers\AuthHelper;
 use Helpers\PathHelper;
@@ -7,7 +8,7 @@ use Model\LuotGui;
 use Model\ThongTinVe;
 use Model\Ve;
 
-// AuthHelper::isLogging();
+ AuthHelper::isLogging();
 
 $veModel = new Ve();
 $page = $_GET['page'] ?? 1;
@@ -67,4 +68,4 @@ $allVe = $veModel->DangGui(null, $limit, $page);
 <?= str_replace('{{content}}', $content, file_get_contents(\Helpers\PathHelper::app_path('view/sidebar-header.php'))) ?>
 <!--Đây là title-->
 <?php echo \Helpers\ViewHelper::title('Danh sách xe đang gửi');
-echo ViewHelper::user($_SESSION["user"]); ?><!---->
+echo \Helpers\ViewHelper::user($_SESSION["user"]); ?><!---->

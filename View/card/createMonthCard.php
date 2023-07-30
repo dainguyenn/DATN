@@ -60,23 +60,26 @@ if (isset($_POST['create'])) {
                 break;
             }
     }
-    $bienSo = $thongTinVeModel->kiemTraBienSo($_POST['bien_so_xe']);
-    if ($bienSo) {
-        $message = 'Đã tồn tại biển số xe này';
-        SessionHelper::store('error', ['title' => 'Lỗi', 'message' => $message, 'type' => 'warning']);
-        echo WindowHelper::location('createMonthCard.php');
-    }
-    $newVe = $ve->create([
-        'loai_ve' => CardConst::TYPE_MONTH,
-        'loai_xe' => $_POST['loai_xe'],
-    ])[0];
-    $thongTinVeModel->create([
-        'ma_ve' => $newVe['ma_ve'],
-        'ma_can_ho' => $_POST['ma_can_ho'],
-        'bien_so_xe' => $_POST['bien_so_xe'],
-    ]);
 
-    echo WindowHelper::location('index.php?id=' . SessionHelper::get('ma'));
+    if (!isset($message)) {
+        $bienSo = $thongTinVeModel->kiemTraBienSo($_POST['bien_so_xe']);
+        if ($bienSo) {
+            $message = 'Đã tồn tại biển số xe này';
+            SessionHelper::store('error', ['title' => 'Lỗi', 'message' => $message, 'type' => 'warning']);
+            echo WindowHelper::location('createMonthCard.php');
+        }
+        $newVe = $ve->create([
+            'loai_ve' => CardConst::TYPE_MONTH,
+            'loai_xe' => $_POST['loai_xe'],
+        ])[0];
+        $thongTinVeModel->create([
+            'ma_ve' => $newVe['ma_ve'],
+            'ma_can_ho' => $_POST['ma_can_ho'],
+            'bien_so_xe' => $_POST['bien_so_xe'],
+        ]);
+
+        echo WindowHelper::location('index.php?id=' . SessionHelper::get('ma'));
+    }
 }
 if (isset($_GET['ma_can_ho'])) {
     SessionHelper::store('ma', $_GET['ma_can_ho']);
@@ -91,7 +94,7 @@ if (isset($_GET['ma_can_ho'])) {
 
             <div>
                 <label>Mã căn hộ</label>
-                <input name="ma_can_ho" type="number" readonly value="<?php echo SessionHelper::get('ma') ?>">
+                <input name="ma_can_ho" type="text" readonly value="<?php echo SessionHelper::get('ma') ?>">
             </div>
 
             <div>

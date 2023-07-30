@@ -1,11 +1,14 @@
 <?php
 require_once '../../autoload.php';
+session_start();
 
 use Helpers\AuthHelper;
 use Helpers\PathHelper;
 use Model\LuotGui;
 use Model\ThongTinVe;
 use Model\Ve;
+
+AuthHelper::isLogging();
 
 $veModel = new Ve();
 $luotGuiModel = new LuotGui();
@@ -14,14 +17,30 @@ $limit = $_GET['limit'] ?? 25;
 $allVe = $veModel->DaThanhToan(null, $limit, $page);
 $tong = null;
 $danhSachNgay = null;
-if ($_GET["sub"]) {
-    $danhSachNgay = $luotGuiModel->ChiTietDoanhThuCacNgay($_GET["thang"], $_GET["nam"]);
+$fillter = [
+    "thang" => date("m"),
+    "nam" => date("Y")
+];
+
+if (isset($_GET["sub"])) {
+    if ($_GET["thang"] == null || ($_GET["thang"] <= 0 || $_GET["thang"] > 12)) {
+        $fillter["thang"] = date("m");
+    } else {
+        $fillter["thang"] = $_GET["thang"];
+    }
+
+    if ($_GET["nam"] == null || $_GET["nam"] <= 0) {
+        $fillter["nam"] = date("Y");
+    } else {
+        $fillter["nam"] = $_GET["nam"];
+    }
+    $danhSachNgay = $luotGuiModel->ChiTietDoanhThuCacNgay($fillter["thang"], $fillter["nam"]);
     $tong = 0;
     foreach ($danhSachNgay as $item) {
         $tong += $item['tong_doanh_thu'];
     }
 } else {
-    $danhSachNgay = $luotGuiModel->ChiTietDoanhThuCacNgay();
+    $danhSachNgay = $luotGuiModel->ChiTietDoanhThuCacNgay($fillter["thang"], $fillter["nam"]);
     $tong = 0;
     foreach ($danhSachNgay as $item) {
         $tong += $item['tong_doanh_thu'];
@@ -42,11 +61,11 @@ if ($_GET["sub"]) {
         <tr>
             <td scope="row">
                 <input type="number" class="form-control" type="text" name="thang" placeholder="Nhập tháng"
-                    value="<?php echo date("m"); ?>">
+                    value="<?php echo $fillter["thang"]; ?>">
             </td>
             <td>
                 <input type="number" class="form-control" type="text" name="nam" placeholder="Nhập năm"
-                    value="<?php echo date("Y"); ?>">
+                    value="<?php echo $fillter["nam"]; ?>">
             </td>
         </tr>
     </table>
@@ -84,4 +103,4 @@ if ($_GET["sub"]) {
 <?= str_replace('{{content}}', $content, file_get_contents(PathHelper::app_path('view/sidebar-header.php'))) ?>
 <!--Đây là title-->
 <?php echo \Helpers\ViewHelper::title('Thống kê doanh thu');
-echo ViewHelper::user($_SESSION["user"]); ?><!---->
+echo \Helpers\ViewHelper::user($_SESSION["user"]); ?><!---->

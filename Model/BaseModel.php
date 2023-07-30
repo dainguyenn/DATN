@@ -49,8 +49,7 @@ class BaseModel
         $values = "";
         $condition = " WHERE $this->primaryKey = '$id'";
         foreach ($attributes as $key => $value) {
-            if($value == 'true' || $values == 'false')
-            {
+            if ($value == 'true' || $values == 'false') {
                 $values = $values . $key . "=" . "$value,";
                 continue;
             }
@@ -67,9 +66,8 @@ class BaseModel
     {
         $columns = $this->implodeColumns($columns);
         $sql = "SELECT $columns FROM $this->table WHERE $this->primaryKey = '$id'";
-        if ($this->softDelete)
-        {
-            $sql.=" AND deleted_at IS NULL";
+        if ($this->softDelete) {
+            $sql .= " AND deleted_at IS NULL";
         }
         $this->SQL_LOG($sql);
         return $this->pdo->query($sql);
@@ -96,7 +94,7 @@ class BaseModel
         $total = "SELECT COUNT(*) AS total FROM $this->table LIMIT $start, $limit";
         $sqlCountRecord = "SELECT COUNT(*) AS total_record FROM $this->table";
         $totalRecord = $this->pdo->query($sqlCountRecord);
-        $lastPage = ceil($totalRecord/$limit);
+        $lastPage = ceil($totalRecord / $limit);
         $result = $this->pdo->query($sql);
         $data = [
             'data' => $result,

@@ -1,5 +1,16 @@
 <h3>Ghi nhận thông tin lấy xe</h3>
-
+<h4>Loại vé:
+    <?php
+    session_start();
+    echo $_SESSION["ve_lay"]["loai_ve"];
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
+    ?>
+</h4>
+<h4>Loại xe:
+    <?php
+    echo $_SESSION["ve_lay"]["loai_xe"]
+        ?>
+</h4>
 <div class="form-style-6">
     <form method="POST" enctype="multipart/form-data" action="<?php echo $_SERVER["PHP_SELF"]; ?>
     ">
@@ -11,6 +22,7 @@
 
     <?php
     require_once '../../../autoload.php';
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
     session_start();
     use Helpers\UploadFileHelper;
     use Helpers\ViewHelper;

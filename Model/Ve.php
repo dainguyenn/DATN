@@ -9,8 +9,8 @@ require_once 'BaseModel.php';
 class Ve extends BaseModel
 {
     protected $primaryKey = 'ma_ve';
-    public const TB_NAME = 've'; 
-    protected $softDelete = true; 
+    public const TB_NAME = 've';
+    protected $softDelete = true;
     public function __construct()
     {
         parent::__construct('ve');
@@ -32,9 +32,8 @@ class Ve extends BaseModel
             . $tbJoin
             . " ON $this->table.$this->primaryKey = $tbJoin.$this->primaryKey
              INNER JOIN chu_ho ON chu_ho.ma_can_ho = $tbJoin.ma_can_ho
-             WHERE chu_ho.ma_can_ho = $id AND ve.deleted_at IS NULL LIMIT $start, $limit";
+             WHERE chu_ho.ma_can_ho = '$id' AND ve.deleted_at IS NULL LIMIT $start, $limit";
         $sqlCountRecord = "SELECT COUNT(*) AS total_record FROM $this->table";
-
         $totalRecord = $this->pdo->query($sqlCountRecord);
         $lastPage = ceil(count($totalRecord) / $limit);
         $this->SQL_LOG($sql);
@@ -53,7 +52,7 @@ class Ve extends BaseModel
         $columns = $this->implodeColumns($columns);
         $start = ($page - 1) * $limit;
 
-        $sql = "SELECT $columns FROM $this->table WHERE loai_ve ='" . CardConst::TYPE_DAY . "' LIMIT $start, $limit";
+        $sql = "SELECT $columns FROM $this->table WHERE loai_ve ='" . CardConst::TYPE_DAY . "' AND deleted_at IS NULL LIMIT $start, $limit";
         $this->SQL_LOG($sql);
         $result = $this->pdo->query($sql);
         $total = count($result);
@@ -77,16 +76,22 @@ class Ve extends BaseModel
         if (isset($filter)) {
             $condtion = [];
             if (isset($filter['bien_so_xe']) && !empty($filter['bien_so_xe'])) {
-                array_push($condtion, LuotGui::TB_NAME . ".bien_so_xe like '%${filter['bien_so_xe']}%'");
+                array_push($condtion, LuotGui::TB_NAME . ".bien_so_xe like '%{$filter['bien_so_xe']}%'");
             }
             if (isset($filter['ma_ve']) && !empty($filter['ma_ve'])) {
-                array_push($condtion, LuotGui::TB_NAME . ".ma_ve like '%${filter['ma_ve']}%'");
+                array_push($condtion, LuotGui::TB_NAME . ".ma_ve like '%{$filter['ma_ve']}%'");
             }
             if (isset($filter['loai_ve']) && !empty($filter['loai_ve'])) {
-                array_push($condtion, Ve::TB_NAME . ".loai_ve like '%${filter['loai_ve']}%'");
+                array_push($condtion, Ve::TB_NAME . ".loai_ve like '%{$filter['loai_ve']}%'");
             }
             if (isset($filter['ten_chu_ho']) && !empty($filter['ten_chu_ho'])) {
-                array_push($condtion, ChuHo::TB_NAME . ".ten_chu_ho like '%${filter['ten_chu_ho']}%'");
+                array_push($condtion, ChuHo::TB_NAME . ".ten_chu_ho like '%{$filter['ten_chu_ho']}%'");
+            }
+            if (isset($filter["gio_vao"]) && !empty($filter["gio_vao"])) {
+                array_push($condtion, LuotGui::TB_NAME . ".gio_vao >= '{$filter['gio_vao']}'");
+            }
+            if (isset($filter["gio_ra"]) && !empty($filter["gio_ra"])) {
+                array_push($condtion, LuotGui::TB_NAME . ".gio_ra <= '{$filter['gio_ra']}'");
             }
             foreach ($condtion as $item => $value) {
                 if ($item == 0) {
@@ -96,7 +101,7 @@ class Ve extends BaseModel
                 }
             }
         }
-        print_r($sql);
+        $sql = $sql . " ORDER BY luot_gui.ma_luot_gui DESC";
         $totalRecord = $this->pdo->query($sql);
         $this->SQL_LOG($sql);
         $result = $this->pdo->query($sql);
@@ -156,7 +161,7 @@ class Ve extends BaseModel
 
     public function ChuaDongTien($id = null, $limit = 25, $page = 1)
     {
-        $sql="SELECT * FROM thong_tin_ve 
+        $sql = "SELECT * FROM thong_tin_ve 
             INNER JOIN chu_ho ON thong_tin_ve.ma_can_ho = chu_ho.ma_can_ho
             INNER JOIN $this->table ON thong_tin_ve.ma_ve = $this->table.ma_ve
             WHERE loai_ve = '" . CardConst::TYPE_MONTH . "'
@@ -196,7 +201,7 @@ class Ve extends BaseModel
     public function deleteById($id): bool|array|null
     {
         $now = date('Y-m-d H:i:s');
-        $sql = "UPDATE $this->table SET deleted_at = '$now' WHERE id=$id";
+        $sql = "UPDATE $this->table SET deleted_at = '$now' WHERE ma_ve='$id'";
         $this->SQL_LOG($sql);
         return $this->pdo->query($sql);
     }

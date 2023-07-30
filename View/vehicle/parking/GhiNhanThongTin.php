@@ -2,7 +2,13 @@
 <h4>Loại vé:
     <?php
     session_start();
-    echo $_SESSION["ve_gui"]["loai_ve"]
+    echo $_SESSION["ve_gui"]["loai_ve"];
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
+    ?>
+</h4>
+<h4>Loại xe:
+    <?php
+    echo $_SESSION["ve_gui"]["loai_xe"]
         ?>
 </h4>
 <div class="form-style-6">
@@ -34,7 +40,7 @@
 
     if (isset($_POST["sub"])) {
 
-        if (isset($_FILES["hinh_anh"])) {
+        if (isset($_FILES["hinh_anh"]) && $_FILES["hinh_anh"]["size"] > 0) {
             $now = date("Y-m-d H:i:s");
             $pathImage = UploadFileHelper::SaveFile($_FILES["hinh_anh"]);
 
@@ -65,7 +71,7 @@
 
             }
         } else {
-            echo "<h1 class='invalid'>Bạn chưa nhập hình ảnh</h1>";
+            echo "<p class='invalid'>Bạn chưa nhập hình ảnh</p >";
         }
     } else {
         //echo "<h1 class='invalid'>Chưa gửi thông tin</h1>";

@@ -6,6 +6,7 @@ require_once dirname(__DIR__) . '/autoload.php';
 use Helpers\AuthHelper;
 
 AuthHelper::isLogging();
+echo __DIR__;
 ?>
 <?php ob_start(); ?>
 
@@ -15,28 +16,27 @@ AuthHelper::isLogging();
         <i class="fa-regular fa-address-card"></i>
         Quản lí vé
         <ul class="my-menu-ul">
-            <li><a href="./View/card/chuho.php">Danh sách vé tháng</a></li>
-            <li><a href="./View/card/listCardDay.php">Danh sách vé ngày</a></li>
-            <li><a href="./View/card/createMonthCard.php">Tạo vé tháng mới</a></li>
-            <li><a href="./View/card/createDayCard.php">Tạo vé ngày mới</a></li>
+            <li><a href="/View/card/chuho.php">Danh sách cư dân</a></li>
+            <li><a href="/View/card/listCardDay.php">Danh sách vé ngày</a></li>
+            <li><a href="/View/card/createDayCard.php">Tạo vé ngày mới</a></li>
         </ul>
     </div>
     <div class="btn-menu btn-success my-menu-container">
         <i class="fa-solid fa-car-side"></i>
         Quản lí trông xe
         <ul class="my-menu-ul">
-            <li><a href="./View/vehicle/parking/">Gửi xe</a></li>
-            <li><a href="./View/vehicle/taking/">Lấy xe</a></li>
+            <li><a href="/View/vehicle/parking/">Gửi xe</a></li>
+            <li><a href="/View/vehicle/taking/">Lấy xe</a></li>
         </ul>
     </div>
     <div class="btn-menu btn-success my-menu-container">
         <i class="fa-solid fa-clipboard-list"></i>
         Thống kê
         <ul class="my-menu-ul">
-            <li><a href="./View/statistics/searchCard.php">Thống kê lượt gửi</a></li>
-            <li><a href="./View/statistics/income.php">Thống kê doanh thu</a></li>
-            <li><a href="./View/statistics/parking.php">Thống kê xe đang gửi</a></li>
-            <li><a href="./View/statistics/reportMonthCard.php">Vé tháng chưa đóng tiền</a></li>
+            <li><a href="/View/statistics/searchCard.php">Thống kê lượt gửi</a></li>
+            <li><a href="/View/statistics/income.php">Thống kê doanh thu</a></li>
+            <li><a href="/View/statistics/parking.php">Thống kê xe đang gửi</a></li>
+            <li><a href="/View/statistics/reportMonthCard.php">Vé tháng chưa đóng tiền</a></li>
         </ul>
     </div>
     <a class="btn-menu btn-warning my-menu-container" href="/View/auth/sign-out.php">

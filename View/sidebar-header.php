@@ -26,7 +26,7 @@
                     <div class="menu-items">
                         <ul class="nav-menu items-show">
                             <li class="nav-item">
-                                <a class="nav-link" href="/View/card/chuho.php">Chủ hộ</a>
+                                <a class="nav-link" href="/View/card/chuho.php">Cư dân</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/View/card/listCardDay.php">Vé ngày</a>
@@ -96,16 +96,17 @@
                     <div class="user-dropdown">
                         <i class="fa-solid fa-circle-user"></i>
                         <span id="user">
+                            <!-- Chỗ này dùng Helper\ViewHelper::user() để điền thông tin-->
                         </span>
                         <i class="user-arrow fa fa-chevron-down"></i>
                         <ul class="drop-menu">
                             <li class="drop-menu-item">
                                 <i class="fa fa-user"></i>
-                                <a href="#">Profile</a>
+                                <!-- <a href="#">Profile</a> -->
                             </li>
                             <li class="drop-menu-item">
                                 <i class="fa-solid fa-right-from-bracket"></i>
-                                <a href="#">Logout</a>
+                                <a href="/View/auth/sign-out.php">Logout</a>
                             </li>
                         </ul>
                     </div>
